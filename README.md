@@ -1,27 +1,23 @@
-# KafilAngularfinal
+///////////design principles///////////
+accent color: #158350
+page background-color: #f1f2f2
+content background-color: #ffffff
+font-name: https://fonts.google.com/specimen/Cairo
+fa icons librarry: https://fontawesome.com/search?q=cart&o=r&s=solid
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+//////////website design tasks ////////////
+home page ---------> Omar || https://kafiil.com/
+header& footer --------->bassam ||
+signup & login ----------> Ahmed || https://kafiil.com/user/login || https://kafiil.com/user/register
+services (categories) ----------> mostafa || https://kafiil.com/services
+single service page ----------> mostafa || http://bit.ly/3HJGHXG
+freelancers ----------> Omar || https://kafiil.com/freelancers
+portfolios ----------> bassam || https://kafiil.com/portfolios
+projects ----------> ahmed || https://kafiil.com/projects
+contests ----------> esraa || https://kafiil.com/contests
+single project ----------> esraa || http://bit.ly/3XN3iZ3
 
-## Development server
+////////////////////status////////////////
+-building components ----------------
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 1%
