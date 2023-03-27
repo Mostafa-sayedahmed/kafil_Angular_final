@@ -1,11 +1,17 @@
 ///////////design principles///////////
+
 accent color: #158350
+
 page background-color: #f1f2f2
+
 content background-color: #ffffff
+
 font-name: https://fonts.google.com/specimen/Cairo
+
 fa icons librarry: https://fontawesome.com/search?q=cart&o=r&s=solid
 
 //////////website design tasks ////////////
+
 home page ---------> Omar || https://kafiil.com/
 
 header& footer --------->bassam ||
