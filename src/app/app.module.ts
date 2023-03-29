@@ -13,6 +13,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 // componant initialization
 import { ProjectsDetailsComponent } from './component/projectsDetails/projectsDetails.component';
 import { ContestsComponent } from './component/contests/contests.component';
+import { RegisterComponent } from './component/register/register.component';
+import { LoginComponent } from './component/login/login.component';
 
 // .....................................................................................//
 
@@ -22,6 +24,8 @@ import { ContestsComponent } from './component/contests/contests.component';
     // ...................................add in  28 / 3 / 2023 by esraa mokhtar......................................//
     ProjectsDetailsComponent,
     ContestsComponent,
+    RegisterComponent,
+    LoginComponent,
     // .....................................................................................//
   ],
   imports: [
