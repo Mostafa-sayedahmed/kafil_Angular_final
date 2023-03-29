@@ -13,6 +13,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 // componant initialization
 import { ProjectsDetailsComponent } from './component/projectsDetails/projectsDetails.component';
 import { ContestsComponent } from './component/contests/contests.component';
+import { HomePageComponent } from './component/homePage/home-page/home-page.component';
+import { FreelancersComponent } from './component/freelancers/freelancers/freelancers.component';
 
 // .....................................................................................//
 
@@ -22,6 +24,8 @@ import { ContestsComponent } from './component/contests/contests.component';
     // ...................................add in  28 / 3 / 2023 by esraa mokhtar......................................//
     ProjectsDetailsComponent,
     ContestsComponent,
+    HomePageComponent,
+    FreelancersComponent,
     // .....................................................................................//
   ],
   imports: [

@@ -1,0 +1,101 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    max-height: 400px !important;
+}
+
+#carouselExampleDark {
+    background-color: #f1f2f2;
+}
+
+.myBtn {
+    background-color: #1dbf73;
+   width:25%;
+    color: white;
+    padding: 8px;
+    border: 1px #1dbf73 solid;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+.myBtn:hover{
+    background-color: #147447;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.tab {
+    background-color: #f1f2f2;
+    border: 1px solid rgb(207, 206, 206);
+}
+
+.tab:hover,.servicesTabs:hover ,.navBar:hover ,.accordion-button:hover{
+    background-color: rgb(207, 206, 206);
+}
+
+.label {
+    width: 85% !important;
+    border: 1px solid rgb(207, 206, 206);
+    border-radius: 10px;
+}
+
+.width-33 {
+    width: 33.5% !important;
+}
+
+.myIcon {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    background-color: #1dbf73;
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    padding: 2px;
+
+}
+
+li {
+    margin: 10px;
+    font-size: 17px;
+}
+.servicesTabs{
+   width:18%;
+    max-height:165px ;
+    background-color: #e4e3e3;
+    border-radius: 10px;
+    font-size: 16px;
+    margin:5px;
+}
+.servicesTabsCon{
+    display: flex;
+    flex-wrap: wrap;
+    width:75%;
+    margin-left: 12.5%;
+    margin-right:12.5% ;
+}
+.accordion-button {
+    direction: rtl !important;
+}
+.navBar{
+    border: 1px solid rgb(207, 206, 206);
+   
+}
+.nav-link{
+color:grey !important;
+font-size: large;
+}
+@media only screen and (max-width: 1000px) {
+    .tt {
+        border: 1px solid rgb(207, 206, 206);
+    }
+  }
+
+
