@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -12,6 +9,7 @@ import { ProjectsDetailsComponent } from './component/projectsDetails/projectsDe
 import { ContestsComponent } from './component/contests/contests.component';
 import { HomePageComponent } from './component/homePage/home-page/home-page.component';
 import { FreelancersComponent } from './component/freelancers/freelancers/freelancers.component';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,9 +23,11 @@ import { FreelancersComponent } from './component/freelancers/freelancers/freela
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,  //reactievform
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
- 
+
   ],
   providers: [],
   bootstrap: [AppComponent]
