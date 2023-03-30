@@ -13,7 +13,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  // import { LoginComponent } from './component/login/login.component';
+ 
 exports: [RouterModule]
 })
 export class AppRoutingModule { }
