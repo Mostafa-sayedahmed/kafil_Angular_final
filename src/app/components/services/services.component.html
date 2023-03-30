@@ -70,149 +70,36 @@
       <div class="pb-40 search-category-container">
         <div class="d-flex row g-4 search-category-row pb-5">
           <!-- category-card -->
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+
+          <div
+            class="col-6 col-sm-4 col-md-3 col-lg-2"
+            *ngFor="let category of categriesList; let i = index"
+          >
             <a
-              href="#"
+              href="{{ category.categoryLink }}"
               class="search-category main-category-shortcut-button"
               category_id=""
+              #categorybtn
+              *ngIf="i < showcount"
             >
               <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/marketing.svg"
-                  alt=""
-                />
+                <img src="{{ category.CategoryPic }}" alt="" />
               </div>
-              <p class="title">تسويق</p>
+              <p class="title">{{ category.categoryName }}</p>
             </a>
           </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/money.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">خدمات مالية</p>
-            </a>
-          </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/categories/design.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">تصاميم فنية</p>
-            </a>
-          </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/software.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">برمجيات</p>
-            </a>
-          </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/writing.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">كتابة وترجمة</p>
-            </a>
-          </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/video.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">فيديو</p>
-            </a>
-          </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/audio.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">صوتيات</p>
-            </a>
-          </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/education.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">تدريب واستشارة</p>
-            </a>
-          </div>
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-            <a
-              href="#"
-              class="search-category main-category-shortcut-button"
-              category_id=""
-            >
-              <div class="img">
-                <img
-                  src="https://kafiil.com/modules/base/img/icons/more.svg"
-                  alt=""
-                />
-              </div>
-              <p class="title">المزيد</p>
-            </a>
-          </div>
+
           <div class="text-center">
-            <a href="#" class="see-all-solid active">
+            <a href="" class="see-all-solid active" (click)="showallcat()">
               إظهار جميع الأقسام
               <i id="arrowicon" class="fas fa-chevron-down"></i>
             </a>
           </div>
         </div>
       </div>
+      <ng-container *ngFor="let slider of sliders">
+        <app-cardslider [sliderdata]="slider"></app-cardslider>
+      </ng-container>
     </div>
   </body>
 </html>
