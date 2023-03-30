@@ -12,8 +12,9 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { SingleserviceComponent } from './components/singleservice/singleservice.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ServicesComponent, CardsliderComponent, ServicecardComponent],
+  declarations: [AppComponent, HeaderComponent, ServicesComponent, CardsliderComponent, ServicecardComponent, SingleserviceComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())],
   providers: [],
   bootstrap: [AppComponent],
