@@ -18,6 +18,8 @@ import { ContestsComponent } from './component/contests/contests.component';
 import { HomePageComponent } from './component/homePage/home-page/home-page.component';
 import { FreelancersComponent } from './component/freelancers/freelancers/freelancers.component';
 
+import {   ReactiveFormsModule } from '@angular/forms';
+
 import {RegisterComponent} from './component/register/register.component'
 import {LoginComponent} from './component/login/login.component';
 import { ForgetPasswordComponent } from './component/forget-password/forget-password.component'
@@ -33,6 +35,7 @@ const routes: Routes = [
 ];
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,9 +49,12 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,  //reactievform
+
+
 
     [RouterModule.forRoot(routes)],
-   
+
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
