@@ -50,12 +50,11 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,  //reactievform
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+
 
 
     [RouterModule.forRoot(routes)],
-   
+
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
