@@ -10,10 +10,10 @@ import { HomePageComponent } from './component/homePage/home-page/home-page.comp
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomePageComponent },
+  { path: '', component: HomePageComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'services/:serviceID', component: SingleserviceComponent },
-  { path: '', redirectTo: '/register-user', pathMatch: 'full' },
+  // { path: '', redirectTo: '/register-user', pathMatch: 'full' },
   { path: 'sign-in', component: LoginComponent },
   { path: 'register-user', component: RegisterComponent },
   { path: 'forgot-password', component: ForgetPasswordComponent },
