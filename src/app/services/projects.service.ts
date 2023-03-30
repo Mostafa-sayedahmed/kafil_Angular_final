@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, query, where, getDocs, Firestore } from '@angular/fire/firestore';
+import { collection, Firestore } from '@angular/fire/firestore';
 import { collectionData } from '@angular/fire/firestore';
 import { Iproject } from './../Models/iproject';
 
