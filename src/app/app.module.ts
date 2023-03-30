@@ -10,9 +10,11 @@ import { CardsliderComponent } from './components/cardslider/cardslider.componen
 import { ServicecardComponent } from './components/servicecard/servicecard.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
+
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +27,12 @@ import { SingleserviceComponent } from './components/singleservice/singleservice
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+
   ],
   providers: [],
   bootstrap: [AppComponent],
