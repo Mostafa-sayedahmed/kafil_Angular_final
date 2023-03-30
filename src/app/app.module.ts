@@ -9,7 +9,7 @@ import { ProjectsDetailsComponent } from './component/projectsDetails/projectsDe
 import { ContestsComponent } from './component/contests/contests.component';
 import { HomePageComponent } from './component/homePage/home-page/home-page.component';
 import { FreelancersComponent } from './component/freelancers/freelancers/freelancers.component';
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {   ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+  
     ReactiveFormsModule,  //reactievform
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
