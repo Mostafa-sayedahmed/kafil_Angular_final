@@ -51,8 +51,6 @@
 
 .nav-list {
   list-style: none;
-  align-items: center;
-  // border-inline: 1px solid #dedede;
 }
 .borderseprator {
   border: 1px solid #dedede;
@@ -95,6 +93,9 @@
   display: none;
 }
 @media only screen and (max-width: 988px) {
+  .borderseprator {
+    display: none;
+  }
   .header-right {
     display: flex !important;
     flex-direction: column !important;
