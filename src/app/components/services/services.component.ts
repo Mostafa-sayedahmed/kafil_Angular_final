@@ -1,4 +1,5 @@
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { GetservicesService } from 'src/app/services/getservices.service';
 
 @Component({
   selector: 'app-services',
@@ -12,6 +13,7 @@ export class ServicesComponent {
   itemscount = 5;
   showcountLG = 6;
   showcountSM = 4;
+  constructor(public servces: GetservicesService) {}
 
   // @ViewChildren('categorybtn') categorybtn: QueryList<ElementRef> | undefined;
   categriesList = [
@@ -112,6 +114,12 @@ export class ServicesComponent {
     } else {
       this.showcount = this.showcountLG;
     }
+  }
+  test() {
+    console.log('clicked');
+    let data = this.servces.getservices();
+    console.log(data);
+    console.log(this.servces.getservices());
   }
   // );
 }

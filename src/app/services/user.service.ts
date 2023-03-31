@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from './../Models/iuser';
+import { User } from './../models/iuser';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -7,15 +7,15 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root',
 })
-
 export class UserService {
   userData: any;
   constructor(
-    public afs: AngularFirestore, 
-    public afAuth: AngularFireAuth, 
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone
   ) {
@@ -34,14 +34,13 @@ export class UserService {
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
-      .signInWithEmailAndPassword(email,password)
+      .signInWithEmailAndPassword(email, password)
       .then((result) => {
-
         this.SetUserData(result.user);
 
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            this.router.navigate(['home']);
+            this.router.navigate(['']);
           }
         });
       })
@@ -51,9 +50,9 @@ export class UserService {
   }
 
   // Sign up with email/password
-    SignUp(email: string, password: string ) {
+  SignUp(email: string, password: string) {
     return this.afAuth
-      .createUserWithEmailAndPassword(email,password)
+      .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.SetUserData(result.user);
         this.router.navigate(['sign-in']);
@@ -63,7 +62,7 @@ export class UserService {
       });
   }
 
-// forget password
+  // forget password
   ForgotPassword(passwordResetEmail: string) {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
@@ -78,7 +77,7 @@ export class UserService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['home']);
+      this.router.navigate(['']);
     });
   }
 
@@ -87,7 +86,7 @@ export class UserService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
@@ -95,9 +94,8 @@ export class UserService {
       });
   }
 
-  //  Setting up user data when sign in with username/password, 
+  //  Setting up user data when sign in with username/password,
   SetUserData(user: any) {
-
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
