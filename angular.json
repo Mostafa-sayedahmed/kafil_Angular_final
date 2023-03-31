@@ -56,7 +56,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -110,8 +116,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "5ef2225f-59c0-4833-a647-96d3f92b1f17"
   }
 }
