@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
+import { AddserviceComponent } from './components/addservice/addservice.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'services', component: ServicesComponent },
   { path: 'freelancers', component: FreelancersComponent },
   { path: 'services/:serviceID', component: SingleserviceComponent },
+  { path: 'createservice', component: AddserviceComponent },
 ];
 
 @NgModule({

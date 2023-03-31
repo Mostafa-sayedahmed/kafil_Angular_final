@@ -64,7 +64,7 @@
   align-items: center;
   text-decoration: none !important;
   padding: 13px 12px;
-  margin: 0 5px;
+  margin: 0px;
   font-size: 1rem;
   color: #707070;
   border-radius: 6px;
@@ -74,6 +74,7 @@
   background-color: #1dbf73 !important;
   color: #fff !important;
   padding-inline: 1rem !important;
+  white-space: nowrap;
 }
 
 .language button {
