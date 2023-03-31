@@ -1,0 +1,32 @@
+#carouselExampleDark {
+    background-color: #f1f2f2;
+}
+
+.myBtn {
+    background-color: #1dbf73;
+   width:25%;
+    color: white;
+    padding: 8px;
+    border: 1px #1dbf73 solid;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+.myBtn:hover{
+    background-color: #147447;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.searchBtn{
+    border-radius: 25% !important;
+    margin-right: 10px;
+}
+
+.carousel-control-next{
+    background-color: #f1f2f2 !important;
+}
+.carousel-control-prev{
+    background-color: #f1f2f2 !important;
+}
+

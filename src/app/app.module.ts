@@ -22,7 +22,8 @@ import {   ReactiveFormsModule } from '@angular/forms';
 
 import {RegisterComponent} from './component/register/register.component'
 import {LoginComponent} from './component/login/login.component';
-import { ForgetPasswordComponent } from './component/forget-password/forget-password.component'
+import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
+import { SliderComponent } from './component/slider/slider.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/register-user', pathMatch: 'full' },
@@ -39,18 +40,19 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    // ProjectsDetailsComponent,
-    // ContestsComponent,
-    // HomePageComponent,
-    // FreelancersComponent,
-    // RegisterComponent,
-    // ForgetPasswordComponent
+    SliderComponent,
+     ProjectsDetailsComponent,
+     ContestsComponent,
+    HomePageComponent,
+    FreelancersComponent,
+     RegisterComponent,
+     ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,  //reactievform
-
+    
 
 
     [RouterModule.forRoot(routes)],
