@@ -1,31 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { FreelancersComponent } from './components/freelancers/freelancers.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
 
-import { LoginComponent } from './component/login/login.component';
-import { RegisterComponent } from './component/register/register.component';
-import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
-import { HomePageComponent } from './component/homePage/home-page/home-page.component';
-
 const routes: Routes = [
-
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '', component: HomePageComponent },
-  { path: 'services', component: ServicesComponent },
-  { path: 'services/:serviceID', component: SingleserviceComponent },
-  // { path: '', redirectTo: '/register-user', pathMatch: 'full' },
+  { path: '', component: HomepageComponent },
   { path: 'sign-in', component: LoginComponent },
-  { path: 'register-user', component: RegisterComponent },
-  { path: 'forgot-password', component: ForgetPasswordComponent },
-
+  { path: 'register', component: RegisterComponent },
+  { path: 'forgotpassword', component: ForgetPasswordComponent },
+  { path: 'services', component: ServicesComponent },
+  { path: 'freelancers', component: FreelancersComponent },
+  { path: 'services/:serviceID', component: SingleserviceComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
 
   exports: [RouterModule],
-
 })
 export class AppRoutingModule {}
