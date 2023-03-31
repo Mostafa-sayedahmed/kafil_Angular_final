@@ -40,7 +40,7 @@ export class UserService {
 
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            this.router.navigate(['home']);
+            this.router.navigate(['']);
           }
         });
       })
@@ -77,7 +77,7 @@ export class UserService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['home']);
+      this.router.navigate(['']);
     });
   }
 
@@ -86,7 +86,7 @@ export class UserService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
