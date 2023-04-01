@@ -50,8 +50,10 @@ export class UserService {
   }
 
   // Sign up with email/password
-  SignUp(email: string, password: string , fname : string , sname : string) {
-    return this.afAuth
+  SignUp(email: string, password: string , fname : string , sname : string , rePassword : string) {
+
+    if(password == rePassword){
+      return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then( async (result) => {
         const user = result.user;
@@ -65,6 +67,11 @@ export class UserService {
       .catch((error) => {
         window.alert(error.message);
       });
+    }else{
+      window.alert("Passwords do not match");
+      return ;
+    }
+
   }
 
   // forget password
