@@ -12,8 +12,14 @@ import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
   templateUrl: './freelancers.component.html',
   styleUrls: ['./freelancers.component.scss']
 })
-export class FreelancersComponent {
+export class FreelancersComponent implements OnInit {
+  freelancers:Freelancer[]=[];
+  constructor(private myService:CrudService){
 
-  
-  
+  }
+  ngOnInit(): void {
+   this.myService.getAllFreelancers().subscribe(data=>this.freelancers=data
+   );
+   
+  }
 }

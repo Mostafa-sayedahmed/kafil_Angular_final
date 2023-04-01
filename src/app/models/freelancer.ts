@@ -1,7 +1,11 @@
 export interface Freelancer {
     $key: string;
-   firstName: string;
-   lastName: string;
-   email: string
-   mobileNumber: Number;
+    available: boolean;
+    likes: number;
+    name: string;
+    rating:number;
+    title: string;
+    uploads: number;
+    views: Number;
+    
 }

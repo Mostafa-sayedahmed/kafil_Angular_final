@@ -5,46 +5,17 @@ import {
   AngularFireList,
   AngularFireObject,
 } from '@angular/fire/compat/database';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 
 export class CrudService {
 
-  freelancersRef!: AngularFireList<any> 
-  freelancerRef!: AngularFireObject<any>;
-  constructor(private db: AngularFireDatabase) {}
-  // Create Freelancer
-  AddFreelancer(freelancer: Freelancer) {
-    this.freelancersRef.push({
-      firstName: freelancer.firstName,
-      lastName: freelancer.lastName,
-      email: freelancer.email,
-      mobileNumber: freelancer.mobileNumber,
-    });
-  }
-  // Fetch Single Student Object
-  GetFreelancer(id: string) {
-    this.freelancerRef = this.db.object('freelancers-list/' + id);
-    return this.freelancerRef;
-  }
-  // Fetch Students List
-  GetStudentsList() {
-    this.freelancersRef = this.db.list('students-list');
-    return this.freelancersRef;
-  }
-  // Update Student Object
-  UpdateStudent(freelancer: Freelancer) {
-    this.freelancerRef.update({
-      firstName: freelancer.firstName,
-      lastName: freelancer.lastName,
-      email: freelancer.email,
-      mobileNumber: freelancer.mobileNumber,
-    });
-  }
-  // Delete Student Object
-  DeleteStudent(id: string) {
-    this.freelancerRef = this.db.object('students-list/' + id);
-    this.freelancerRef.remove();
+ 
+  constructor(private fs:AngularFirestore) {}
+  getAllFreelancers():Observable<any[]>{   
+return  this.fs.collection("mostakaliin").valueChanges();
   }
 }
