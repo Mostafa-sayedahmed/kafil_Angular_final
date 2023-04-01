@@ -19,6 +19,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AddserviceComponent } from './components/addservice/addservice.component';
 
+import { ContestsComponent } from './components/contests/contests.component';
+import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,8 @@ import { AddserviceComponent } from './components/addservice/addservice.componen
     LoginComponent,
     RegisterComponent,
     AddserviceComponent,
+    ContestsComponent,
+    ProjectsDetailsComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
