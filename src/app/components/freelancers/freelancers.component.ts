@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import {  OnInit } from '@angular/core';
+import { CrudService } from 'src/app/services/crud.service';
+import { Freelancer } from 'src/app/models/freelancer';
+import { ToastrService } from 'ngx-toastr';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+
 
 @Component({
   selector: 'app-freelancers',
@@ -7,4 +14,6 @@ import { Component } from '@angular/core';
 })
 export class FreelancersComponent {
 
+  
+  
 }
