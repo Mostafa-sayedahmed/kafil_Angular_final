@@ -16,6 +16,6 @@ export class CrudService {
  
   constructor(private fs:AngularFirestore) {}
   getAllFreelancers():Observable<any[]>{   
-return  this.fs.collection("mostakaliin").valueChanges();
+return  this.fs.collection("Freelancers").valueChanges();
   }
 }
