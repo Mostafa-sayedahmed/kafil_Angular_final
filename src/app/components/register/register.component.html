@@ -19,15 +19,14 @@
               >سجل دخول بجوجل</a
             >
             <a
-              href="#"
+            type="button"
+            (click)="UserService.TwitterAuth()"
               class="method-twitter col-md-5 me-2 mt-1 rounded-2 text-decoration-none text-white pt-2 pb-2 ps-5 pe-5 bg-info"
               >سجل دخول بتويتر</a
             >
           </div>
 
-          <!-- <form class="row " action=""   [formGroup]="userFormGroup"> -->
           <form class="row" action="">
-            <!-- FirstName    -->
             <div class="col-md-6">
               <label for="firstName" class="p-2"> الأسم الأول </label><br />
               <input
@@ -37,7 +36,8 @@
                 id="firstName"
                 name="first-name"
                 placeholder="الاسم الأول"
-                formControlName="FirstName"
+                #userFname
+                required
               />
             </div>
 
@@ -79,10 +79,17 @@
               />
             </div>
 
-            <!-- <div class="col-md-6">
-                        <label for="confirmpassword" class="p-2"> تأكيد كلمة السر </label><br>
-                        <input class="form-control" type="password" id="confirmpassword" name="password" placeholder=" تأكيد كلمة السر " #userRePassword required onchange="ValidationPassword()" >
-                    </div> -->
+            <div class="col-md-6">
+              <label for="confirmpassword" class="p-2"> تأكيد كلمة السر </label><br>
+              <input class="form-control"
+               type="password"
+                id="confirmpassword"
+                name="password"
+                placeholder=" تأكيد كلمة السر " 
+                #userRePassword
+                required
+                 />
+              </div>
             <p class="p-3">
               بالتسجيل في كفيل ,انت توافق على
               <a class="text-success text-decoration-none" href="#">الخصوصية</a
@@ -92,12 +99,10 @@
               </a>
             </p>
 
-            <!-- <button class="btn bg-success text-white w-100 mt-2"  (click)="UserService.SignUp(userFname.value, userSname.value , userEmail.value , userPassword.value  , userRePassword.value )">تسجيل</button> -->
-
             <button
               type="button"
               class="btn bg-success text-white w-100 mt-2"
-              (click)="UserService.SignUp(userEmail.value, userPassword.value)"
+              (click)="UserService.SignUp(userEmail.value, userPassword.value , userFname.value , userSname.value , userRePassword.value)"
             >
               تسجيل
             </button>
