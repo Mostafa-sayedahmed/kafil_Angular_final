@@ -49,13 +49,30 @@ export class UserService {
       });
   }
 
+  // then(
+  //   (success) => {
+  //   success.auth.updateProfile({
+  //       displayName: <UserName>,
+  //       photoURL: <UserPhotoURLString>
+  //     })
+
   // Sign up with email/password
-  SignUp(email: string, password: string) {
+  SignUp(email: string, password: string , fname : string , sname : string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.SetUserData(result.user);
-        this.router.navigate(['sign-in']);
+      .then( async (result) => {
+
+        // await result.user?.updateProfile({
+        //   fname: user.fname,
+        //   sname: user.sname,
+        //   rePassword : user.repassword}).then(() => {
+            this.SetUserData(result.user);
+            
+            this.router.navigate(['sign-in']);
+            // this.afAuth.updateCurrentUser({
+            //   displayName : fname
+            // })
+          // })
       })
       .catch((error) => {
         window.alert(error.message);
@@ -77,6 +94,13 @@ export class UserService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      this.router.navigate(['']);
+    });
+  }
+
+  // Sign in with Twitter
+  TwitterAuth() {
+    return this.AuthLogin(new auth.TwitterAuthProvider()).then((res: any) => {
       this.router.navigate(['']);
     });
   }
