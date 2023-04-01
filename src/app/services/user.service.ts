@@ -49,30 +49,18 @@ export class UserService {
       });
   }
 
-  // then(
-  //   (success) => {
-  //   success.auth.updateProfile({
-  //       displayName: <UserName>,
-  //       photoURL: <UserPhotoURLString>
-  //     })
-
   // Sign up with email/password
   SignUp(email: string, password: string , fname : string , sname : string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then( async (result) => {
-
-        // await result.user?.updateProfile({
-        //   fname: user.fname,
-        //   sname: user.sname,
-        //   rePassword : user.repassword}).then(() => {
-            this.SetUserData(result.user);
-            
-            this.router.navigate(['sign-in']);
-            // this.afAuth.updateCurrentUser({
-            //   displayName : fname
-            // })
-          // })
+        const user = result.user;
+       await user?.updateProfile({
+            displayName: `${fname} ${sname}` 
+        }).then(() => {
+          this.SetUserData(result.user);
+          this.router.navigate(['sign-in']);
+        })
       })
       .catch((error) => {
         window.alert(error.message);
@@ -124,10 +112,11 @@ export class UserService {
       `users/${user.uid}`
     );
 
+    console.log(JSON.stringify(user))
+
     const userData: User = {
       uid: user.uid,
-      // fname : user.fname,
-      // sname : user.sname,
+      fullname : user.displayName,
       email: user.email,
       // password : user.password,
       // rePassword : user.repassword

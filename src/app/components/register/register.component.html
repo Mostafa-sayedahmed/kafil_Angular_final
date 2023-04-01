@@ -28,7 +28,6 @@
 
           <!-- <form class="row " action=""   [formGroup]="userFormGroup"> -->
           <form class="row" action="">
-            <!-- FirstName    -->
             <div class="col-md-6">
               <label for="firstName" class="p-2"> الأسم الأول </label><br />
               <input
@@ -38,8 +37,6 @@
                 id="firstName"
                 name="first-name"
                 placeholder="الاسم الأول"
-                formControlName="FirstName"
-
                 #userFname
                 required
               />
@@ -95,9 +92,7 @@
                 >والشروط والأحكام
               </a>
             </p>
-
-            <!-- <button class="btn bg-success text-white w-100 mt-2"  (click)="UserService.SignUp(userFname.value, userSname.value , userEmail.value , userPassword.value  , userRePassword.value )">تسجيل</button> -->
-
+            
             <button
               type="button"
               class="btn bg-success text-white w-100 mt-2"

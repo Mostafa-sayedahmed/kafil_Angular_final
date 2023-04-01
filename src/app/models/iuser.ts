@@ -1,9 +1,6 @@
 export interface User {
     uid: string,
-    // displayName : string,
-    // fname:string,
-    // sname:string, 
+    fullname:string,
     email:string,
-    // password:string,
     // rePassword:string
 }
