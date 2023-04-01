@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AddserviceComponent } from './components/addservice/addservice.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
@@ -48,6 +49,7 @@ import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDet
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],
