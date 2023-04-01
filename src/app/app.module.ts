@@ -17,6 +17,11 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AddserviceComponent } from './components/addservice/addservice.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { ContestsComponent } from './components/contests/contests.component';
+import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     FreelancersComponent,
     LoginComponent,
     RegisterComponent,
+    AddserviceComponent,
+    ContestsComponent,
+    ProjectsDetailsComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -41,6 +49,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

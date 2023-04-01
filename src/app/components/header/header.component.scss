@@ -34,6 +34,7 @@
   padding-inline-start: 0.3rem;
   height: 2.3rem;
   font-size: 0.8rem;
+  width: 90%;
 }
 .header-right {
   max-height: fit-content;
@@ -51,9 +52,11 @@
 
 .nav-list {
   list-style: none;
-  margin: 0;
 }
-
+.borderseprator {
+  border: 1px solid #dedede;
+  height: 1.8rem;
+}
 .headerlistitem i {
   font-size: 1.3rem;
   color: #505050;
@@ -74,6 +77,7 @@
   background-color: #1dbf73 !important;
   color: #fff !important;
   padding-inline: 1rem !important;
+  white-space: nowrap;
 }
 
 .language button {
@@ -90,6 +94,9 @@
   display: none;
 }
 @media only screen and (max-width: 988px) {
+  .borderseprator {
+    display: none;
+  }
   .header-right {
     display: flex !important;
     flex-direction: column !important;

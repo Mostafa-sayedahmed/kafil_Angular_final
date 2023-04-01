@@ -50,16 +50,28 @@ export class UserService {
   }
 
   // Sign up with email/password
-  SignUp(email: string, password: string) {
-    return this.afAuth
+  SignUp(email: string, password: string , fname : string , sname : string , rePassword : string) {
+
+    if(password == rePassword){
+      return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.SetUserData(result.user);
-        this.router.navigate(['sign-in']);
+      .then( async (result) => {
+        const user = result.user;
+       await user?.updateProfile({
+            displayName: `${fname} ${sname}` 
+        }).then(() => {
+          this.SetUserData(result.user);
+          this.router.navigate(['sign-in']);
+        })
       })
       .catch((error) => {
         window.alert(error.message);
       });
+    }else{
+      window.alert("Passwords do not match");
+      return ;
+    }
+
   }
 
   // forget password
@@ -77,6 +89,13 @@ export class UserService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      this.router.navigate(['']);
+    });
+  }
+
+  // Sign in with Twitter
+  TwitterAuth() {
+    return this.AuthLogin(new auth.TwitterAuthProvider()).then((res: any) => {
       this.router.navigate(['']);
     });
   }
@@ -100,10 +119,11 @@ export class UserService {
       `users/${user.uid}`
     );
 
+    console.log(JSON.stringify(user))
+
     const userData: User = {
       uid: user.uid,
-      // fname : user.fname,
-      // sname : user.sname,
+      fullname : user.displayName,
       email: user.email,
       // password : user.password,
       // rePassword : user.repassword
