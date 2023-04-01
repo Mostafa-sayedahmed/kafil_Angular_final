@@ -26,7 +26,6 @@
             >
           </div>
 
-          <!-- <form class="row " action=""   [formGroup]="userFormGroup"> -->
           <form class="row" action="">
             <div class="col-md-6">
               <label for="firstName" class="p-2"> الأسم الأول </label><br />
@@ -80,10 +79,17 @@
               />
             </div>
 
-            <!-- <div class="col-md-6">
-                        <label for="confirmpassword" class="p-2"> تأكيد كلمة السر </label><br>
-                        <input class="form-control" type="password" id="confirmpassword" name="password" placeholder=" تأكيد كلمة السر " #userRePassword required onchange="ValidationPassword()" >
-                    </div> -->
+            <div class="col-md-6">
+              <label for="confirmpassword" class="p-2"> تأكيد كلمة السر </label><br>
+              <input class="form-control"
+               type="password"
+                id="confirmpassword"
+                name="password"
+                placeholder=" تأكيد كلمة السر " 
+                #userRePassword
+                required
+                 />
+              </div>
             <p class="p-3">
               بالتسجيل في كفيل ,انت توافق على
               <a class="text-success text-decoration-none" href="#">الخصوصية</a
@@ -92,11 +98,11 @@
                 >والشروط والأحكام
               </a>
             </p>
-            
+
             <button
               type="button"
               class="btn bg-success text-white w-100 mt-2"
-              (click)="UserService.SignUp(userEmail.value, userPassword.value , userFname.value , userSname.value)"
+              (click)="UserService.SignUp(userEmail.value, userPassword.value , userFname.value , userSname.value , userRePassword.value)"
             >
               تسجيل
             </button>
