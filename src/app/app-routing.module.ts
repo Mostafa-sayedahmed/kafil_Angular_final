@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'sign-in', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'forgotpassword', component: ForgetPasswordComponent },
+  { path: 'forgot-password', component: ForgetPasswordComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'freelancers', component: FreelancersComponent },
   { path: 'services/:serviceID', component: SingleserviceComponent },
