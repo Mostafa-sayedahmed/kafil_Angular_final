@@ -11,8 +11,8 @@ body {
 }
 .add-service-header {
   display: flex;
-  padding-top: 0.7rem;
-  padding-inline: 1rem;
+  // padding-top: 0.7rem;
+  // padding-inline: 1rem;
   font-size: 1.3rem;
   border-bottom: 1px solid #dedede;
 }
@@ -24,4 +24,9 @@ body {
   margin: 1rem;
   background-color: #1dbf73;
   color: #fff;
+}
+.showNextAddon {
+  text-decoration: none;
+  color: #212529cf !important;
+  padding: 1rem;
 }

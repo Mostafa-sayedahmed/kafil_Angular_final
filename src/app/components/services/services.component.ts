@@ -1,4 +1,5 @@
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { GetservicesService } from 'src/app/services/getservices.service';
 
 @Component({
@@ -13,7 +14,10 @@ export class ServicesComponent {
   itemscount = 5;
   showcountLG = 6;
   showcountSM = 4;
-  constructor(public servces: GetservicesService) {}
+  constructor(
+    public service: GetservicesService,
+    public category: CategoriesService
+  ) {}
 
   // @ViewChildren('categorybtn') categorybtn: QueryList<ElementRef> | undefined;
   categriesList = [
@@ -116,10 +120,21 @@ export class ServicesComponent {
     }
   }
   test() {
-    console.log('clicked');
-    let data = this.servces.getservices();
-    console.log(data);
-    console.log(this.servces.getservices());
+    // console.log('clicked');
+    // let data = this.servces.getservices();
+    // console.log(data);
+    // console.log(this.ser vces.getservices());
+
+    console.log(
+      this.category
+        .getcategories()
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => {})
+    );
+
+    // console.log(mycategories);
   }
   // );
 }
