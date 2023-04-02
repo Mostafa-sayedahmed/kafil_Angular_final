@@ -19,12 +19,6 @@ export class SingleFreelancerComponent implements OnInit, OnChanges {
 
   }
   ngOnInit(): void {
-    //  let freelancerID=this.activatedRoute.snapshot.paramMap.get('fid');
-    //   console.log(freelancerID);
-
-
-
-
     let freelancerID: string = (this.activatedRoute.snapshot.paramMap.get('fid')) ? String(this.activatedRoute.snapshot.paramMap.get('fid')) : "";
     this.fs.collection("Freelancers").doc(freelancerID).ref.get().then((doc) => {
       if (doc.exists) {

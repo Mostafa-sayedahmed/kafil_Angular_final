@@ -36,9 +36,10 @@ export class FreelancersComponent implements OnInit {
 
   getDetailsOfFreelancer(id:string){
    this.router.navigate(["freelancers",id]);
-   console.log("done");
    
   }
-
+  goToAddFreelancer(){
+   this.router.navigate(['addFreelancer']);
+  }
 
 }

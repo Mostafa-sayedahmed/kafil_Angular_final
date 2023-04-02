@@ -16,6 +16,7 @@ import { PortfoloisComponent } from './components/portfolois/portfolois/portfolo
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
+import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'contests/:contestID', component: ContestDetailsComponent  },
   { path: 'addContest', component: AddContestComponent },
+  { path: 'addFreelancer', component: AddFreelancerComponent },
   { path: '**', component: NotfoundComponent},
 ];
 
