@@ -10,6 +10,8 @@ import { SingleserviceComponent } from './components/singleservice/singleservice
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
+import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'services/:serviceID', component: SingleserviceComponent },
   { path: 'createservice', component: AddserviceComponent },
   { path: 'contests', component: ContestsComponent},
+  { path: 'portfolois', component: PortfoloisComponent},
+  { path: 'newportfoloi', component: AddportfoloiComponent},
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
 ];
 
