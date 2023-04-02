@@ -13,9 +13,24 @@ import { Observable } from 'rxjs';
 
 export class CrudService {
 
+
  
   constructor(private fs:AngularFirestore) {}
+
+
   getAllFreelancers():Observable<any[]>{   
-return  this.fs.collection("Freelancers").valueChanges();
+return  this.fs.collection("Freelancers").snapshotChanges()
+  }
+
+
+
+  getFreelancerByID(id:string){
+this.fs.collection("Freelancers").doc(id).ref.get().then(function(doc){
+  if (doc.exists) {
+        console.log(doc.data());
+      } else {
+        console.log("There is no document!");
+      }
+})
   }
 }

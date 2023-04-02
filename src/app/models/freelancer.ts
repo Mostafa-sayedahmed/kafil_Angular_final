@@ -1,5 +1,5 @@
 export interface Freelancer {
-    $key: string;
+    id: string;
     likes: number;
     name: string;
     rating:number;

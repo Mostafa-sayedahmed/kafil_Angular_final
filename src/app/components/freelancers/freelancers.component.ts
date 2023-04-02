@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import {  OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { CrudService } from 'src/app/services/crud.service';
 import { Freelancer } from 'src/app/models/freelancer';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,13 +15,30 @@ import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
   styleUrls: ['./freelancers.component.scss']
 })
 export class FreelancersComponent implements OnInit {
-  freelancers:Freelancer[]=[];
-  constructor(private myService:CrudService){
+  freelancers: Freelancer[] = [];
+  test: any;
+  constructor(private myService: CrudService, private router:Router) {
 
   }
   ngOnInit(): void {
-   this.myService.getAllFreelancers().subscribe(data=>this.freelancers=data
-   );
+
+    //to get the id we have to use snapshotchanges in service
+    this.myService.getAllFreelancers().subscribe(data => {
+      this.freelancers = data.map(ele => {
+        return {
+          id: ele.payload.doc.id,
+          ...ele.payload.doc.data()
+        }
+      });
+    }
+    );
+  }
+
+  getDetailsOfFreelancer(id:string){
+   this.router.navigate(["freelancers",id]);
+   console.log("done");
    
   }
+
+
 }

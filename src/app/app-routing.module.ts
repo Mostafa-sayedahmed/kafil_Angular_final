@@ -10,6 +10,8 @@ import { SingleserviceComponent } from './components/singleservice/singleservice
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -22,6 +24,9 @@ const routes: Routes = [
   { path: 'createservice', component: AddserviceComponent },
   { path: 'contests', component: ContestsComponent},
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
+  { path: 'freelancers/:fid', component: SingleFreelancerComponent },
+  { path: '**', component: NotfoundComponent},
+  
 ];
 
 @NgModule({

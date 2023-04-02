@@ -22,6 +22,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDet
     AddserviceComponent,
     ContestsComponent,
     ProjectsDetailsComponent,
+    SingleFreelancerComponent,
+    NotfoundComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
