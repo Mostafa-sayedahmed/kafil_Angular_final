@@ -5,7 +5,7 @@
   
         <div class="col-12 col-lg-3 d-lg-block d-none">
           <div class="pluse text-center py-3 mb-3 rounded-2">
-            <a href="#" class="w-100 text-center text-white text-decoration-none">
+            <a href="/addContest" class="w-100 text-center text-white text-decoration-none">
               أضف مسابقة 
               <i class="far fa-plus-square mx-3"></i>
             </a>
@@ -54,7 +54,7 @@
             <div class="d-lg-none d-flex justify-content-between">
   
               <div class="pluse text-center px-3 py-2 mb-3 rounded-2">
-                <a href="#" class="w-100 text-center text-white text-decoration-none">
+                <a href="/addContest" class="w-100 text-center text-white text-decoration-none">
                   <i class="far fa-plus-square mx-3"></i>
                   أضف مسابقة 
                 </a>
@@ -70,17 +70,17 @@
                                 
                 <div class="type-radio " dir="rtl">
                   <label class="custom-radio">
-                    <input type="radio" name="filter" class="d-none open-filter" value="all" checked>
+                    <input type="radio" name="filter" class="d-none open-filter" value="all" checked (click)="GetAllContests()">
                       <i></i>
                       الكل 
                   </label>
                   <label class="custom-radio">
-                    <input type="radio" name="filter" class="d-none open-filter" value="open">
+                    <input type="radio" name="filter" class="d-none open-filter" value="open" (click)="ChangeContestOpenStatus()">
                       <i></i>
                       مفتوح 
                   </label>
                 </div>
-  
+<!--   
                 <div class="cols-controls d-flex align-items-center">
                     <button id="cols" class="cols" type="button">
                        <i class="fas fa-bars"></i>
@@ -88,7 +88,7 @@
                     <button id="grid" class="cols active me-3" type="button">
                       <i class="fas fa-th-large"></i>
                     </button>
-                </div>
+                </div> -->
   
             </div>
   
@@ -127,7 +127,7 @@
                               {{cont.type}}
                             </p>
                             <p>
-                              <a class="text-decoration-none text-black" href="#">{{cont.text}}</a>
+                              <a type="button" class="text-decoration-none text-black" (click)="openContestDetails(cont.id)">{{cont.text}}</a>
                             </p>
                           </div>
   
@@ -197,7 +197,7 @@
        </div>
        <div class="offcanvas-body">
           <div class="pluse text-center py-3 mb-3 rounded-2">
-            <a href="#" class="w-100 text-center text-white text-decoration-none">
+            <a href="/addContest" class="w-100 text-center text-white text-decoration-none">
               أضف مسابقة 
               <i class="far fa-plus-square mx-3"></i>
             </a>

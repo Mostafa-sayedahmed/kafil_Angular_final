@@ -9,12 +9,11 @@ import { Service } from './../models/service';
 export class GetservicesService {
   constructor(private firestore: Firestore) {}
 
-  addservice(service: Service) {
+  addservice(service: any) {
     let servicesRef = collection(this.firestore, 'services');
     addDoc(servicesRef, service)
       .then((res) => {
-        console.log(res);
-        return res;
+        console.log('data added successfully!');
       })
       .catch((err) => {
         console.log(err);
@@ -25,7 +24,9 @@ export class GetservicesService {
     querySnapshot.forEach((doc) => {
       // console.log(doc.id, ' => ', doc.data());
       // console.log({ uid: doc.id, data: doc.data() });
-      return { uid: doc.id, data: doc.data() };
+      return doc.id, ' => ', doc.data();
+      console.log(doc);
+      
     });
   }
 }
