@@ -20,25 +20,21 @@ export class ContestsComponent {
   }  
 
       ngOnInit(){
+
         this.CS.getContests().subscribe((data)=>{
-          // console.log("Contests",data);
           this.contest = data;
         })
     
         this.CS.getContestSections().subscribe((data)=>{
-          // console.log("Contests Section",data);
           this.contestSections = data;
         })
           
     }
 
-    ChangeContestSectionId(id:string){
-      
+    ChangeContestSectionId(id:string){ 
       this.CS.getContestsBySectionId(id).then((data)=>{
-        console.log(data);
-        // this.contest = data;
+        this.contest = data;
       })
-     
     }
 }
 
