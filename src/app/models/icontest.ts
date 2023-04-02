@@ -1,4 +1,5 @@
 export interface Icontest {
+    id:string,
     img?:string ,
     type:string,
     name:string,
