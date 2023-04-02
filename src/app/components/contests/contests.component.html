@@ -70,12 +70,12 @@
                                 
                 <div class="type-radio " dir="rtl">
                   <label class="custom-radio">
-                    <input type="radio" name="filter" class="d-none open-filter" value="all" checked>
+                    <input type="radio" name="filter" class="d-none open-filter" value="all" checked (click)="GetAllContests()">
                       <i></i>
                       الكل 
                   </label>
                   <label class="custom-radio">
-                    <input type="radio" name="filter" class="d-none open-filter" value="open">
+                    <input type="radio" name="filter" class="d-none open-filter" value="open" (click)="ChangeContestOpenStatus()">
                       <i></i>
                       مفتوح 
                   </label>

@@ -34,6 +34,17 @@ export class ContestsService {
       return newArr;
   }
 
+  async getContestsByOpenStatus() {
+    const q = query(collection(this.firestore, "contests"), where('open', '==', true));
+    const querySnapshot = await getDocs(q);
+      var newArr : Array<Icontest> = [];
+      querySnapshot.forEach((doc) => {
+      newArr.push(doc.data() as Icontest);
+    });
+
+    return newArr;
+  }
+
   getContestSections() {
     let contestSections = collection(this.firestore, "contestSections")
     return collectionData(contestSections, { idField: "id" }) as Observable<IcontestSection[]>

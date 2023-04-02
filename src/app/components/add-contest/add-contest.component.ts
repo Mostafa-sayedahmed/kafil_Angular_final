@@ -26,7 +26,8 @@ export class AddContestComponent {
     contestDuration: [''],
     winnersNum:[''],
     firstWinner:[''],
-    skills:['']
+    skills:[''],
+    open:true
   });
   ngOnInit() {
     this.CS.getContestSections().subscribe((data)=>{
