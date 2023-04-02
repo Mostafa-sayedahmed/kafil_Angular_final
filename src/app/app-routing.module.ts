@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'contests', component: ContestsComponent},
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
+  { path: 'home', component: HomepageComponent },
   { path: '**', component: NotfoundComponent},
   
 ];

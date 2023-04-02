@@ -1,37 +1,54 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 import { Freelancer } from 'src/app/models/freelancer';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-single-freelancer',
   templateUrl: './single-freelancer.component.html',
   styleUrls: ['./single-freelancer.component.scss']
 })
-export class SingleFreelancerComponent implements OnInit ,OnChanges {
-Freelancer:Freelancer |undefined|void=undefined;
-  constructor(private service:CrudService , private activatedRoute:ActivatedRoute){
+export class SingleFreelancerComponent implements OnInit, OnChanges {
+  // Freelancer:Freelancer |undefined|void =undefined;
+  Freelancer: any = {}
+  constructor(private service: CrudService, private activatedRoute: ActivatedRoute, private fs: AngularFirestore ,private router:Router) {
 
   }
   ngOnChanges(changes: SimpleChanges): void {
-   
+
   }
   ngOnInit(): void {
-  //  let freelancerID=this.activatedRoute.snapshot.paramMap.get('fid');
-  //   console.log(freelancerID);
+    //  let freelancerID=this.activatedRoute.snapshot.paramMap.get('fid');
+    //   console.log(freelancerID);
 
-  let freelancerID:string=(this.activatedRoute.snapshot.paramMap.get('fid'))?String(this.activatedRoute.snapshot.paramMap.get('fid')):"";
-  let foundFreelancer=this.service.getFreelancerByID(freelancerID);
-  if(foundFreelancer !== null){
-   this.Freelancer=foundFreelancer;
-   console.log(this.Freelancer);
+
+
+
+    let freelancerID: string = (this.activatedRoute.snapshot.paramMap.get('fid')) ? String(this.activatedRoute.snapshot.paramMap.get('fid')) : "";
+    this.fs.collection("Freelancers").doc(freelancerID).ref.get().then((doc) => {
+      if (doc.exists) {
+        console.log(doc.data());
+        this.Freelancer = doc.data();
+        
+
+
+      } else {
+        console.log("There is no document!");
+      }
+    })
+
+
+
+
+
   }
- 
-  
-  
-    
+
+  backToFreelancers(){
+    this.router.navigate(["/freelancers"])
   }
- 
-  
+  backToHomepage(){
+    this.router.navigate(["/home"])
+  }
 
 }

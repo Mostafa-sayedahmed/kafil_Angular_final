@@ -198,10 +198,10 @@
   
             <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8">
               <div class="p-3 bg-white mx-3" style="border-radius: 10px">
-                <i class="fa-solid fa-users fa-xl ms-2"></i>
-                المستقلين
+                <i class="fa-solid fa-user fa-xl ms-2"></i>
+                المستقل
               </div>
-              <!-- div of users -->
+             
               <div class="d-flex flex-wrap">
                 <!-- USER -->
                 <div class="userCard shadow p-3 mb-5 bg-white rounded" >
@@ -209,37 +209,38 @@
                     class="userImg"
                     [src]="Freelancer?.img"
                   />
-                  <h6>  {{Freelancer?.name}}</h6>
-                  <h6> التقييم : {{Freelancer?.rating}}</h6>
+                  <h6 class="my-4"> الاسم : {{Freelancer?.name}} </h6>
+                  <h6 class="my-2"> التقييم : {{Freelancer?.rating}}</h6>
                   <!-- rating -->
-                  <div class="p-2">
+                  <div class="p-2 my-2">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                   </div>
-                  <div class="p-2">
+                  <div class="p-2 my-2">
                     <p class="about">
-                      <i class="fa-solid fa-user"></i> {{Freelancer?.title}}
+                      <i class="fa-solid fa-user"></i>المهنة :  {{Freelancer?.title}}
                     </p>
                   </div>
                   <div class="my-2">
-                    <p>
-                      {{Freelancer?.views}} <i class="fa-solid fa-eye "></i>
-                      {{Freelancer?.likes}}<i
+                    <p class="my-2">
+                      المشاهدات : {{Freelancer?.views}} <i class="fa-solid fa-eye "></i>
+                      الاعجاب : {{Freelancer?.likes}}<i
                         class="fa-solid fa-heart mx-1"
                       ></i
-                      >{{Freelancer?.portfolio}}<i class="fa-solid fa-image mx-1"></i>
-                    </p>
-                  <button class="myBtn m-2 p-2" >الملف الشخصي</button>
+                      >الاعمال : {{Freelancer?.portfolio}}<i class="fa-solid fa-image mx-1"></i>
+                    </p >
+                  <button class="myBtn m-2 p-2 " (click)="backToFreelancers()"> عودة الى المستقلين</button>
+                  <button class="myBtn m-2 p-2 "  (click)="backToHomepage()" >  الرئيسية </button>
                   
                 </div>
                 <!-- ------------------------------------------------------------------------------------------------------------ -->
   
                
-              </div>
-              <div class="col-7"></div>
+              
+             
              
             </div>
           </div>
