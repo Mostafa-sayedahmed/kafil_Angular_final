@@ -1,0 +1,64 @@
+<div>
+  <div class="row">
+    <div class="col-3">
+
+      <div class="card text-center">
+        <div class="card-header">
+          User Information
+        </div>
+        <div class="card-body">
+          <img src="user-image.png" class="card-img" alt="...">
+          <h5 class="card-title">User Name</h5>
+          <p class="card-text">Status: Active</p>
+          <a href="#" class="btn btn-primary">Edit Profile</a>
+        </div>
+        <div class="card-footer text-muted">
+          <i class="fas fa-cog"></i>
+          <i class="fas fa-info-circle"></i>
+          <i class="fas fa-trash"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-9">
+      <form (ngSubmit)="addData()">
+        <!-- <div class="form-group">
+                  <label for="id">الرقم المعرف</label>
+                  <input type="text" class="form-control" id="id" name="id"[(ngModel)]="newportfolois.id" >
+                </div> -->
+        <div class="form-group">
+          <label for="ownerimg">صورة صاحب العمل</label>
+          <input type="text" class="form-control" id="ownerimg" [(ngModel)]="newportfolois.ownerimg" name="ownerimg">
+        </div>
+        <div class="form-group">
+          <label for="img">الصورة</label>
+          <input type="text" class="form-control" id="img" [(ngModel)]="newportfolois.img" name="img">
+        </div>
+        <div class="form-group">
+          <label for="protfoloiName">اسم العمل</label>
+          <input type="text" class="form-control" id="protfoloiName" [(ngModel)]="newportfolois.protfoloiName"
+            name="protfoloiName">
+        </div>
+        <div class="form-group">
+          <label for="name">الاسم</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="newportfolois.name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="titel">القسم</label>
+          <input type="text" class="form-control" id="titel" [(ngModel)]="newportfolois.category" name="titel">
+        </div>
+        <div class="form-group">
+          <label for="watch">المشاهدات</label>
+          <input type="number" class="form-control" id="watch" [(ngModel)]="newportfolois.watch" name="watch">
+        </div>
+        <div class="form-group">
+          <label for="like">الإعجابات</label>
+          <input type="number" class="form-control" id="like" [(ngModel)]="newportfolois.like" name="like">
+        </div>
+        <button type="submit" (click)="addData()" class="btn btn-primary">Submit</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>
