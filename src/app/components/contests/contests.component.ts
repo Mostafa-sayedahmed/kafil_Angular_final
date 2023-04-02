@@ -19,16 +19,23 @@ export class ContestsComponent {
 
   }  
 
-      ngOnInit(){
+  ngOnInit(){
+    this.GetAllContests();
+    this.GetAllContestSections(); 
+  }
 
-        this.CS.getContests().subscribe((data)=>{
-          this.contest = data;
-        })
-    
-        this.CS.getContestSections().subscribe((data)=>{
-          this.contestSections = data;
-        })
-          
+
+  GetAllContests(){ 
+      this.CS.getContests().subscribe((data)=>{
+        this.contest = data;
+      })
+    }
+
+
+  GetAllContestSections(){ 
+    this.CS.getContestSections().subscribe((data)=>{
+        this.contestSections = data;
+      })
     }
 
     ChangeContestSectionId(id:string){ 
@@ -36,6 +43,14 @@ export class ContestsComponent {
         this.contest = data;
       })
     }
+
+    ChangeContestOpenStatus(){ 
+      this.CS.getContestsByOpenStatus().then((data)=>{
+        this.contest = data;
+      })
+    }
+
+    
 }
 
 
