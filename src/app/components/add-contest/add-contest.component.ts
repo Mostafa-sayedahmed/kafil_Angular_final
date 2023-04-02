@@ -40,5 +40,4 @@ export class AddContestComponent {
     this.router.navigateByUrl('/contests')
   }
 
-
 }
