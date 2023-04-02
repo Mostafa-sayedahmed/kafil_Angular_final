@@ -26,17 +26,12 @@ export class ContestsService {
       const q = query(collection(this.firestore, "contests"), where('sectionId', '==', sectionId));
 
       const querySnapshot = await getDocs(q);
-
-      var newArr : Array<object> = [];
-
-      querySnapshot.forEach((doc) => {
-        
-        newArr.push(doc.data());
-
+        var newArr : Array<Icontest> = [];
+        querySnapshot.forEach((doc) => {
+        newArr.push(doc.data() as Icontest);
       });
 
       return newArr;
-
   }
 
   getContestSections() {
