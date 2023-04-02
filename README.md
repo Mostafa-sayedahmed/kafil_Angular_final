@@ -19,17 +19,6 @@ single project ----------> esraa || http://bit.ly/3XN3iZ3
 
 ////////////////////status////////////////
 
-//////////website functions tasks ////////////
-home page ---------> Omar || https://kafiil.com/
-header& footer --------->bassam ||
-signup & login ----------> Esraa || https://kafiil.com/user/login || https://kafiil.com/user/register
-services (categories) ----------> mostafa || https://kafiil.com/services
-single service page ----------> mostafa || http://bit.ly/3HJGHXG
-freelancers ----------> Omar || https://kafiil.com/freelancers
-portfolios ----------> bassam || https://kafiil.com/portfolios
-projects ----------> ahmed || https://kafiil.com/projects
-contests ----------> esraa || https://kafiil.com/contests
-single project ----------> ahmed || http://bit.ly/3XN3iZ3
 -building components ----------------
 
 ▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 1%

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection,Firestore , query, where, getDocs,} from '@angular/fire/firestore';
+import { collection,Firestore , query, where, getDocs, addDoc} from '@angular/fire/firestore';
 
 import { collectionData } from '@angular/fire/firestore';
 import { Icontest } from './../models/icontest';
@@ -42,6 +42,17 @@ export class ContestsService {
   getContestSections() {
     let contestSections = collection(this.firestore, "contestSections")
     return collectionData(contestSections, { idField: "id" }) as Observable<IcontestSection[]>
+  }
+
+  addcontest(contests: any) {
+    let contestsRef = collection(this.firestore, 'contests');
+    addDoc(contestsRef, contests)
+      .then((res) => {
+        console.log('data added successfully!');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   
 

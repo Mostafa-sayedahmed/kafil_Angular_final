@@ -26,6 +26,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
+import { AddContestComponent } from './components/add-contest/add-contest.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addp
     SidebarComponent,
     PortfoloisComponent,
     AddportfoloiComponent,
+    ContestDetailsComponent,
+    AddContestComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
