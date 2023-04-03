@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder , Validators } from '@angular/forms';
 import { ContestsService } from 'src/app/services/contests.service';
 import { IcontestSection } from 'src/app/models/icontestsection';
 import { Router } from '@angular/router';
@@ -18,18 +18,25 @@ export class AddContestComponent {
   constructor(private formbuilder: FormBuilder,private CS: ContestsService ,private router:Router) {}
   contestform = this.formbuilder.group({
     userId: JSON.parse(localStorage.getItem('user')!).uid,
-    title: [''],
-    description: [''],
-    conditions: [''],
-    sectionId: [''],
-    deliveryDuration: [''],
-    contestDuration: [''],
-    winnersNum:[''],
-    firstWinner:[''],
+    userName: JSON.parse(localStorage.getItem('user')!).displayName,
+    title: ['', [Validators.required, Validators.minLength(5)]],
+    description: ['', [Validators.required, Validators.minLength(100)]],
+    conditions: ['' , [Validators.required, Validators.minLength(100)]],
+    sectionId: ['', [Validators.required]],
+    // sectionName: ['', [Validators.required]],
+    deliveryDuration: ['', [Validators.required]],
+    contestDuration: ['', [Validators.required]],
+    winnersNum:['', [Validators.required]],
+    firstWinner:['', [Validators.required]],
     skills:[''],
-    open:true
+    completed:[false],
   });
+  
+  contestDraft = JSON.parse(sessionStorage.getItem('contestDraft')!);
+
   ngOnInit() {
+    this.contestDraft = this.contestDraft;
+
     this.CS.getContestSections().subscribe((data)=>{
       this.contestSections = data;
     })
@@ -41,4 +48,29 @@ export class AddContestComponent {
     this.router.navigateByUrl('/contests')
   }
 
+  saveDraft() {
+    let data = JSON.stringify(this.contestform.value);
+    sessionStorage.setItem('contestDraft', data);
+    this.contestDraft = sessionStorage.getItem('contestDraft');
+  }
+
+  restoreDraft() {
+    this.contestform.setValue({
+      userId: this.contestDraft['userId'],
+      userName: this.contestDraft['userName'],
+      description: this.contestDraft['description'],
+      title: this.contestDraft['title'],
+      conditions: this.contestDraft['conditions'],
+      sectionId: this.contestDraft['sectionId'],
+      deliveryDuration: this.contestDraft['deliveryDuration'],
+      contestDuration: this.contestDraft['contestDuration'],
+      firstWinner: this.contestDraft['firstWinner'],
+      winnersNum: this.contestDraft['winnersNum'],
+      skills: this.contestDraft['skills'],
+      completed: this.contestDraft['completed']
+    });
+  }
+
 }
+
+
