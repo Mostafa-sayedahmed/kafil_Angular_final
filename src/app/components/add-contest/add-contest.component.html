@@ -7,6 +7,13 @@
            اضف مسابقة
           </p>
         </div>
+        <button
+        class="btn btn-outline-warning"
+        (click)="restoreDraft()"
+        *ngIf="contestDraft != null"
+      >
+        استرجاع المسودة<i class="fa-solid fa-arrow-rotate-left px-2"></i>
+      </button>
         <div class="p-3">
           <form action="" [formGroup]="contestform">
 
@@ -109,9 +116,9 @@
             <div class="row">
                 <div class="col">
                     <label for="sectionId" class="form-label">القسم</label>
-                      <select name="sectionId" id="sectionId" formControlName="selectedSectionID" class="form-control">
+                      <select name="sectionId" id="sectionId" formControlName="sectionId" class="form-control">
                           <option value="0" selected disabled >اختر القسم</option>
-                          <option *ngFor="let sect of contestSections" [value]="sect.id">{{sect.name}}</option>
+                          <option *ngFor="let sect of contestSections" [value]="sect.id" selectedSectionID="sect.id">{{sect.name}}</option>
                       </select>
                   </div>
 
@@ -137,6 +144,11 @@
               (click)="addContest()"
             >
               اضف مسابقة
+            </button>
+
+            <button class="btn btn-outline-dark" (click)="saveDraft()">
+              احفظ كمسودة
+              <i class="fa-regular fa-floppy-disk px-2"></i>
             </button>
           </form>
         </div>

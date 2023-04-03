@@ -2,6 +2,16 @@
 
 $main: #1dbf73 ;
 
+.titleContest::before {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 7px;
+  border-radius: 1px;
+  background-color: #1dbf73;
+  margin-top: 13px;
+}
+
 .accordion-button::after {
   margin-left: unset !important;
   margin-right: auto !important;

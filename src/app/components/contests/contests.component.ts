@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { Icontest } from 'src/app/models/icontest';
 import { IcontestSection } from 'src/app/models/icontestsection';
 import { ContestsService } from 'src/app/services/contests.service';
+import {UserService} from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +16,7 @@ export class ContestsComponent {
   contest:Icontest[]=[];
   contestSections:IcontestSection[]=[];
   
-  constructor(private CS: ContestsService,private router:Router){
+  constructor(private CS: ContestsService,private router:Router , private US : UserService){
 
   }  
 
@@ -28,7 +29,9 @@ export class ContestsComponent {
 
   GetAllContests(){ 
       this.CS.getContests().subscribe((data)=>{
+        console.log(data)
         this.contest = data;
+        // this.US.getUserById(data.userId)
       })
     }
 
@@ -45,8 +48,8 @@ export class ContestsComponent {
       })
     }
 
-    ChangeContestOpenStatus(){ 
-      this.CS.getContestsByOpenStatus().then((data)=>{
+    ChangeContestCompletedStatus(){ 
+      this.CS.getContestsByCompletedStatus().then((data)=>{
         this.contest = data;
       })
     }
@@ -54,6 +57,8 @@ export class ContestsComponent {
     openContestDetails(contestID : string){
       this.router.navigate(['contests',contestID]) 
     }
+
+
 
 }
 
