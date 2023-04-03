@@ -26,6 +26,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addp
     SidebarComponent,
     PortfoloisComponent,
     AddportfoloiComponent,
+    DetailsPortfoloisComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

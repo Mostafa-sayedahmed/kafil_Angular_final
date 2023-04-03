@@ -12,6 +12,7 @@ import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'contests', component: ContestsComponent},
   { path: 'portfolois', component: PortfoloisComponent},
   { path: 'newportfoloi', component: AddportfoloiComponent},
+  { path: 'detailsPortfolois/:id', component: DetailsPortfoloisComponent },
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
 ];
 
