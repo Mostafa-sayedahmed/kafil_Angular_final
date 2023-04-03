@@ -36,10 +36,11 @@ this.fs.collection("Freelancers").doc(id).ref.get().then(function(doc){
   }
 
 
-  addFreelancer(){
-    this.fs.collection("Freelancers").doc("test").set({
-      name:"testing add"
-    })
+  addFreelancer(freelancer:Freelancer){
+   
+    this.fs.collection("Freelancers").doc(this.fs.createId()).set(
+     freelancer
+    )
   }
 
 

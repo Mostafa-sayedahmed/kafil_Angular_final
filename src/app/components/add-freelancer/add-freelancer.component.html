@@ -135,12 +135,13 @@
                 <div class="d-flex flex-wrap">
                     <!-- Freelnacer Form  -->
                     <div class="w-100 m-4 shadow p-3 bg-white rounded">
- <!-- Freelnacer Form  -->
-                        <form (ngSubmit)="onSubmit($event)">
+                    <!-- Freelnacer Form  -->
+                    
+                        <form (ngSubmit)="addNewFreelancer()">
                             <div class="form-row">
                                 <div class="form-group ">
                                     <label for="inputEmail4" class="my-2">الاسم كاملاً :</label>
-                                    <input type="text" name="name" class="form-control " id="inputEmail4" placeholder=" الاسم ...">
+                                    <input type="text" name="name" [(ngModel)]="newFreelancer.name" class="form-control " id="inputEmail4" placeholder=" الاسم ...">
                                 </div>
                                 <div class="form-group ">
                                     <label for="inputPassword4" class="my-2">البريد الالكتروني :</label>
@@ -154,9 +155,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress2" class="my-2"> الوظيفة :</label>
-                                <input type="text" name="title" class="form-control" id="inputAddress2"
+                                <input type="text" name="title" [(ngModel)]="newFreelancer.title" class="form-control" id="inputAddress2"
                                     placeholder="المهارات التي اتحلى بها ...">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1" class="my-2">الصورة الشخصية :</label><br>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1"  [(ngModel)]="newFreelancer.img">
+                
+                              </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputState" class="my-2">المدينة :</label>
                                     <select id="inputState" class="form-control">
@@ -167,6 +173,10 @@
                                         <option>قنا</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1" class="my-2">أعمالك :</label><br>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                  </div>
                               
                                 <div class="d-flex my-4">
                                   <div>  <input class="form-check-input p-2 mx-2" type="checkbox" id="gridCheck">اوافق على الشروط والاحكام</div>
@@ -174,7 +184,8 @@
                             
                                 
                            
-                            <button type="submit" class="btn btn-success w-50  ">تسجيل</button>
+                            <button type="submit" class="btn btn-success w-50  " >تسجيل</button>
+    
                         </form>
                     </div>
                 </div>
