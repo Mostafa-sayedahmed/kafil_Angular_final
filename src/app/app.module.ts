@@ -18,6 +18,18 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AddserviceComponent } from './components/addservice/addservice.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { ContestsComponent } from './components/contests/contests.component';
+import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
+import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
+import { AddContestComponent } from './components/add-contest/add-contest.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +44,16 @@ import { AddserviceComponent } from './components/addservice/addservice.componen
     LoginComponent,
     RegisterComponent,
     AddserviceComponent,
+    ContestsComponent,
+    ProjectsDetailsComponent,
+    SingleFreelancerComponent,
+    NotfoundComponent,
+    FooterComponent,
+    SidebarComponent,
+    PortfoloisComponent,
+    AddportfoloiComponent,
+    ContestDetailsComponent,
+    AddContestComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -43,6 +65,7 @@ import { AddserviceComponent } from './components/addservice/addservice.componen
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

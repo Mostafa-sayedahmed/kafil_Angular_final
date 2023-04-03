@@ -25,6 +25,8 @@ export class GetservicesService {
       // console.log(doc.id, ' => ', doc.data());
       // console.log({ uid: doc.id, data: doc.data() });
       return doc.id, ' => ', doc.data();
+      console.log(doc);
+      
     });
   }
 }

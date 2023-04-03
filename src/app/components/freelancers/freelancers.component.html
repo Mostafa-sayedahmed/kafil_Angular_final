@@ -1,32 +1,8 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>freelancers</title>
-  </head>
-  <body>
+
+      
+   
     <div class="body">
-      <div
-        class="dropdown d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none"
-      >
-        <button
-          id="dropDown"
-          class="btn dropdown-toggle p-2 m-2"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fa-solid fa-bars"></i>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item text-center" href="#">الاقسام</a></li>
-          <li><a class="dropdown-item text-center" href="#">المهارات</a></li>
-          <li><a class="dropdown-item text-center" href="#">مرشحات أخرى</a></li>
-        </ul>
-      </div>
+     
       <div class="container-fluid">
         <div class="row mt-5">
           <!-- divider -->
@@ -210,12 +186,13 @@
             <!-- div of users -->
             <div class="d-flex flex-wrap">
               <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
+              <div class="userCard shadow p-3 mb-5 bg-white rounded" *ngFor="let freelancer of freelancers">
                 <img
                   class="userImg"
-                  src="./../../../../../assets/images/1.svg"
+                  [src]="freelancer.img"
                 />
-                <h6>علاء حسانين الناصري</h6>
+                <h6>  {{freelancer.name}}</h6>
+                <h6> التقييم : {{freelancer.rating}}</h6>
                 <!-- rating -->
                 <div class="p-2">
                   <span class="fa fa-star checked"></span>
@@ -226,394 +203,23 @@
                 </div>
                 <div class="p-2">
                   <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
+                    <i class="fa-solid fa-user"></i> {{freelancer.title}}
                   </p>
                 </div>
                 <div class="my-2">
                   <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
+                    {{freelancer.views}} <i class="fa-solid fa-eye "></i>
+                    {{freelancer.likes}}<i
+                      class="fa-solid fa-heart mx-1"
                     ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
+                    >{{freelancer.portfolio}}<i class="fa-solid fa-image mx-1"></i>
                   </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
+                <button class="myBtn m-2 p-2" (click)="getDetailsOfFreelancer(freelancer.id)">الملف الشخصي</button>
+                
               </div>
               <!-- ------------------------------------------------------------------------------------------------------------ -->
 
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
-              <!-- USER -->
-              <div class="userCard shadow p-3 mb-5 bg-white rounded">
-                <img
-                  class="userImg"
-                  src="./../../../../../assets/images/1.svg"
-                />
-                <h6>علاء حسانين الناصري</h6>
-                <!-- rating -->
-                <div class="p-2">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-                <div class="p-2">
-                  <p class="about">
-                    <i class="fa-solid fa-user"></i> برمجة, تطوير المواقع و
-                    التطبيقات
-                  </p>
-                </div>
-                <div class="my-2">
-                  <p>
-                    <i class="fa-solid fa-eye m-1"></i>250<i
-                      class="fa-solid fa-heart m-1"
-                    ></i
-                    >44<i class="fa-solid fa-image m-1"></i>10
-                  </p>
-                </div>
-
-                <button class="myBtn m-2 p-2">الملف الشخصي</button>
-              </div>
-              <!-- ------------------------------------------------------------------------------------------------------------ -->
+             
             </div>
             <div class="col-7"></div>
             <div
@@ -627,5 +233,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+   
