@@ -31,6 +31,7 @@ import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addp
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AddFreelancerComponent } from './components/add-freelancer/add-freelanc
     ContestDetailsComponent,
     AddContestComponent,
     AddFreelancerComponent,
+    HomeComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

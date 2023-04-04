@@ -11,9 +11,10 @@ import { Router } from '@angular/router';
 })
 export class AddFreelancerComponent implements OnInit {
   newFreelancer:Freelancer={
-    view: 0,
+    views: 0,
     likes: 0,
-    rating: 0
+    rating: 0,
+    portfolio:0,
   } as unknown as Freelancer;
   path:string="";
 constructor(private service:CrudService, private fs:AngularFirestore,private router:Router){}
