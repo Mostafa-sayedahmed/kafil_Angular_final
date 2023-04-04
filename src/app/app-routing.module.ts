@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { FreelancersComponent } from './components/freelancers/freelancers.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
@@ -16,9 +15,11 @@ import { PortfoloisComponent } from './components/portfolois/portfolois/portfolo
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
+import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', component: HomeComponent },
   { path: 'sign-in', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgetPasswordComponent },
@@ -31,9 +32,10 @@ const routes: Routes = [
   { path: 'newportfoloi', component: AddportfoloiComponent},
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
-  { path: 'home', component: HomepageComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'contests/:contestID', component: ContestDetailsComponent  },
   { path: 'addContest', component: AddContestComponent },
+  { path: 'addFreelancer', component: AddFreelancerComponent },
   { path: '**', component: NotfoundComponent},
 ];
 

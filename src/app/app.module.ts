@@ -30,6 +30,8 @@ import { PortfoloisComponent } from './components/portfolois/portfolois/portfolo
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
+import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
     AddportfoloiComponent,
     ContestDetailsComponent,
     AddContestComponent,
+    AddFreelancerComponent,
+    HomeComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -65,7 +69,7 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
