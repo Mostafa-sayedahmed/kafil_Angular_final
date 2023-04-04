@@ -60,7 +60,8 @@ export class UserService {
       .then( async (result) => {
         const user = result.user;
        await user?.updateProfile({
-            displayName: `${fname} ${sname}` 
+            displayName:`${fname} ${sname}` ,
+            photoURL:"https://kafiil.com/modules/user/images/user.svg",
         }).then(() => {
           this.SetUserData(result.user);
           this.router.navigate(['sign-in']);
@@ -126,7 +127,9 @@ export class UserService {
     const userData: User = {
       uid: user.uid,
       fullname : user.displayName,
+      imgUrl: user.photoURL,
       email: user.email,
+
       // password : user.password,
       // rePassword : user.repassword
     };
