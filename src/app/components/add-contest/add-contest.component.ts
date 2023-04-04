@@ -19,6 +19,7 @@ export class AddContestComponent {
   contestform = this.formbuilder.group({
     userId: JSON.parse(localStorage.getItem('user')!).uid,
     userName: JSON.parse(localStorage.getItem('user')!).displayName,
+    userImg: JSON.parse(localStorage.getItem('user')!).photoURL,
     title: ['', [Validators.required, Validators.minLength(5)]],
     description: ['', [Validators.required, Validators.minLength(100)]],
     conditions: ['' , [Validators.required, Validators.minLength(100)]],
@@ -58,6 +59,7 @@ export class AddContestComponent {
     this.contestform.setValue({
       userId: this.contestDraft['userId'],
       userName: this.contestDraft['userName'],
+      userImg: this.contestDraft['userImg'],
       description: this.contestDraft['description'],
       title: this.contestDraft['title'],
       conditions: this.contestDraft['conditions'],

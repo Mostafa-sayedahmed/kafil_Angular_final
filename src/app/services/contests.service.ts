@@ -45,30 +45,6 @@ export class ContestsService {
     return newArr;
   }
 
-  // async getContestByID(contestId: string) {
-  //   const q = query(collection(this.firestore, "contests"), where('id', '==', contestId));
-  //   const querySnapshot = await getDocs(q);
-  //     var newArr : Array<Icontest> = [];
-  //     querySnapshot.forEach((doc) => {
-  //       console.log(doc.data());
-  //     newArr.push(doc.data() as Icontest);
-  //   });
-
-  //   return newArr;
-  // }
-
-
-  // async addComment(comment:string): Promise<void> {
-  //   const commentData = {text: comment};
-
-  //   try {
-  //     const contestRef = collection(this.firestore, 'contests');
-  //     await addDoc(contestRef, commentData);
-  //     console.log('Comment added successfully!');
-  //   } catch (error) {
-  //     console.error('Error adding comment: ', error);
-  //   }
-  // }
 
   getContestById(contestId: string) {
     const contestRef = doc(this.firestore, 'contests', contestId);
@@ -80,18 +56,6 @@ export class ContestsService {
         })
 
   }
-
-  // addComments(commentData: string){
-  //   let contestsRef = collection(this.firestore, 'contests');
-  //   let conestsRef = collection('contest').add(commentData)
-  //   .then(() => {
-  //     console.log('Comment added successfully!');
-  //     this.comment = '';
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error adding comment: ', error);
-  //   });
-  // }
 
 
   getContestSections() {
@@ -109,7 +73,55 @@ export class ContestsService {
         console.log(err);
       });
   }
+
+  addComments(contestId :string, userName : string , userImg : string , comment: string) {
+    let commentRef = collection(this.firestore, 'contestsComments');
+    addDoc(commentRef,{contestId : contestId , userName : userName , userImg : userImg , comment : comment})
+      .then((res) => {
+        console.log('data added successfully!');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  async getCommentsByContestId(contestId: string) {
+    const q = query(collection(this.firestore, "contestsComments"), where('contestId', '==', contestId));
+    const querySnapshot = await getDocs(q);
+      var newArr : Array<any> = [];
+      querySnapshot.forEach((doc) => {
+      newArr.push(doc.data());
+    });
+
+    return newArr;
+  }
   
 
+  async searchContestsByName(name: string) {
+    const queryRef = collection(this.firestore, 'contests');
+    const q = query(queryRef, where('title', '==', name));
+
+    const querySnapshot = await getDocs(q);
+    var newArr : Array<Icontest> = [];
+    querySnapshot.forEach((doc) => {
+    newArr.push(doc.data() as Icontest);
+  });
+
+  console.log(newArr);
+
+  return newArr;
+
+    // return getDocs(queryByName).pipe(
+    //   map(querySnapshot => {
+    //     const contests = [];
+    //     querySnapshot.forEach(doc => {
+    //       const contest = doc.data() as Icontest;
+    //       contest.id = doc.id;
+    //       contests.push(contest);
+    //     });
+    //     return contests;
+    //   })
+    // );
+  }
   
 }

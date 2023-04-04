@@ -17,7 +17,7 @@
                   <div class="">
                     <div class="d-flex">
                       <a href="#" class="text-black text-decoration-none">
-                        <img src="https://kafiil.com/storage/images/users/9558529a-9ff7-40c2-945f-66b435009f0d.jpg" alt="">
+                        <img [src]="selectedContest?.userImg" alt="">
                       </a>
                       <div>
                           <a href="" class="text-muted text-decoration-none d-block">
@@ -51,7 +51,7 @@
                  
                       <div class="d-flex justify-content-between py-3">
                           <div>
-                            <i class='faس fa-calendar-alt'></i>
+                            <i class='fas fa-calendar-alt'></i>
                             تاريخ الانتهاء 
                           </div>
                           <div>
@@ -115,7 +115,7 @@
                         التعليقات 
                       </div>
                       <div>
-                        $32.26
+                       {{numberOfComments}}
                       </div>
                   </div>
                 
@@ -175,7 +175,7 @@
 
               <div class="d-flex">
                 <a href="#" class="text-black text-decoration-none">
-                  <img src="https://kafiil.com/storage/images/users/9558529a-9ff7-40c2-945f-66b435009f0d.jpg" alt="">
+                  <img [src]="selectedContest?.userImg" alt="">
                 </a>
                 <div>
                     <a href="" class="text-muted text-decoration-none d-block mt-3">
@@ -237,58 +237,31 @@
 
               <div class="inner-row" id="row">
   
-                  <!-- <ng-container *ngFor="let proj of project; let i=index">
-                    <div>
+                  <ng-container *ngFor="let comment of contestComments; let i=index">
+                   <div>
                       <div class="d-flex">
-                        <a href="#" class="text-black text-decoration-none">
-                          <img [src]="proj.img" alt="">
-                        </a>
                         <div>
-                            <div class="d-flex">
-                              <span class="text-muted">
-                                <span>
-                                  {{proj.hintText}}
-                                </span>
-                                {{proj.text}}
-                              </span>
-                              <span class="mx-2">
-                                <i class="fas fa-star text-muted"></i>
-                                <i class="fas fa-star text-muted"></i>
-                                <i class="fas fa-star text-muted"></i>
-                                <i class="fas fa-star text-muted"></i>
-                                <i class="fas fa-star text-muted"></i>
-                              </span>
-                              <a href="#" class="text-black text-decoration-none d-block">
-                                {{proj.name}}
-                              </a>
-                            </div>
-                            <span class="text-muted ">
-                              <span>
-                                <i class='fas fa-briefcase'></i>
-                                {{proj.work}}
-                              </span>
-                              <span class="text-time">
-                                <i class='fas fa-clock text-muted '></i>
-                                {{proj.time}}
-                              </span>
-                            </span>
-                           
+                          <a href="#" class="text-black text-decoration-none">
+                            <img [src]="comment.userImg" alt="">
+                          </a>
                         </div>
-                      </div>
-                      <div>
-                          <p>
-                            {{proj.parag}}
-                          </p>
-                      </div>
-                    </div>
+                        <div>
+                            <a href="" class="text-muted text-decoration-none d-block mt-3">
+                              {{comment.userName}}
+                            </a>
+                        </div>
+                    </div>     
+                      <p class="me-4">{{comment.comment}}</p>
+                   </div>
+                 
                   </ng-container>
-   -->
+  
               </div>
 
 
-              <!-- <form>
+              <form>
 
-                <div class="mb-3">
+                <div class="m-3">
                     <textarea
                       class="form-control"
                       id="comments"
@@ -301,12 +274,12 @@
     
                 <button
                   type="submit"
-                  class="btn btn-success rounded submitbtn"
+                  class="btn btn-success rounded submitbtn m-3"
                   (click)="addComment(comment.value)"
                 >
                   اضف رد
                 </button>
-              </form> -->
+              </form>
 
           </div>
   

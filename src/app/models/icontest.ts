@@ -2,6 +2,7 @@ export interface Icontest {
     id:string,
     userId: string,
     userName:string,
+    userImg:string,
     title: string,
     description: string,
     conditions: string,
@@ -15,5 +16,5 @@ export interface Icontest {
     completed:boolean,
     Posts:string,
     Views:string,
-    comments:string
+    comments?:string
 }
