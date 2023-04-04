@@ -28,6 +28,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component';
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
 
@@ -52,6 +53,7 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
     SidebarComponent,
     PortfoloisComponent,
     AddportfoloiComponent,
+    DetailsPortfoloisComponent,
     ContestDetailsComponent,
     AddContestComponent,
   ],
