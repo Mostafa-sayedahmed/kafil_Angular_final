@@ -9,15 +9,25 @@
   <body>
     <div class="container d-flex mt-2 justify-content-between">
       <div class="col-12 col-lg-8 rounded border ms-4 bg-white mb-5">
-        <div class="add-service-header">
-          <p class="title">
+        <div
+          class="add-service-header py-2 px-3 d-flex justify-content-between flex-row align-items-center"
+        >
+          <span class="pagetitle">
             <i class="far fa-list-alt"></i>
             أضف خدمة مصغرة
-          </p>
+          </span>
+
+          <button
+            class="btn btn-outline-warning"
+            (click)="restoreDraft()"
+            *ngIf="serviceDraft != null"
+          >
+            استرجاع المسودة<i class="fa-solid fa-arrow-rotate-left px-2"></i>
+          </button>
         </div>
         {{ serviceform.value | json }}
         <div class="add-service-body p-3">
-          <form action="" [formGroup]="serviceform">
+          <form action="" [formGroup]="serviceform" (ngSubmit)="addservice()">
             <div class="mb-3">
               <label for="title" class="form-label">العنوان</label>
               <input
@@ -28,19 +38,61 @@
                 name="title"
                 placeholder="ماذا سوف تقدم في الخدمة.؟"
                 required
+                [class.is-valid]="serviceform.get('title')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('title')?.invalid &&
+                  serviceform.get('title')?.dirty
+                "
               />
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('title')?.valid ||
+                  !serviceform.get('title')?.dirty
+                "
+              >
+                <small *ngIf="serviceform.get('title')?.errors?.['required']"
+                  >لايمكن ان يكون العنوان فارغ!
+                </small>
+                <small *ngIf="serviceform.get('title')?.errors?.['minlength']"
+                  >يجب ان يكون العنوان اكثر من 5 احرف ع الاقل</small
+                >
+              </div>
             </div>
             <div class="mb-3">
-              <label for="title" class="form-label">القسم</label>
+              <label for="category" class="form-label">القسم</label>
               <select
-                id="inputState"
+                id="category"
                 class="form-select"
                 formControlName="category"
+                [class.is-valid]="serviceform.get('category')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('category')?.invalid &&
+                  serviceform.get('category')?.dirty
+                "
               >
-                <option selected value="تسويق">تسويق</option>
-                <option selected value="برمجة">برمجة</option>
-                <option selected value="تصميم">تصميم</option>
+                <option selected disabled value="" class="text-light-emphasis">
+                  القسم
+                </option>
+                <option value="تسويق">تسويق</option>
+                <option value="برمجة">برمجة</option>
+                <option value="تصميم">تصميم</option>
               </select>
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('category')?.valid ||
+                  !serviceform.get('category')?.dirty
+                "
+              >
+                <small *ngIf="serviceform.get('category')?.errors?.['required']"
+                  >يجب ان تحدد القسم الخاص بالخدمة !
+                </small>
+              </div>
             </div>
             <div class="mb-3">
               <label for="description" class="form-label">وصف الخدمة:</label>
@@ -52,7 +104,31 @@
                 rows="7"
                 placeholder="الوصف"
                 required
+                [class.is-valid]="serviceform.get('description')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('description')?.invalid &&
+                  serviceform.get('description')?.dirty
+                "
               ></textarea>
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('description')?.valid ||
+                  !serviceform.get('description')?.dirty
+                "
+              >
+                <small
+                  *ngIf="serviceform.get('description')?.errors?.['required']"
+                  >لايمكن ان يكون الوصف فارغ!
+                </small>
+                <small
+                  *ngIf="serviceform.get('description')?.errors?.['minlength']"
+                  >يجب ان يحتوي الوصف علي 100 حرف علي الاقل! , احرص علي ان تقوم
+                  بتوضيح كافة تفاصيل في الخدمة</small
+                >
+              </div>
             </div>
 
             <!-- upload images -->
@@ -66,7 +142,7 @@
                     class="fas fa-lightbulb"
                     data-toggle="tooltip"
                     data-placement="bottom"
-                    title=""
+                    title=" الصورة الرئيسية للخدمة"
                   ></i>
                 </span>
                 <div
@@ -74,6 +150,20 @@
                   style="background-color: #f1f0ef"
                 >
                   some text
+                </div>
+                <!-- validation errors -->
+                <div
+                  class="invalid-feedback p-1 my-2"
+                  role="alert"
+                  [hidden]="
+                    serviceform.get('mainImg')?.valid ||
+                    !serviceform.get('mainImg')?.dirty
+                  "
+                >
+                  <small
+                    *ngIf="serviceform.get('mainImg')?.errors?.['required']"
+                    >يجب اختيار صورة معبرة عن الخدمة التي ستقوم بها!
+                  </small>
                 </div>
               </div>
               <div class="col-12 col-md-5 d-flex flex-grow-1 flex-column">
@@ -108,7 +198,31 @@
                 rows="7"
                 placeholder="التعليمات"
                 required
+                [class.is-valid]="serviceform.get('buyerinstructions')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('buyerinstructions')?.invalid &&
+                  serviceform.get('buyerinstructions')?.dirty
+                "
               ></textarea>
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('buyerinstructions')?.valid ||
+                  !serviceform.get('buyerinstructions')?.dirty
+                "
+              >
+                <small
+                  *ngIf="serviceform.get('buyerinstructions')?.errors?.['required']"
+                  >لايمكن ان يكون العنوان فارغ!
+                </small>
+                <small
+                  *ngIf="serviceform.get('buyerinstructions')?.errors?.['minlength']"
+                  >يجب ان تكون التعليمات مفصلة وواضحة و اكثر من 20 حرف ع
+                  الاقل</small
+                >
+              </div>
             </div>
 
             <!-- buyer instructions -->
@@ -116,37 +230,231 @@
               <div class="col">
                 <label for="price " class="form-label">السعر:</label>
                 <input
-                  type="text"
+                  type="number"
+                  min="5"
+                  max="999"
                   class="form-control"
                   formControlName="price"
                   name="price"
                   placeholder="السعر"
                   aria-label="السعر"
+                  [class.is-valid]="serviceform.get('price')?.valid"
+                  [class.is-invalid]="
+                    serviceform.get('price')?.invalid &&
+                    serviceform.get('price')?.dirty
+                  "
                 />
+                <!-- validation errors -->
+                <div
+                  class="invalid-feedback p-1 my-2"
+                  role="alert"
+                  [hidden]="
+                    serviceform.get('price')?.valid ||
+                    !serviceform.get('price')?.dirty
+                  "
+                >
+                  <small *ngIf="serviceform.get('price')?.errors?.['required']">
+                    يجب اضافة سعر مناسب للخدمة
+                  </small>
+                  <small *ngIf="serviceform.get('price')?.errors?.['min']"
+                    >يجب ان يكون السعر 5$ علي الاقل ..</small
+                  >
+                  <small *ngIf="serviceform.get('price')?.errors?.['max']">
+                    برجاء تحديد سعر مناسب وغير مبالغ فيه للخدمة
+                  </small>
+                </div>
               </div>
               <div class="col">
-                <label for="price " class="form-label">مدة التسليم:</label>
+                <label for="deliveryDuration" class="form-label"
+                  >مدة التسليم:</label
+                >
                 <select
                   id="inputState"
                   class="form-select"
                   formControlName="deliveryDuration"
+                  [class.is-valid]="serviceform.get('deliveryDuration')?.valid"
+                  [class.is-invalid]="
+                    serviceform.get('deliveryDuration')?.invalid &&
+                    serviceform.get('deliveryDuration')?.dirty
+                  "
                 >
-                  <option selected value="0">لا يغير من مدة التسليم</option>
+                  <option selected value="" disabled>مدة التسليم</option>
+                  <option value="1">يوم</option>
+                  <option value="2">يومين</option>
                   <option
-                    *ngFor="let item of [].constructor(30); let i = index"
-                    value="{{ i + 1 }}"
+                    *ngFor="let item of [].constructor(8); let i = index"
+                    value="{{ i + 3 }}"
                   >
-                    {{ i + 1 }} يوم
+                    {{ i + 3 }} ايام
+                  </option>
+                  <option
+                    *ngFor="let item of [].constructor(20); let i = index"
+                    value="{{ i + 11 }}"
+                  >
+                    {{ i + 11 }} يوم
                   </option>
                 </select>
+                <!-- validation errors -->
+                <div
+                  class="invalid-feedback p-1 my-2"
+                  role="alert"
+                  [hidden]="
+                    serviceform.get('deliveryDuration')?.valid ||
+                    !serviceform.get('deliveryDuration')?.dirty
+                  "
+                >
+                  <small
+                    *ngIf="serviceform.get('deliveryDuration')?.errors?.['required']"
+                  >
+                    يجب ان تحدد المدة التي سيتم تسليم هذه الخدمة عندها!
+                  </small>
+                </div>
               </div>
+            </div>
+
+            <section
+              formArrayName="addons"
+              class="addon d-flex flex-wrap justify-content-between"
+            >
+              <div
+                class="form-group d-flex flex-wrap justify-content-between flex-grow-1 border-bottom"
+                *ngFor="let add of addons.controls; let i = index"
+                [formGroupName]="i"
+              >
+                <span class="mt-4 mb-2"> إضافة {{ i + 1 }} :</span>
+                <div class="col-12 mb-3 border-top pt-3">
+                  <!-- {{ add.get("addonTitle")?.value | json }} -->
+
+                  <label for="addonTitle" class="form-label">العنوان</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="addonTitle"
+                    name="addonTitle"
+                    formControlName="addonTitle"
+                    placeholder="ماذا سوف تقدم في الخدمة.؟"
+                    required
+                    [class.is-valid]="add.get('addonTitle')?.valid"
+                    [class.is-invalid]="
+                      add.get('addonTitle')?.invalid &&
+                      add.get('addonTitle')?.dirty
+                    "
+                  />
+                  <!-- validation errors -->
+
+                  <div
+                    class="invalid-feedback p-1 my-2"
+                    role="alert"
+                    [hidden]="
+                      add.get('addonTitle')?.valid ||
+                      !add.get('addonTitle')?.dirty
+                    "
+                  >
+                    <small *ngIf="add.get('addonTitle')?.errors?.['required']"
+                      >لايمكن ان يكون العنوان فارغ!
+                    </small>
+                    <small *ngIf="add.get('addonTitle')?.errors?.['minlength']"
+                      >يجب ان يكون العنوان اكثر من 5 احرف ع الاقل</small
+                    >
+                  </div>
+                </div>
+
+                <div class="col-5 mb-3">
+                  <label for="addonPrice" class="form-label"
+                    >سعر الاضافة:</label
+                  >
+                  <input
+                    type="number"
+                    min="0"
+                    max="999"
+                    class="form-control"
+                    formControlName="addonPrice"
+                    name="addonPrice"
+                    placeholder="السعر"
+                    aria-label="السعر"
+                    required=""
+                    [class.is-valid]="add.get('addonPrice')?.valid"
+                    [class.is-invalid]="
+                      add.get('addonPrice')?.invalid &&
+                      add.get('addonPrice')?.dirty
+                    "
+                  />
+                  <!-- validation errors -->
+                  <div
+                    class="invalid-feedback p-1 my-2"
+                    role="alert"
+                    [hidden]="
+                      add.get('addonPrice')?.valid ||
+                      !add.get('addonPrice')?.dirty
+                    "
+                  >
+                    <small *ngIf="add.get('addonPrice')?.errors?.['max']">
+                      برجاء تحديد سعر مناسب وغير مبالغ فيه للإضافة
+                    </small>
+                  </div>
+                </div>
+                <div class="col-5">
+                  <label for="deliveryDuration" class="form-label"
+                    >مدة التسليم:</label
+                  >
+                  <select
+                    id="addonDeliveryDuration"
+                    class="form-select"
+                    formControlName="addonDeliveryDuration"
+                    name="addonDeliveryDuration"
+                  >
+                    <option selected value="0">لا يغير من مدة التسليم</option>
+                    <option value="1">يوم</option>
+                    <option value="2">يومين</option>
+                    <option
+                      *ngFor="let item of [].constructor(8); let i = index"
+                      value="{{ i + 3 }}"
+                    >
+                      {{ i + 3 }} ايام
+                    </option>
+                    <option
+                      *ngFor="let item of [].constructor(20); let i = index"
+                      value="{{ i + 11 }}"
+                    >
+                      {{ i + 11 }} يوم
+                    </option>
+                  </select>
+                </div>
+                <div class="col-12 mb-3 pt-3">
+                  <button
+                    *ngIf="addons.length > 0"
+                    href="#"
+                    class="btn btn-outline-danger"
+                    (click)="deleteaddon(i)"
+                  >
+                    <i class="fas fa-minus-square"></i>
+                    حذف الاضافة
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="col-12 col-sm-6 my-2">
+              <button
+                *ngIf="addons.length < 4"
+                href="#"
+                class="btn btn-outline-primary"
+                (click)="newaddon()"
+              >
+                <i class="fas fa-plus-square"></i>
+                أضف إضافات اخري لخدمتك
+              </button>
             </div>
             <button
               type="submit"
-              class="btn btn-success rounded submitbtn"
-              (click)="addservice()"
+              class="btn btn-success rounded submitbtn border-white"
             >
               اضف الخدمة
+            </button>
+            <button class="btn btn-outline-dark" (click)="saveDraft()">
+              احفظ كمسودة
+              <i class="fa-regular fa-floppy-disk px-2"></i>
             </button>
           </form>
         </div>
