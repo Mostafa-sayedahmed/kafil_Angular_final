@@ -21,7 +21,7 @@ import { AddserviceComponent } from './components/addservice/addservice.componen
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { ContestsComponent } from './components/contests/contests.component';
-import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
 import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -30,6 +30,7 @@ import { PortfoloisComponent } from './components/portfolois/portfolois/portfolo
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

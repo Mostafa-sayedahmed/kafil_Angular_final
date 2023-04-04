@@ -9,7 +9,7 @@ import { Service } from './../models/service';
 export class GetservicesService {
   constructor(private firestore: Firestore) {}
 
-  addservice(service: any) {
+  addservice(service: Service) {
     let servicesRef = collection(this.firestore, 'services');
     addDoc(servicesRef, service)
       .then((res) => {
@@ -26,7 +26,6 @@ export class GetservicesService {
       // console.log({ uid: doc.id, data: doc.data() });
       return doc.id, ' => ', doc.data();
       console.log(doc);
-      
     });
   }
 }
