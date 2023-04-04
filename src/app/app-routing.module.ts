@@ -10,9 +10,14 @@ import { SingleserviceComponent } from './components/singleservice/singleservice
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
-import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component';
+import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component'
+import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
+import { AddContestComponent } from './components/add-contest/add-contest.component';
+
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -28,7 +33,13 @@ const routes: Routes = [
   { path: 'newportfoloi', component: AddportfoloiComponent},
   { path: 'detailsPortfolois/:id', component: DetailsPortfoloisComponent },
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
+  { path: 'freelancers/:fid', component: SingleFreelancerComponent },
+  { path: 'home', component: HomepageComponent },
+  { path: 'contests/:contestID', component: ContestDetailsComponent  },
+  { path: 'addContest', component: AddContestComponent },
+  { path: '**', component: NotfoundComponent},
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

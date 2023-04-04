@@ -22,11 +22,15 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
 import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component';
+import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
+import { AddContestComponent } from './components/add-contest/add-contest.component';
 
 @NgModule({
   declarations: [
@@ -43,11 +47,15 @@ import { DetailsPortfoloisComponent } from './components/portfolois/details-port
     AddserviceComponent,
     ContestsComponent,
     ProjectsDetailsComponent,
+    SingleFreelancerComponent,
+    NotfoundComponent,
     FooterComponent,
     SidebarComponent,
     PortfoloisComponent,
     AddportfoloiComponent,
     DetailsPortfoloisComponent,
+    ContestDetailsComponent,
+    AddContestComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

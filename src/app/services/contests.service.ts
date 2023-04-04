@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection,Firestore , query, where, getDocs,} from '@angular/fire/firestore';
+import { collection,Firestore , query, where, getDocs, addDoc , doc , getDoc} from '@angular/fire/firestore';
 
 import { collectionData } from '@angular/fire/firestore';
 import { Icontest } from './../models/icontest';
@@ -26,24 +26,102 @@ export class ContestsService {
       const q = query(collection(this.firestore, "contests"), where('sectionId', '==', sectionId));
 
       const querySnapshot = await getDocs(q);
-
-      var newArr : Array<object> = [];
-
-      querySnapshot.forEach((doc) => {
-        
-        newArr.push(doc.data());
-
+        var newArr : Array<Icontest> = [];
+        querySnapshot.forEach((doc) => {
+        newArr.push(doc.data() as Icontest);
       });
 
       return newArr;
+  }
+
+  async getContestsByCompletedStatus() {
+    const q = query(collection(this.firestore, "contests"), where('completed', '==', false));
+    const querySnapshot = await getDocs(q);
+      var newArr : Array<Icontest> = [];
+      querySnapshot.forEach((doc) => {
+      newArr.push(doc.data() as Icontest);
+    });
+
+    return newArr;
+  }
+
+
+  getContestById(contestId: string) {
+    const contestRef = doc(this.firestore, 'contests', contestId);
+
+    return getDoc(contestRef).then((doc) => {
+        const data = doc.data() as Icontest;
+        console.log(data);
+          return data;
+        })
 
   }
+
 
   getContestSections() {
     let contestSections = collection(this.firestore, "contestSections")
     return collectionData(contestSections, { idField: "id" }) as Observable<IcontestSection[]>
   }
+
+  addcontest(contests: any) {
+    let contestsRef = collection(this.firestore, 'contests');
+    addDoc(contestsRef, contests)
+      .then((res) => {
+        console.log('data added successfully!');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  addComments(contestId :string, userName : string , userImg : string , comment: string) {
+    let commentRef = collection(this.firestore, 'contestsComments');
+    addDoc(commentRef,{contestId : contestId , userName : userName , userImg : userImg , comment : comment})
+      .then((res) => {
+        console.log('data added successfully!');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  async getCommentsByContestId(contestId: string) {
+    const q = query(collection(this.firestore, "contestsComments"), where('contestId', '==', contestId));
+    const querySnapshot = await getDocs(q);
+      var newArr : Array<any> = [];
+      querySnapshot.forEach((doc) => {
+      newArr.push(doc.data());
+    });
+
+    return newArr;
+  }
   
 
+  async searchContestsByName(name: string) {
+    const queryRef = collection(this.firestore, 'contests');
+    const q = query(queryRef, where('title', '==', name));
+
+    const querySnapshot = await getDocs(q);
+    var newArr : Array<Icontest> = [];
+    querySnapshot.forEach((doc) => {
+    newArr.push(doc.data() as Icontest);
+  });
+
+  console.log(newArr);
+
+  return newArr;
+
+    // return getDocs(queryByName).pipe(
+    //   map(querySnapshot => {
+    //     const contests = [];
+    //     querySnapshot.forEach(doc => {
+    //       const contest = doc.data() as Icontest;
+    //       contest.id = doc.id;
+    //       contests.push(contest);
+    //     });
+    //     return contests;
+    //   })
+    // );
+  }
   
 }
