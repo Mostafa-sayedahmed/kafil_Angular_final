@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./freelancers.component.scss']
 })
 export class FreelancersComponent implements OnInit {
+  spinner:boolean=true;
   freelancers: Freelancer[] = [];
   test: any;
   constructor(private myService: CrudService, private router:Router) {
@@ -24,6 +25,7 @@ export class FreelancersComponent implements OnInit {
 
     //to get the id we have to use snapshotchanges in service
     this.myService.getAllFreelancers().subscribe(data => {
+      this.spinner=false;
       this.freelancers = data.map(ele => {
         return {
           id: ele.payload.doc.id,
@@ -32,6 +34,7 @@ export class FreelancersComponent implements OnInit {
       });
     }
     );
+    
   }
 
   getDetailsOfFreelancer(id:string){

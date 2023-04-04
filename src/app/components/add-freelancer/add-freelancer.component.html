@@ -135,57 +135,90 @@
                 <div class="d-flex flex-wrap">
                     <!-- Freelnacer Form  -->
                     <div class="w-100 m-4 shadow p-3 bg-white rounded">
-                    <!-- Freelnacer Form  -->
-                    
-                        <form (ngSubmit)="addNewFreelancer()">
+                        <!-- Freelnacer Form  -->
+
+                        <form #addingFreelancerForm="ngForm" (ngSubmit)="addNewFreelancer()">
                             <div class="form-row">
                                 <div class="form-group ">
                                     <label for="inputEmail4" class="my-2">الاسم كاملاً :</label>
-                                    <input type="text" name="name" [(ngModel)]="newFreelancer.name" class="form-control " id="inputEmail4" placeholder=" الاسم ...">
+                                    <input type="text" name="name" [(ngModel)]="newFreelancer.name"
+                                        class="form-control " id="inputEmail4" placeholder=" الاسم ..."
+                                        #freelancerName="ngModel" required pattern="[أ-ي \s]{3,}"
+                                        [class.is-valid]="freelancerName.valid"
+                                        [class.is-invalid]="freelancerName.invalid &&freelancerName.touched">
+                                    <div class="alert alert-danger my-2 p-1"
+                                        [hidden]="freelancerName.valid ||freelancerName.untouched ">
+                                        <small *ngIf="freelancerName.errors?.['required']">يجب اضافة الأسم</small>
+                                        <small *ngIf="freelancerName.errors?.['pattern']"> الاسم على الاقل 3
+                                            حروف وباللغة العربية</small>
+                                    </div>
                                 </div>
                                 <div class="form-group ">
                                     <label for="inputPassword4" class="my-2">البريد الالكتروني :</label>
-                                    <input type="email" name="email" class="form-control" id="inputPassword4"
-                                        placeholder="البريد الالكتروني ... ">
+                                    <input #email type="email" name="email" class="form-control" id="inputPassword4"
+                                        placeholder="البريد الالكتروني ... " required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress" class="my-2">الدولة :</label>
-                                <input type="text" name="country" class="form-control" id="inputAddress" placeholder="الدولة ..."  >
+                                <input type="text" name="country" class="form-control" id="inputAddress"
+                                    placeholder="الدولة ..." required pattern="[أ-ي]{3,12}">
                             </div>
                             <div class="form-group">
-                                <label for="inputAddress2" class="my-2"> الوظيفة :</label>
-                                <input type="text" name="title" [(ngModel)]="newFreelancer.title" class="form-control" id="inputAddress2"
-                                    placeholder="المهارات التي اتحلى بها ...">
+                                <label for="title" class="my-2"> الوظيفة :</label>
+                                <input #freelancerTitle="ngModel" type="text" name="title"
+                                    [(ngModel)]="newFreelancer.title" class="form-control" id="title"
+                                    placeholder="المهارات التي اتحلى بها ..." required pattern="[أ-ي \s]{3,}"
+                                    [class.is-valid]="freelancerTitle.valid"
+                                    [class.is-invalid]="freelancerTitle.invalid &&freelancerTitle.touched">
+                                <div class="alert alert-danger my-2 p-1"
+                                    [hidden]="freelancerTitle.valid ||freelancerTitle.untouched ">
+                                    <small *ngIf="freelancerTitle.errors?.['required']">يجب اضافة الوظيفة</small>
+                                    <small *ngIf="freelancerTitle.errors?.['pattern']">الوظيفة على الاقل 3 حروقوباللغة
+                                        العربية </small>
+
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlFile1" class="my-2">الصورة الشخصية :</label><br>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1"  [(ngModel)]="newFreelancer.img">
-                
-                              </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputState" class="my-2">المدينة :</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>حدد المدينة</option>
-                                        <option>القاهرة</option>
-                                        <option>الجيزة</option>
-                                        <option>الاسكندرية</option>
-                                        <option>قنا</option>
-                                    </select>
+                                <label for="inputAddress3" class="my-2"> الصورة الشخصية (رابط الصورة) :</label>
+                                <input #freelancerImg="ngModel" type="url" name="img" [(ngModel)]="newFreelancer.img"
+                                    class="form-control" id="inputAddress3" placeholder="رابط صورتي الشخصية ..."
+                                    required pattern="https?://.+" [class.is-valid]="freelancerImg.valid "
+                                    [class.is-invalid]="freelancerImg.invalid && freelancerImg.touched ">
+                                <div class="alert alert-danger my-2 p-1"
+                                    [hidden]="freelancerImg.valid ||freelancerImg.untouched ">
+                                    <small *ngIf="freelancerImg.errors?.['required']">يجب اضافة رابط الصورة</small>
+
+
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1" class="my-2">أعمالك :</label><br>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                  </div>
-                              
-                                <div class="d-flex my-4">
-                                  <div>  <input class="form-check-input p-2 mx-2" type="checkbox" id="gridCheck">اوافق على الشروط والاحكام</div>
-                                </div>
-                            
-                                
-                           
-                            <button type="submit" class="btn btn-success w-50  " >تسجيل</button>
-    
+                            </div>
+
+                            <div class="form-group">
+                                <label for="foru" class="my-2">ملخص عن أعمالك وخبراتك :</label><br>
+                                <input type="text" class="form-control" id="foru" required pattern="[أ-ي \s]{2,}">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="inputState" class="my-2">المدينة :</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>حدد المدينة</option>
+                                    <option>القاهرة</option>
+                                    <option>الجيزة</option>
+                                    <option>الاسكندرية</option>
+                                    <option>قنا</option>
+                                </select>
+                            </div>
+
+
+                            <div class="d-flex my-4">
+                                <div> <input class="form-check-input p-2 mx-2" type="checkbox" id="gridCheck"
+                                        required>اوافق على الشروط والاحكام</div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-success w-50 BTNForSub"
+                                [disabled]="addingFreelancerForm.invalid">تسجيل</button>
+
                         </form>
                     </div>
                 </div>

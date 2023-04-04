@@ -10,6 +10,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./single-freelancer.component.scss']
 })
 export class SingleFreelancerComponent implements OnInit, OnChanges {
+  spinner:boolean=true;
   // Freelancer:Freelancer |undefined|void =undefined;
   Freelancer: any = {}
   constructor(private service: CrudService, private activatedRoute: ActivatedRoute, private fs: AngularFirestore ,private router:Router) {
@@ -22,7 +23,7 @@ export class SingleFreelancerComponent implements OnInit, OnChanges {
     let freelancerID: string = (this.activatedRoute.snapshot.paramMap.get('fid')) ? String(this.activatedRoute.snapshot.paramMap.get('fid')) : "";
     this.fs.collection("Freelancers").doc(freelancerID).ref.get().then((doc) => {
       if (doc.exists) {
-        console.log(doc.data());
+       this.spinner=false;
         this.Freelancer = doc.data();
         
 

@@ -205,6 +205,10 @@
               <div class="d-flex flex-wrap">
                 <!-- USER -->
                 <div class="userCard shadow p-3 mb-5 bg-white rounded" >
+                   <!-- The Spinner -->
+              <div *ngIf="spinner" class="spinner-border text-success spinner" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
                   <img
                     class="userImg"
                     [src]="Freelancer?.img"

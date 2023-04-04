@@ -67,7 +67,7 @@ import { AddFreelancerComponent } from './components/add-freelancer/add-freelanc
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
