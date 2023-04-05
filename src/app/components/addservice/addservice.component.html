@@ -7,16 +7,6 @@
     <title>add new service</title>
   </head>
   <body>
-    <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
-    >
-      Launch static backdrop modal
-    </button>
-
     <div class="container d-flex mt-2 justify-content-between">
       <div class="col-12 col-lg-8 rounded border ms-4 bg-white mb-5">
         <div
@@ -26,6 +16,7 @@
             <i class="far fa-list-alt"></i>
             أضف خدمة مصغرة
           </span>
+
           <button
             class="btn btn-outline-warning"
             (click)="restoreDraft()"
@@ -101,9 +92,9 @@
                 </option>
                 <option
                   *ngFor="let item of categorylist"
-                  [value]="item.data.categoryName"
+                  [value]="item.categoryName"
                 >
-                  {{ item.data.categoryName }}
+                  {{ item.categoryName }}
                 </option>
               </select>
               {{ this.serviceform.get("category")?.value }}
@@ -580,5 +571,16 @@
         </div>
       </div>
     </div>
+    <!-- Button trigger modal -->
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      #loadingmodalbtn
+    >
+      Launch static backdrop modal
+    </button>
   </body>
 </html>

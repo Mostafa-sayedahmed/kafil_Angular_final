@@ -26,46 +26,6 @@ export class ServicesComponent {
       CategoryPic: 'assets/images/marketing.svg',
       categoryLink: '#',
     },
-    {
-      categoryName: 'خدمات مالية',
-      CategoryPic: 'assets/images/money.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'تصاميم فنيه',
-      CategoryPic: 'assets/images/design.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'برمجيات',
-      CategoryPic: 'assets/images/software.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'كتابة وترجمة',
-      CategoryPic: 'assets/images/writing.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'فيديو',
-      CategoryPic: 'assets/images/video.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'صوتيات',
-      CategoryPic: 'assets/images/audio.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'تدريب واستشارة',
-      CategoryPic: 'assets/images/education.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'المزيد',
-      CategoryPic: 'assets/images/more.svg',
-      categoryLink: '#',
-    },
   ];
 
   sliders = [
@@ -76,6 +36,30 @@ export class ServicesComponent {
     { name: 'خدمات صوتية', link: '#', items: [] },
     { name: 'خدمات الكتابة و الترجمة', link: '#', items: [] },
   ];
+  ngOnInit() {
+    if (window.innerWidth < 770) {
+      this.showcount = this.showcountSM;
+    } else {
+      this.showcount = this.showcountLG;
+    }
+
+    this.category
+      .getcategories()
+      .then((result) => {
+        this.categriesList = Array.from(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  ngOnChanges() {
+    if (window.innerWidth < 770) {
+      this.showcount = this.showcountSM;
+    } else {
+      this.showcount = this.showcountLG;
+    }
+  }
   showallcat() {
     if (window.innerWidth < 770) {
       this.showcount = this.showcountSM;
@@ -104,21 +88,7 @@ export class ServicesComponent {
 
     return false;
   }
-  ngOnInit() {
-    if (window.innerWidth < 770) {
-      this.showcount = this.showcountSM;
-    } else {
-      this.showcount = this.showcountLG;
-    }
-  }
 
-  ngOnChanges() {
-    if (window.innerWidth < 770) {
-      this.showcount = this.showcountSM;
-    } else {
-      this.showcount = this.showcountLG;
-    }
-  }
   test() {
     // console.log('clicked');
     // let data = this.servces.getservices();

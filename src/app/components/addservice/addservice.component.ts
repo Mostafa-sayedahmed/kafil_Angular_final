@@ -7,6 +7,7 @@ import { AddserviceformService } from 'src/app/services/addserviceform.service';
 import { Injectable } from '@angular/core';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-addservice',
@@ -19,16 +20,14 @@ export class AddserviceComponent {
     public service: GetservicesService,
     public addserviceform: AddserviceformService,
     private firestorage: FirestorageService,
-    private Category: CategoriesService
+    private Category: CategoriesService,
+    private elRef: ElementRef
   ) {}
   categorylist = [
     {
-      data: {
-        CategoryPic: 'assets/images/audio.svg',
-        categoryLink: '#',
-        categoryName: 'صوتيات',
-      },
-      uid: '',
+      CategoryPic: 'assets/images/audio.svg',
+      categoryLink: '#',
+      categoryName: 'صوتيات',
     },
   ];
   serviceform = this.formbuilder.group({
@@ -129,9 +128,21 @@ export class AddserviceComponent {
     input.click();
     return false;
   }
-  async addservice() {
-    console.log(this.file);
+  @ViewChild('loadingmodalbtn', { static: true })
+  modalbtn!: ElementRef<HTMLElement>;
+  @ViewChild('closeloadingmodal', { static: true })
+  clsoemodal!: ElementRef<HTMLElement>;
 
+  async addservice() {
+    // let modalbtn = this.modalbtn.nativeElement;
+    // let clsoemodal = this.clsoemodal.nativeElement;
+    // modalbtn.click();
+    // setTimeout(() => {
+    //   clsoemodal.click();
+    //   console.log('closed');
+    // }, 2000);
+
+    console.log(this.file);
     await this.fillmyservice();
     if (this.serviceform.valid) {
       this.service.addservice(this.myservice);
@@ -204,10 +215,12 @@ export class AddserviceComponent {
   ////////////////////////// fill data in the model object
   async fillmyservice() {
     let imgurl = await this.firestorage.uploadfile(this.file);
+    console.log(`main image uploaded!`);
     let imgs = [];
+    let i = this.imgslist.length;
     for (let img of this.imgslist) {
       let url = await this.firestorage.uploadfile(img);
-      console.log('img uploaded');
+      console.log(`uploaded image  ${this.imgslist.indexOf(img) + 1}`);
       imgs.push(url);
     }
     console.log(imgs);
