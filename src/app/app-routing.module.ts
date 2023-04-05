@@ -7,6 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AddprojectComponent } from './components/addproject/addproject.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'services', component: ServicesComponent },
   { path: 'freelancers', component: FreelancersComponent },
   { path: 'services/:serviceID', component: SingleserviceComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'addproject', component: AddprojectComponent },
 ];
 
 @NgModule({

@@ -17,6 +17,8 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AddprojectComponent } from './components/addproject/addproject.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     FreelancersComponent,
     LoginComponent,
     RegisterComponent,
+    ProjectsComponent,
+    AddprojectComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
