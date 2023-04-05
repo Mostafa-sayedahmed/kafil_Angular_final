@@ -31,6 +31,11 @@ import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addp
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
 
+
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +70,18 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+        },
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
