@@ -6,17 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
-import { AddserviceComponent } from './components/addservice/addservice.component';
-import { ContestsComponent } from './components/contests/contests.component';
-import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
-import { NotfoundComponent } from './components/notfound/notfound.component';
-import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
-import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
-import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
-import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
-import { AddContestComponent } from './components/add-contest/add-contest.component';
-import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
-import { HomeComponent } from './home/home.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +16,10 @@ const routes: Routes = [
   { path: 'services', component: ServicesComponent },
   { path: 'freelancers', component: FreelancersComponent },
   { path: 'services/:serviceID', component: SingleserviceComponent },
+
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'addproject', component: AddprojectComponent },
+
   { path: 'createservice', component: AddserviceComponent },
   { path: 'contests', component: ContestsComponent},
   { path: 'portfolois', component: PortfoloisComponent},
@@ -37,6 +31,7 @@ const routes: Routes = [
   { path: 'addContest', component: AddContestComponent },
   { path: 'addFreelancer', component: AddFreelancerComponent },
   { path: '**', component: NotfoundComponent},
+
 ];
 
 
