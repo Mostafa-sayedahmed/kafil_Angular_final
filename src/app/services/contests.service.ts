@@ -54,7 +54,6 @@ export class ContestsService {
         console.log(data);
           return data;
         })
-
   }
 
 
@@ -99,29 +98,24 @@ export class ContestsService {
 
   async searchContestsByName(name: string) {
     const queryRef = collection(this.firestore, 'contests');
-    const q = query(queryRef, where('title', '==', name));
-
+    const q = query(queryRef, where('title', '>=', name));
     const querySnapshot = await getDocs(q);
     var newArr : Array<Icontest> = [];
     querySnapshot.forEach((doc) => {
     newArr.push(doc.data() as Icontest);
   });
-
   console.log(newArr);
-
   return newArr;
-
-    // return getDocs(queryByName).pipe(
-    //   map(querySnapshot => {
-    //     const contests = [];
-    //     querySnapshot.forEach(doc => {
-    //       const contest = doc.data() as Icontest;
-    //       contest.id = doc.id;
-    //       contests.push(contest);
-    //     });
-    //     return contests;
-    //   })
-    // );
   }
   
+
+  getSectionById(sectionId: string) {
+    const contestRef = doc(this.firestore, 'contestSections', sectionId);
+
+    return getDoc(contestRef).then((doc) => {
+        const data = doc.data();
+          return data;
+        })
+  }
+
 }

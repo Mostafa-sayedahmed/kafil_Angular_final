@@ -12,9 +12,9 @@
           </div>
   
           <div class="input-group mb-3 ">
-            <input type="search"  class="form-control py-2" placeholder="ابحث عن ..." aria-label="search" aria-describedby="basic-search" #search>
+            <input type="search"  class="input-my-input form-control py-2" placeholder="ابحث عن ..." aria-label="search" aria-describedby="basic-search" #search>
 
-            <span class="input-group-text" id="basic-search">
+            <span class="input-my-text" id="basic-search">
               <i class="fas fa-search" type="button" (click)="searchByName(search.value)"></i>
             </span>
           
@@ -126,7 +126,7 @@
             
                           <div class="inner">
                             <p class="text-muted">
-                              {{cont.sectionId}}
+                              {{cont.sectionName}}
                             </p>
                             <p>
                               <a type="button" class="text-decoration-none text-black" (click)="openContestDetails(cont.id)">{{cont.title}}</a>
@@ -161,7 +161,7 @@
                               <i class="far fa-eye"></i>{{cont.Views}}
                             </span>
                             <span class="detail">
-                              <i class="far fa-comment-dots"></i> {{cont.comments}}
+                              <i class="far fa-comment-dots"></i> {{cont.comment}}
                             </span>
                           </div>
   
