@@ -25,24 +25,50 @@ export class CardsliderComponent {
   @Input() sliderdata = {
     name: '',
     link: '',
-    items: [],
+    items: [
+      {
+        uid: '',
+        data: {
+          userid: '',
+          title: '',
+          description: '',
+          category: '',
+          price: '',
+          mainImg: '',
+          imgs: [],
+          deliveryDuration: '',
+          buyerinstructions: '',
+          addons: [
+            {
+              addonTitle: '',
+              addonPrice: 0,
+              addonDeliveryDuration: '',
+            },
+          ],
+          isfeatured: '',
+          isaproved: '',
+          rating: 0,
+          orderscount: 0,
+        },
+      },
+    ],
   };
+  ngOnInit() {
+    // console.log(this.sliderdata);
+    this.sliderdata.items.shift();
+    // console.log(this.sliderdata.items);
+  }
   ngAfterViewInit() {
     this.totalcards = this.servicecard.toArray().length;
-    console.log(window.innerWidth);
-    console.log(this.sliderdata.name);
 
-    console.log(this.totalcards);
     if (window.innerWidth < 500) {
       this.totalsteps = this.totalcards;
       console.log('Total steps: ' + this.totalsteps);
     } else {
       if (this.totalcards < 8) {
         this.totalsteps = Math.round(this.totalcards / 2);
-        console.log('Total steps: ' + this.totalsteps);
       } else {
         this.totalsteps = Math.round(this.totalcards / 2) + 1;
-        console.log('Total steps: ' + this.totalsteps);
       }
     }
   }

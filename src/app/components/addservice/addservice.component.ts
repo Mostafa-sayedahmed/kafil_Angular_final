@@ -141,16 +141,15 @@ export class AddserviceComponent {
     //   clsoemodal.click();
     //   console.log('closed');
     // }, 2000);
-
-    console.log(this.file);
-    await this.fillmyservice();
-    if (this.serviceform.valid) {
-      this.service.addservice(this.myservice);
-      console.log('data added successfully');
-    } else {
-      console.log('form is invalid');
-      // console.log();
-    }
+    // console.log(this.file);
+    // await this.fillmyservice();
+    // if (this.serviceform.valid) {
+    //   this.service.addservice(this.myservice);
+    //   console.log('data added successfully');
+    // } else {
+    //   console.log('form is invalid');
+    //   // console.log();
+    // }
   }
 
   get addons() {
@@ -223,9 +222,12 @@ export class AddserviceComponent {
       console.log(`uploaded image  ${this.imgslist.indexOf(img) + 1}`);
       imgs.push(url);
     }
-    console.log(imgs);
+
+    let user;
+    user = JSON.parse(localStorage.getItem('user')!);
 
     this.myservice = {
+      userid: user.uid,
       title: this.serviceform.controls['title'].value!,
       description: this.serviceform.controls['description'].value!,
       category: this.serviceform.controls['category'].value!,

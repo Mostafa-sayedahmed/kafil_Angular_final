@@ -1,4 +1,5 @@
 export interface Service {
+  userid?: string;
   title?: string;
   description?: string;
   category?: string;
@@ -10,6 +11,8 @@ export interface Service {
   addons?: Addon[];
   isfeatured?: boolean;
   isaproved?: boolean;
+  rating?: 0;
+  orderscount?: 0;
 }
 
 export interface Addon {
