@@ -17,8 +17,26 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
+
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddprojectComponent } from './components/addproject/addproject.component';
+
+import { AddserviceComponent } from './components/addservice/addservice.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { ContestsComponent } from './components/contests/contests.component';
+import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
+import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
+import { AddContestComponent } from './components/add-contest/add-contest.component';
+import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -32,8 +50,7 @@ import { AddprojectComponent } from './components/addproject/addproject.componen
     FreelancersComponent,
     LoginComponent,
     RegisterComponent,
-    ProjectsComponent,
-    AddprojectComponent,
+
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -45,6 +62,7 @@ import { AddprojectComponent } from './components/addproject/addproject.componen
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -23,7 +23,7 @@
 }
 .userCard {
   width: 29.5%;
-  max-height: 300px;
+  max-height: fit-content;
   padding: 20px;
   margin: 15px;
   border-radius: 10px;
@@ -102,4 +102,7 @@ li {
 #dropDown {
   background-color: #f1f2f2 !important;
   border: 1px solid #adadad;
+}
+.spinner{
+ margin:8% 48%  8% 48%;
 }
