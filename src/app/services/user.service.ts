@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { User } from './../models/iuser';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { collection,Firestore , query, where, getDocs, addDoc , doc , getDoc} from '@angular/fire/firestore';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
@@ -17,7 +18,8 @@ export class UserService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    private firestore: Firestore
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -58,7 +60,8 @@ export class UserService {
       .then( async (result) => {
         const user = result.user;
        await user?.updateProfile({
-            displayName: `${fname} ${sname}` 
+            displayName:`${fname} ${sname}` ,
+            photoURL:"https://kafiil.com/modules/user/images/user.svg",
         }).then(() => {
           this.SetUserData(result.user);
           this.router.navigate(['sign-in']);
@@ -124,7 +127,9 @@ export class UserService {
     const userData: User = {
       uid: user.uid,
       fullname : user.displayName,
+      imgUrl: user.photoURL,
       email: user.email,
+
       // password : user.password,
       // rePassword : user.repassword
     };
@@ -141,4 +146,17 @@ export class UserService {
       this.router.navigate(['sign-in']);
     });
   }
+
+  // get user data by id
+  getUserById(userId: string) {
+    const userRef = doc(this.firestore, 'users', userId);
+    return getDoc(userRef).then((doc) => {
+      const data = doc.data() as User;
+      console.log(data);
+        return data.fullname;
+      })
+  }
 }
+
+
+
