@@ -3,6 +3,7 @@ import { FormBuilder , Validators } from '@angular/forms';
 import { ContestsService } from 'src/app/services/contests.service';
 import { IcontestSection } from 'src/app/models/icontestsection';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-contest',
@@ -15,25 +16,28 @@ export class AddContestComponent {
 
   userId : string = '';
 
-  constructor(private formbuilder: FormBuilder,private CS: ContestsService ,private router:Router) {}
+  constructor(private formbuilder: FormBuilder,private CS: ContestsService ,private router:Router , private location: Location) {}
   contestform = this.formbuilder.group({
     userId: JSON.parse(localStorage.getItem('user')!).uid,
     userName: JSON.parse(localStorage.getItem('user')!).displayName,
     userImg: JSON.parse(localStorage.getItem('user')!).photoURL,
     title: ['', [Validators.required, Validators.minLength(5)]],
-    description: ['', [Validators.required, Validators.minLength(100)]],
-    conditions: ['' , [Validators.required, Validators.minLength(100)]],
+    description: ['', [Validators.required, Validators.minLength(50)]],
+    conditions: [''],
     sectionId: ['', [Validators.required]],
-    // sectionName: ['', [Validators.required]],
     deliveryDuration: ['', [Validators.required]],
     contestDuration: ['', [Validators.required]],
     winnersNum:['', [Validators.required]],
     firstWinner:['', [Validators.required]],
     skills:[''],
     completed:[false],
+    comment:Math.floor(Math.random() * (300 - 1 + 1)) + 1,
+    Posts:Math.floor(Math.random() * (3000 - 1 + 1)) + 1,
+    Views:Math.floor(Math.random() * (3000 - 1 + 1)) + 1,
+    contestants:Math.floor(Math.random() * (200 - 1 + 1)) + 1,
   });
   
-  contestDraft = JSON.parse(sessionStorage.getItem('contestDraft')!);
+  contestDraft = JSON.parse(localStorage.getItem('contestDraft')!);
 
   ngOnInit() {
     this.contestDraft = this.contestDraft;
@@ -44,15 +48,34 @@ export class AddContestComponent {
   }
 
   addContest() {
-    console.log(this.contestform.value);
     this.CS.addcontest(this.contestform.value);
-    this.router.navigateByUrl('/contests')
+    // this.router.navigateByUrl('/contests');
+
+    this.contestform.setValue({
+      userId: '',
+      userName: '',
+      userImg: '',
+      description: '',
+      title: '',
+      conditions: '',
+      sectionId: '',
+      deliveryDuration: '',
+      contestDuration: '',
+      firstWinner: '',
+      winnersNum: '',
+      skills: '',
+      completed: false,
+      comment: 0,
+      Posts: 0,
+      Views: 0,
+      contestants: 0
+    });
   }
 
   saveDraft() {
     let data = JSON.stringify(this.contestform.value);
-    sessionStorage.setItem('contestDraft', data);
-    this.contestDraft = sessionStorage.getItem('contestDraft');
+    localStorage.setItem('contestDraft', data);
+    this.contestDraft = localStorage.getItem('contestDraft');
   }
 
   restoreDraft() {
@@ -69,7 +92,11 @@ export class AddContestComponent {
       firstWinner: this.contestDraft['firstWinner'],
       winnersNum: this.contestDraft['winnersNum'],
       skills: this.contestDraft['skills'],
-      completed: this.contestDraft['completed']
+      completed: this.contestDraft['completed'],
+      comment:this.contestDraft['comment'] | Math.floor(Math.random() * (300 - 1 + 1)) + 1,
+      Posts:this.contestDraft['posts'] | Math.floor(Math.random() * (3000 - 1 + 1)) + 1,
+      Views:this.contestDraft['views'] | Math.floor(Math.random() * (3000 - 1 + 1)) + 1,
+      contestants: this.contestDraft["contestants"] | Math.floor(Math.random() * (200 - 1 + 1)) + 1,
     });
   }
 

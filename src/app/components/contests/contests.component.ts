@@ -24,39 +24,31 @@ export class ContestsComponent {
   }  
 
   ngOnInit(){
+    
+    this.contestWithComment = [];
     this.GetAllContests();
+    console.log(this.contest);
     this.GetAllContestSections(); 
-  
   }
 
 
-  GetAllContests(){ 
-      this.CS.getContests().subscribe((data)=>{
-        // console.log(data[0].id);
-        this.contest = data;
+ GetAllContests(){ 
+      this.contestWithComment = [];
+      this.CS.getContests().subscribe(async (data)=>{
        
         for(var i=0; i<data.length; i++){
 
-          let commentCount : number = 0;
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
 
-          this.getCommentsByContestId(data[i].id).then((res)=>{
-            commentCount = res;  
-          }).then(()=>{
+          this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
 
-            // this.contestWithComment.push({ ...data[i] , "commentCount" : commentCount });
-
-            // console.log(this.contestWithComment);
+          this.contest = this.contestWithComment;
           
-          })
-
-          this.contestWithComment.push({ ...data[i] , "commentCount" : commentCount });
-
-          console.log(this.contestWithComment);
-
         }
-        
-       
-        // this.US.getUserById(data.userId)
+
       })
     }
 
@@ -68,14 +60,41 @@ export class ContestsComponent {
     }
 
     ChangeContestSectionId(id:string){ 
-      this.CS.getContestsBySectionId(id).then((data)=>{
-        this.contest = data;
+      this.contestWithComment = [];
+      this.CS.getContestsBySectionId(id).then(async (data)=>{
+
+        console.log(data);
+       
+        for(var i=0; i<data.length; i++){
+
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
+
+          this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
+
+          this.contest = this.contestWithComment;    
+        }
+
       })
     }
 
     ChangeContestCompletedStatus(){ 
-      this.CS.getContestsByCompletedStatus().then((data)=>{
-        this.contest = data;
+      this.contestWithComment = [];
+      this.CS.getContestsByCompletedStatus().then(async (data)=>{
+       
+        for(var i=0; i<data.length; i++){
+
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
+
+          this.contestWithComment.push({ ...data[i] ,"sectionName" : sectionName });
+
+          this.contest = this.contestWithComment;    
+        }
       })
     }
 
@@ -89,9 +108,23 @@ export class ContestsComponent {
       })
     }
 
+
     searchByName(name:string){
-      this.CS.searchContestsByName(name).then((data)=>{
+      this.contestWithComment = [];
+      this.CS.searchContestsByName(name).then( async (data)=>{
         this.contest = data;
+        for(var i=0; i<data.length; i++){
+
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
+
+          this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
+
+          this.contest = this.contestWithComment;
+          
+        }
       })
     }
 
