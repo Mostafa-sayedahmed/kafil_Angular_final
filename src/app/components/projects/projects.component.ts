@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Projects } from 'src/app/models/projects';
+
 import { ProjectsService } from 'src/app/services/projects.service';
+import { Project } from 'src/app/models/projects';
+
+
 
 
 
@@ -12,16 +15,15 @@ import { ProjectsService } from 'src/app/services/projects.service';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent {
-      LisT : Projects [] =[]
+      ListOfProject : Project [] = [] ;
+
      constructor(private projects :ProjectsService ) { }
      ngOnInit():void{
-      this.projects.getallprojects().subscribe(res => {this.LisT = res ;console.log(res)})
+      this.projects.getallprojects().subscribe(res => {this.ListOfProject = res ;console.log(res)})
 
      }
-      // getData(){
-      //   this.projects.getallprojects().subscribe(res => {this.LisT = res ;console.log(res)})
-      // }
-     
+
+
 
 
 }
