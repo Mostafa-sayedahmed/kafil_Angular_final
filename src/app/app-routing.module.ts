@@ -19,6 +19,7 @@ import { AddFreelancerComponent } from './components/add-freelancer/add-freelanc
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'sign-in', component: LoginComponent },
@@ -27,6 +28,10 @@ const routes: Routes = [
   { path: 'services', component: ServicesComponent },
   { path: 'freelancers', component: FreelancersComponent },
   { path: 'services/:serviceID', component: SingleserviceComponent },
+
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'addproject', component: AddprojectComponent },
+
   { path: 'createservice', component: AddserviceComponent },
   { path: 'contests', component: ContestsComponent},
   { path: 'portfolois', component: PortfoloisComponent},
@@ -38,6 +43,7 @@ const routes: Routes = [
   { path: 'addContest', component: AddContestComponent },
   { path: 'addFreelancer', component: AddFreelancerComponent,canActivate:[AuthGuard] },
   { path: '**', component: NotfoundComponent},
+
 ];
 
 

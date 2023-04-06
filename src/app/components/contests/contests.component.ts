@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { Icontest } from 'src/app/models/icontest';
 import { IcontestSection } from 'src/app/models/icontestsection';
 import { ContestsService } from 'src/app/services/contests.service';
+import {UserService} from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,22 +14,41 @@ export class ContestsComponent {
 
 
   contest:Icontest[]=[];
+  contestWithComment:any[]=[];
   contestSections:IcontestSection[]=[];
-  
-  constructor(private CS: ContestsService,private router:Router){
+  contestComments:any[]=[];
+
+
+  constructor(private CS: ContestsService,private router:Router , private US : UserService){
 
   }  
 
   ngOnInit(){
+    
+    this.contestWithComment = [];
     this.GetAllContests();
+    console.log(this.contest);
     this.GetAllContestSections(); 
-
   }
 
 
-  GetAllContests(){ 
-      this.CS.getContests().subscribe((data)=>{
-        this.contest = data;
+ GetAllContests(){ 
+      this.contestWithComment = [];
+      this.CS.getContests().subscribe(async (data)=>{
+       
+        for(var i=0; i<data.length; i++){
+
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
+
+          this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
+
+          this.contest = this.contestWithComment;
+          
+        }
+
       })
     }
 
@@ -40,19 +60,72 @@ export class ContestsComponent {
     }
 
     ChangeContestSectionId(id:string){ 
-      this.CS.getContestsBySectionId(id).then((data)=>{
-        this.contest = data;
+      this.contestWithComment = [];
+      this.CS.getContestsBySectionId(id).then(async (data)=>{
+
+        console.log(data);
+       
+        for(var i=0; i<data.length; i++){
+
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
+
+          this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
+
+          this.contest = this.contestWithComment;    
+        }
+
       })
     }
 
-    ChangeContestOpenStatus(){ 
-      this.CS.getContestsByOpenStatus().then((data)=>{
-        this.contest = data;
+    ChangeContestCompletedStatus(){ 
+      this.contestWithComment = [];
+      this.CS.getContestsByCompletedStatus().then(async (data)=>{
+       
+        for(var i=0; i<data.length; i++){
+
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
+
+          this.contestWithComment.push({ ...data[i] ,"sectionName" : sectionName });
+
+          this.contest = this.contestWithComment;    
+        }
       })
     }
 
     openContestDetails(contestID : string){
       this.router.navigate(['contests',contestID]) 
+    }  
+
+    getCommentsByContestId(currentContestID:string){
+      return this.CS.getCommentsByContestId(currentContestID).then((res) => {
+        return res.length;
+      })
+    }
+
+
+    searchByName(name:string){
+      this.contestWithComment = [];
+      this.CS.searchContestsByName(name).then( async (data)=>{
+        this.contest = data;
+        for(var i=0; i<data.length; i++){
+
+          let sectionName : string = '';
+          await this.CS.getSectionById(data[i].sectionId).then((res)=>{
+            sectionName = res?.['name'];
+          });
+
+          this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
+
+          this.contest = this.contestWithComment;
+          
+        }
+      })
     }
 
 }
