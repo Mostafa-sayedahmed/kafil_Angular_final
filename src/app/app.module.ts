@@ -17,10 +17,6 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
-
-import { ProjectsComponent } from './components/projects/projects.component';
-import { AddprojectComponent } from './components/addproject/addproject.component';
-
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
@@ -32,11 +28,16 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component';
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
 import { HomeComponent } from './home/home.component';
 
+
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,20 @@ import { HomeComponent } from './home/home.component';
     FreelancersComponent,
     LoginComponent,
     RegisterComponent,
-
+    AddserviceComponent,
+    ContestsComponent,
+    ProjectsDetailsComponent,
+    SingleFreelancerComponent,
+    NotfoundComponent,
+    FooterComponent,
+    SidebarComponent,
+    PortfoloisComponent,
+    AddportfoloiComponent,
+    DetailsPortfoloisComponent,
+    ContestDetailsComponent,
+    AddContestComponent,
+    AddFreelancerComponent,
+    HomeComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -63,6 +77,16 @@ import { HomeComponent } from './home/home.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+        },
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

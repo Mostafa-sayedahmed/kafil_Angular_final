@@ -13,6 +13,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component'
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
@@ -28,14 +29,11 @@ const routes: Routes = [
   { path: 'services', component: ServicesComponent },
   { path: 'freelancers', component: FreelancersComponent },
   { path: 'services/:serviceID', component: SingleserviceComponent },
-
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'addproject', component: AddprojectComponent },
-
   { path: 'createservice', component: AddserviceComponent },
   { path: 'contests', component: ContestsComponent},
   { path: 'portfolois', component: PortfoloisComponent},
   { path: 'newportfoloi', component: AddportfoloiComponent},
+  { path: 'detailsPortfolois/:id', component: DetailsPortfoloisComponent },
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
   { path: 'home', component: HomeComponent },
@@ -43,7 +41,6 @@ const routes: Routes = [
   { path: 'addContest', component: AddContestComponent },
   { path: 'addFreelancer', component: AddFreelancerComponent,canActivate:[AuthGuard] },
   { path: '**', component: NotfoundComponent},
-
 ];
 
 

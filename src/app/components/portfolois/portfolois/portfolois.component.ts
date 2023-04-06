@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Iportfolois } from 'src/app/models/iportfolois';
 import { PortfoloisService } from 'src/app/services/portfolois.service';
 
@@ -10,7 +11,7 @@ import { PortfoloisService } from 'src/app/services/portfolois.service';
 export class PortfoloisComponent {
 
   portfolois:Iportfolois[]=[]
-constructor(private PS:PortfoloisService){}
+constructor(private PS:PortfoloisService,private rout:Router){}
 
   ngOnInit(){
     
@@ -20,7 +21,10 @@ constructor(private PS:PortfoloisService){}
       console.log( data);
     })
 
-   let data= this.PS.getportfolois()
+  }
+
+  goToDetails(id:any){
+this.rout.navigate(['detailsPortfolois',id])
   }
 
   

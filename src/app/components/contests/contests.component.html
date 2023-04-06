@@ -12,12 +12,10 @@
           </div>
   
           <div class="input-group mb-3 ">
-            <input type="search"  class="input-my-input form-control py-2" placeholder="ابحث عن ..." aria-label="search" aria-describedby="basic-search" #search>
-
-            <span class="input-my-text" id="basic-search">
-              <i class="fas fa-search" type="button" (click)="searchByName(search.value)"></i>
+            <span class="input-group-text" id="basic-search">
+              <i class="fas fa-search"></i>
             </span>
-          
+            <input type="search" class="form-control py-2" dir="rtl" placeholder="ابحث عن ..." aria-label="search" aria-describedby="basic-search">
           </div>
         
           <div class="accordion mb-3" id="accordionExample">
@@ -77,12 +75,12 @@
                       الكل 
                   </label>
                   <label class="custom-radio">
-                    <input type="radio" name="filter" class="d-none open-filter" value="open" (click)="ChangeContestCompletedStatus()">
+                    <input type="radio" name="filter" class="d-none open-filter" value="open" (click)="ChangeContestOpenStatus()">
                       <i></i>
                       مفتوح 
                   </label>
                 </div>
-<!--   
+  
                 <div class="cols-controls d-flex align-items-center">
                     <button id="cols" class="cols" type="button">
                        <i class="fas fa-bars"></i>
@@ -90,7 +88,7 @@
                     <button id="grid" class="cols active me-3" type="button">
                       <i class="fas fa-th-large"></i>
                     </button>
-                </div> -->
+                </div> 
   
             </div>
   
@@ -104,11 +102,11 @@
                           <div class="head">
                             <div class="d-flex align-items-center">
                               <a class="text-decoration-none bg-transparant" href="#">
-                                <img [src]="cont.userImg" alt="">
+                                <img [src]="cont.img" alt="">
                               </a>
                               <div>
                                 <a class=" text-decoration-none text-black me-2" href="#">
-                                  {{cont.userName}}
+                                  {{cont.name}}
                                 </a>
                               </div>
                             </div>
@@ -126,42 +124,33 @@
             
                           <div class="inner">
                             <p class="text-muted">
-                              {{cont.sectionName}}
+                              {{cont.type}}
                             </p>
                             <p>
-                              <a type="button" class="text-decoration-none text-black" (click)="openContestDetails(cont.id)">{{cont.title}}</a>
+                              <a type="button" class="text-decoration-none text-black" (click)="openContestDetails(cont.id)">{{cont.text}}</a>
                             </p>
                           </div>
   
                         <div>
                           <div class="d-flex justify-content-between align-items-center px-3">
                             <p>
-
-                              <span class="contest-status-badge badge bg-success" [ngStyle]="{'display':(cont.completed==false)?'none':'block'}">
-                                  <i class="fas fa-check"></i>
-                                  مكتمل
-                              </span>
-
-                              <span class="contest-status-badge badge bg-warning text-black" [ngStyle]="{'display':(cont.completed==false)?'block':'none'}">
-                                <i class="fas fa-bullhorn"></i>
-                                بإنتظار إختيار الفائز
-                            </span>
-
+                              <i class="far fa-clock"></i>
+                              <span data-countdown="2023-02-23 21:16:10">{{cont.countdown}}</span>
                             </p>
                             <p class="price">
-                              <i class="fas fa-trophy"></i> {{cont.firstWinner}} $
+                              <i class="fas fa-trophy"></i>{{cont.price}}
                             </p>
                           </div>
   
                           <div class="details px-3">
                             <span class="detail">
-                                <i class="fas fa-cloud-upload-alt"></i> {{cont.Posts}}
+                                <i class="fas fa-cloud-upload-alt"></i> {{cont.upload}}
                             </span>
                             <span class="detail">
-                              <i class="far fa-eye"></i>{{cont.Views}}
+                              <i class="far fa-eye"></i>{{cont.watching}}
                             </span>
                             <span class="detail">
-                              <i class="far fa-comment-dots"></i> {{cont.comment}}
+                              <i class="far fa-comment-dots"></i> {{cont.comments}}
                             </span>
                           </div>
   
