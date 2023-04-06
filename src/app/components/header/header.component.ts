@@ -8,7 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-
 export class HeaderComponent implements OnInit, DoCheck {
   user = {
     apiKey: '',
@@ -30,9 +29,11 @@ export class HeaderComponent implements OnInit, DoCheck {
   };
   username = '';
   photo = '';
-  constructor(private userservice: UserService,private translate: TranslateService) {
+  constructor(
+    private userservice: UserService,
+    private translate: TranslateService
+  ) {
     translate.setDefaultLang('ar');
-  
   }
   ngDoCheck(): void {
     this.user = JSON.parse(localStorage.getItem('user')!);
@@ -44,10 +45,10 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
   logout() {
     this.userservice.SignOut();
-    
-     changeLang(lang: string) {
+  }
+
+  changeLang(lang: string) {
     this.translate.use(lang);
     sessionStorage.setItem('lang', lang);
-    
-
+  }
 }
