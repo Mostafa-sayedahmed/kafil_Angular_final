@@ -17,6 +17,10 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
+
+
+ import { ProjectsComponent } from './components/projects/projects.component';
+ import { AddprojectComponent } from './components/addproject/addproject.component';
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ContestsComponent } from './components/contests/contests.component';
@@ -36,6 +40,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
 import { HomeComponent } from './home/home.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 
 @NgModule({

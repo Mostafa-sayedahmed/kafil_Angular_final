@@ -6,6 +6,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
+
+import { AddprojectComponent } from './components/addproject/addproject.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { ContestsComponent } from './components/contests/contests.component';
 import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
@@ -19,6 +23,7 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
+
 
 
 const routes: Routes = [
@@ -36,7 +41,7 @@ const routes: Routes = [
   { path: 'detailsPortfolois/:id', component: DetailsPortfoloisComponent },
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
-  { path: 'home', component: HomeComponent },
+
   { path: 'contests/:contestID', component: ContestDetailsComponent  },
   { path: 'addContest', component: AddContestComponent },
   { path: 'addFreelancer', component: AddFreelancerComponent,canActivate:[AuthGuard] },
