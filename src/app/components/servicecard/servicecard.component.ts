@@ -49,7 +49,7 @@ export class ServicecardComponent implements OnChanges {
         email: '';
         imgUrl: '';
       };
-      console.log(this.userinfo);
+      // console.log(this.userinfo);
     });
 
     // console.log();

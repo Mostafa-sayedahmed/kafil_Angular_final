@@ -10,7 +10,10 @@
 
   <body>
     <!-- content -->
-    <a routerLink="./{{ carddata.uid }}" class="text-decoration-none text-dark">
+    <a
+      href="./services/{{ carddata.uid }}"
+      class="text-decoration-none text-dark"
+    >
       <div class="card">
         <img [src]="carddata.data.mainImg" class="card-img-top" alt="..." />
         <div class="card-body py-1 col-12">

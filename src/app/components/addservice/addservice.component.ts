@@ -1,4 +1,11 @@
-import { Component, ViewChild, ViewChildren, ElementRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ViewChildren,
+  ElementRef,
+  OnInit,
+  AfterViewInit,
+} from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { GetservicesService } from 'src/app/services/getservices.service';
 import { Service } from '../../models/service';
@@ -14,7 +21,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
   templateUrl: './addservice.component.html',
   styleUrls: ['./addservice.component.scss'],
 })
-export class AddserviceComponent {
+export class AddserviceComponent implements OnInit, AfterViewInit {
   constructor(
     public formbuilder: FormBuilder,
     public service: GetservicesService,
@@ -53,16 +60,33 @@ export class AddserviceComponent {
   imgslist: File[] = [];
   @ViewChild('myModal', { static: true }) myModal!: ElementRef;
 
+  @ViewChild('loadingmodalbtn', { static: true })
+  modalbtn!: ElementRef<HTMLElement>;
+  @ViewChild('preloadermodalbtn', { static: true })
+  preloadermodalbtn!: ElementRef<HTMLElement>;
+  @ViewChild('preloaderdismissmodalbtn', { static: true })
+  preloaderdismissmodalbtn!: ElementRef<HTMLElement>;
   ngOnInit() {
-    // console.log(this.myModal);
-    // this.myModal.nativeElement.appendTo(document.body).modal('show');
-    // ('#myModal').appendTo("body").modal('show')
+    let preloader = this.preloadermodalbtn.nativeElement;
+    let dismiss = this.preloaderdismissmodalbtn.nativeElement;
+    preloader.click();
 
-    this.Category.getcategories().then((res) => {
-      this.categorylist = Array.from(res);
-    });
+    this.Category.getcategories()
+      .then((res) => {
+        this.categorylist = Array.from(res);
+        dismiss.click();
+      })
+      .catch((err) => {
+        console.log(err);
+        preloader.click();
+      });
+
+    console.log('dismiss');
   }
-
+  ngAfterViewInit() {
+    let dismiss = this.preloaderdismissmodalbtn.nativeElement;
+    dismiss.click();
+  }
   onfilechange(input: any) {
     const file = input.target.files[0];
     if (file) {
@@ -128,15 +152,11 @@ export class AddserviceComponent {
     input.click();
     return false;
   }
-  @ViewChild('loadingmodalbtn', { static: true })
-  modalbtn!: ElementRef<HTMLElement>;
-  @ViewChild('closeloadingmodal', { static: true })
-  clsoemodal!: ElementRef<HTMLElement>;
 
   async addservice() {
     // let modalbtn = this.modalbtn.nativeElement;
-    // let clsoemodal = this.clsoemodal.nativeElement;
     // modalbtn.click();
+    // this.preloader.click();
     // setTimeout(() => {
     //   clsoemodal.click();
     //   console.log('closed');
@@ -146,9 +166,11 @@ export class AddserviceComponent {
     // if (this.serviceform.valid) {
     //   this.service.addservice(this.myservice);
     //   console.log('data added successfully');
+    //   modalbtn.click();
     // } else {
     //   console.log('form is invalid');
     //   // console.log();
+    //   modalbtn.click();
     // }
   }
 
