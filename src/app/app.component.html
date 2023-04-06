@@ -1,8 +1,14 @@
 
-<app-header style="position: sticky; z-index: 2"></app-header>
+<body [dir]="textDir">
+  
+  <app-header style="position: sticky; z-index: 2"></app-header>
 
-<div style="margin-top: 6rem">
-  <router-outlet></router-outlet>
-  <!-- <app-addportfoloi></app-addportfoloi> -->
-</div>
-<!-- <app-footer></app-footer> -->
+
+  <div style="margin-top: 6rem">
+    <router-outlet></router-outlet>
+    <!-- <app-addportfoloi></app-addportfoloi> -->
+  </div>
+  <app-footer></app-footer>
+
+</body>
+

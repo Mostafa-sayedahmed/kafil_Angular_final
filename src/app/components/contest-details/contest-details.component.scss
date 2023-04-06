@@ -2,16 +2,6 @@
 
 $main: #1dbf73 ;
 
-.titleContest::before {
-  content: '';
-  display: inline-block;
-  width: 9px;
-  height: 7px;
-  border-radius: 1px;
-  background-color: #1dbf73;
-  margin-top: 13px;
-}
-
 .accordion-button::after {
   margin-left: unset !important;
   margin-right: auto !important;
@@ -211,9 +201,9 @@ $main: #1dbf73 ;
     margin-bottom: 13px;
 }
 
-.step.closed .number::before{
-    content: "\f00c";
-    background-color: #1dbf73;
+.step.closed .number::before {
+    content: "🗙";
+    background-color: #dc3545;
     position: absolute;
     display: block;
     top: 0;
@@ -239,18 +229,3 @@ $main: #1dbf73 ;
     display: block;
     text-align: center;
 }
-
-
-.contestAbout{
-  background-color: #1dbf73;
-  color: #fff;
-  border-color: #dee0e1;
-  padding: 15px;
-  border-radius: 7px;
-}
-
-.price{
-  color: $main;
-  font-size: 20px;
-}
-  

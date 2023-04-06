@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
+import { collection, Firestore } from '@angular/fire/firestore';
+import { collectionData } from '@angular/fire/firestore';
+import { Iproject } from './../models/iproject';
 
-import { Firestore, collectionData } from '@angular/fire/firestore';
-import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
-import { Projects } from '../models/projects';
 import { Observable } from 'rxjs';
-
-
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
+
 
 
   constructor(private firestore: Firestore) { }
@@ -35,6 +33,7 @@ export class ProjectsService {
   //       return res;
   //   }).catch(err =>{console.log(err.message)});
   // }
+
 
 
 
