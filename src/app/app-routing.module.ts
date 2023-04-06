@@ -13,11 +13,13 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { DetailsPortfoloisComponent } from './components/portfolois/details-portfolois/details-portfolois.component'
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +33,7 @@ const routes: Routes = [
   { path: 'contests', component: ContestsComponent},
   { path: 'portfolois', component: PortfoloisComponent},
   { path: 'newportfoloi', component: AddportfoloiComponent},
+  { path: 'detailsPortfolois/:id', component: DetailsPortfoloisComponent },
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
   { path: 'home', component: HomeComponent },

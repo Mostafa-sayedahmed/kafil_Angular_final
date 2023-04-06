@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { collectionData, Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { collectionData, docData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, doc, getDocs } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Iportfolois } from '../models/iportfolois';
 
@@ -17,15 +17,20 @@ export class PortfoloisService {
     return collectionData(portfoloi, { idField: "id" }) as Observable<Iportfolois[]>
   }
 
+getportfoloi(id:any){
+  let portfoloi=doc(this.firestore, "protfolios",id)
+  return docData(portfoloi) as Observable<Iportfolois[]>
+}
 
-  async getportfolois() {
-    const querySnapshot = await getDocs(collection(this.firestore, 'protfolios'));
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, ' => ', doc.data());
-      // console.log({ uid: doc.id, data: doc.data() });
-      return doc.id, ' => ', doc.data();
-    });
-  }
+
+  // async getportfolois() {
+  //   const querySnapshot = await getDocs(collection(this.firestore, 'protfolios'));
+  //   querySnapshot.forEach((doc) => {
+  //     // console.log(doc.id, ' => ', doc.data());
+  //     // console.log({ uid: doc.id, data: doc.data() });
+  //     return doc.id, ' => ', doc.data();
+  //   });
+  // }
 
   
   addData(){
