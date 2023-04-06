@@ -17,6 +17,7 @@ import { ContestDetailsComponent } from './components/contest-details/contest-de
 import { AddContestComponent } from './components/add-contest/add-contest.component';
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +36,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'contests/:contestID', component: ContestDetailsComponent  },
   { path: 'addContest', component: AddContestComponent },
-  { path: 'addFreelancer', component: AddFreelancerComponent },
+  { path: 'addFreelancer', component: AddFreelancerComponent,canActivate:[AuthGuard] },
   { path: '**', component: NotfoundComponent},
 ];
 
