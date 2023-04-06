@@ -10,17 +10,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-freelancer.component.scss']
 })
 export class AddFreelancerComponent implements OnInit {
-  newFreelancer:Freelancer={
-    views: 0,
-    likes: 0,
-    rating: 0,
-    portfolio:0,
+
+  get userState():boolean{
+    return (localStorage.getItem("token"))?true:false;
+      }
+      userID:any="";
+     
+      
+  newFreelancer:Freelancer|any={
   } as unknown as Freelancer;
+  dataAboutUser:any={};
   path:string="";
 constructor(private service:CrudService, private fs:AngularFirestore,private router:Router){}
   ngOnInit(): void {
     
+    if(this.userState){
+       this.userID=localStorage.getItem("user")
+       const userid=JSON.parse(this.userID).uid;
+     this.fs.collection("users").doc(userid).ref.get().then((doc) => {
+      if (doc.exists) {
+       this.dataAboutUser = doc.data();
+       this.newFreelancer={
+        name:this.dataAboutUser.fullname,
+        email:this.dataAboutUser.email,
+        views:0,
+        portfolios:0,
+        likes:0,
 
+       }
+       
+      } else {
+        console.log("There is no document!");
+      }
+    })
+
+    }
   }
 
   addNewFreelancer() {

@@ -2,8 +2,10 @@
 html {
   background-color: #f1f2f2;
   font-family: "Cairo", sans-serif;
+  direction: rtl;
 }
 * {
   font-family: "Cairo", sans-serif;
+  direction: rtl;
 }
 @import '~bootstrap/dist/css/bootstrap.min.css';   

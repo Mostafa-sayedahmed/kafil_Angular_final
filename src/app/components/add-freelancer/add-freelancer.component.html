@@ -141,7 +141,7 @@
                             <div class="form-row">
                                 <div class="form-group ">
                                     <label for="inputEmail4" class="my-2">الاسم كاملاً :</label>
-                                    <input type="text" name="name" [(ngModel)]="newFreelancer.name"
+                                    <input type="text" name="name"  [(ngModel)]="newFreelancer.name"
                                         class="form-control " id="inputEmail4" placeholder=" الاسم ..."
                                         #freelancerName="ngModel" required pattern="[أ-ي \s]{3,}"
                                         [class.is-valid]="freelancerName.valid"
@@ -154,8 +154,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="inputPassword4" class="my-2">البريد الالكتروني :</label>
-                                    <input #email type="email" name="email" class="form-control" id="inputPassword4"
+                                    <label for="inputPassword4" class="my-2" >البريد الالكتروني :</label>
+                                    <input #email type="email" name="email" class="form-control" id="inputPassword4" [(ngModel)]="newFreelancer.email"
                                         placeholder="البريد الالكتروني ... " required>
                                 </div>
                             </div>
