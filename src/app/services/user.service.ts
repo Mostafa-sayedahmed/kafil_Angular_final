@@ -6,6 +6,14 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import {
+  addDoc,
+  collection,
+  getDoc,
+  getDocs,
+  getFirestore,
+  doc,
+} from 'firebase/firestore';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -50,28 +58,34 @@ export class UserService {
   }
 
   // Sign up with email/password
-  SignUp(email: string, password: string , fname : string , sname : string , rePassword : string) {
-
-    if(password == rePassword){
+  SignUp(
+    email: string,
+    password: string,
+    fname: string,
+    sname: string,
+    rePassword: string
+  ) {
+    if (password == rePassword) {
       return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then( async (result) => {
-        const user = result.user;
-       await user?.updateProfile({
-            displayName: `${fname} ${sname}` 
-        }).then(() => {
-          this.SetUserData(result.user);
-          this.router.navigate(['sign-in']);
+        .createUserWithEmailAndPassword(email, password)
+        .then(async (result) => {
+          const user = result.user;
+          await user
+            ?.updateProfile({
+              displayName: `${fname} ${sname}`,
+            })
+            .then(() => {
+              this.SetUserData(result.user);
+              this.router.navigate(['sign-in']);
+            });
         })
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
-    }else{
-      window.alert("Passwords do not match");
-      return ;
+        .catch((error) => {
+          window.alert(error.message);
+        });
+    } else {
+      window.alert('Passwords do not match');
+      return;
     }
-
   }
 
   // forget password
@@ -119,11 +133,11 @@ export class UserService {
       `users/${user.uid}`
     );
 
-    console.log(JSON.stringify(user))
+    console.log(JSON.stringify(user));
 
     const userData: User = {
       uid: user.uid,
-      fullname : user.displayName,
+      fullname: user.displayName,
       email: user.email,
       // password : user.password,
       // rePassword : user.repassword
@@ -140,5 +154,23 @@ export class UserService {
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     });
+  }
+  // getuserbyid(uid: string) {
+  //   let userdata: any;
+  //   this.afs
+  //     .collection('users')
+  //     .doc(uid)
+  //     .get()
+  //     .subscribe((user) => {
+  //       userdata = user.data();
+  //       console.log(userdata);
+
+  //       return user.data();
+  //     });
+  // }
+  async getUserbyID(id: string) {
+    const docRef = doc(getFirestore(), 'users', id);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
   }
 }

@@ -7,7 +7,7 @@
     </h5>
     <div class="left d-flex justify-content-end">
       <a href="#" class="see-all-btn" onclick="return false">
-        <button class="btn btn-light border">
+        <button class="btn btn-light border" (click)="test()">
           شاهد المزيد <i class="fas fa-chevron-left"></i>
         </button>
       </a>
@@ -27,15 +27,11 @@
         #sliderstage
         class="items d-flex gap-4 justify-content-between flex-nowrap flex-row"
       >
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
+        <app-servicecard
+          #cardRef
+          *ngFor="let item of sliderdata.items"
+          [carddata]="item"
+        ></app-servicecard>
       </div>
     </div>
   </div>

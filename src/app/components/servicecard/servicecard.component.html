@@ -7,55 +7,59 @@
 
     <title>service card</title>
   </head>
+
   <body>
     <!-- content -->
-    <div class="card">
-      <img
-        src="https://kafiil.s3.eu-central-1.amazonaws.com/media/gig_main/f2bb74e22c9ddfcc042d129bc31991c2/c/7c093af1038490a261e4e1338a39c841-medium.jpg"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body col-12">
-        <p class="card-text">
-          عمل تصميمات سوشيال ميديا احترافية تجذب العملاء .
-        </p>
-      </div>
-      <div class="service-info p-3">
-        <div class="rates d-flex justify-content-between">
-          <div class="details">
-            <span class="rate text-warning">
-              <i class="fas fa-star"></i>
-              4.8
-              <span class="text-secondary">(14)</span>
-            </span>
-            <span class="cart text-secondary">
-              <i class="fas fa-shopping-cart p-2"></i>
-              83
-            </span>
-          </div>
-          <span class="badge">موصي به</span>
+    <a routerLink="./{{ carddata.uid }}" class="text-decoration-none text-dark">
+      <div class="card">
+        <img [src]="carddata.data.mainImg" class="card-img-top" alt="..." />
+        <div class="card-body py-1 col-12">
+          <span class="card-text">
+            {{ carddata.data.title }}
+          </span>
         </div>
-      </div>
-      <div class="card-footer">
-        <div class="down d-flex justify-content-between align-items-center">
-          <div class="owner d-flex justify-content-between">
-            <a href="https://kafiil.com/u/minutesuae" class="img">
-              <span class="status"></span>
-              <img
-                src="https://kafiil.com/storage/images/users/43a056dd-9d93-481e-9e52-68da2a4cfb52.jpg"
-                alt=""
-              />
-            </a>
-            <div class="owner-info ps-2 d-flex justify-content-between">
-              <a href="https://kafiil.com/u/minutesuae" class="name">
-                Deyaa Gomaa
-              </a>
-              <span class="type"> </span>
+        <div class="service-info px-3 py-1">
+          <div class="rates d-flex justify-content-between">
+            <div class="details">
+              <span class="rate text-warning">
+                <i class="fas fa-star"></i>
+                {{ carddata.data.rating }}
+                <span class="text-secondary">(14)</span>
+              </span>
+              <span class="cart text-secondary">
+                <i class="fas fa-shopping-cart p-2"></i>
+                {{ carddata.data.orderscount }}
+              </span>
             </div>
+            <span class="badge" *ngIf="carddata.data.isfeatured == 'true'"
+              >موصي به</span
+            >
           </div>
-          <span class="price text-success fw-bold"> $10 </span>
+        </div>
+        <div class="card-footer">
+          <div class="down d-flex justify-content-between align-items-center">
+            <div class="owner d-flex justify-content-between">
+              <a href="https://kafiil.com/u/minutesuae" class="img">
+                <span class="status"></span>
+                <img
+                  src="https://kafiil.com/storage/images/users/43a056dd-9d93-481e-9e52-68da2a4cfb52.jpg"
+                  alt=""
+                />
+              </a>
+              <div class="owner-info ps-2 d-flex justify-content-between">
+                <a href="https://kafiil.com/u/minutesuae" class="name">
+                  <!-- {{ user | json }} -->
+                  {{ userinfo.fullname }}
+                </a>
+                <span class="type"> </span>
+              </div>
+            </div>
+            <span class="price text-success fw-bold">
+              {{ carddata.data.price }}$
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   </body>
 </html>

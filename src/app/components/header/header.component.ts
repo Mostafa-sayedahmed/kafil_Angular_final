@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { GetservicesService } from 'src/app/services/getservices.service';
+import { UserService } from 'src/app/services/user.service';
 
 import { TranslateService } from '@ngx-translate/core';
 @Component({
@@ -7,14 +8,46 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
 
-  constructor( private translate: TranslateService) {
+export class HeaderComponent implements OnInit, DoCheck {
+  user = {
+    apiKey: '',
+    appName: '',
+    createdAt: '',
+    displayName: '  ',
+    email: '',
+    emailVerified: '',
+    isAnonymous: '',
+    lastLoginAt: '',
+    photoURL: '',
+    providerData: [{}],
+    stsTokenManager: {
+      refreshToken: '',
+      accessToken: '',
+      expirationTime: '',
+    },
+    uid: '',
+  };
+  username = '';
+  photo = '';
+  constructor(private userservice: UserService,private translate: TranslateService) {
     translate.setDefaultLang('ar');
+  
   }
-
-  changeLang(lang: string) {
+  ngDoCheck(): void {
+    this.user = JSON.parse(localStorage.getItem('user')!);
+    // console.log(this.user.displayName);
+  }
+  ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user')!);
+    // console.log(this.user.displayName);
+  }
+  logout() {
+    this.userservice.SignOut();
+    
+     changeLang(lang: string) {
     this.translate.use(lang);
     sessionStorage.setItem('lang', lang);
-  }
+    
+
 }
