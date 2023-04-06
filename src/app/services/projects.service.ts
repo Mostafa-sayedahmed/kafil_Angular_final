@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { collection, Firestore } from '@angular/fire/firestore';
 import { collectionData } from '@angular/fire/firestore';
-import { Iproject } from './../models/iproject';
+
 
 import { Observable } from 'rxjs';
+import { Project } from 'src/app/models/projects';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,12 @@ export class ProjectsService {
 
   getallprojects(){
     let project = collection(this.firestore, "projects")
-    return collectionData(project, { idField: "id" }) as Observable<Projects[]>
+    return collectionData(project, { idField: "id" }) as Observable<Project[]>
   }
 
 
    getprojecetById(){
-    
+
    }
 
   // // addprojec
