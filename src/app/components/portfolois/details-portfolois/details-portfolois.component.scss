@@ -1,4 +1,4 @@
-.container{
+body{
     background-color: #f1f2f2 !important;
 }
 
@@ -13,6 +13,9 @@
     margin-bottom: 15px;
   }
   
+  .button-shere{
+    padding: 0 !important;
+  }
   .accordion-button::after {
     padding: 2px;
     margin-left: unset !important;
@@ -33,6 +36,24 @@
     margin-bottom: 15px;
   }
   
+  .side-icon i {
+    color: #707070;
+}
+
+.side-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #707070;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #dee0e1;
+}
+
   .info-table{
     font-size: 16px;
     margin: 0;
@@ -47,6 +68,11 @@
 
   }
 
+  .ownerImg{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+  }
   .block {
     background-color: #fff;
     border-radius: 8px;
@@ -68,6 +94,15 @@
 .block .block-head .title {
     color: #444152;
 }
+.black-anchor:visited {
+  color: #000;
+}
+.black-anchor {
+  color: #000;
+}
+a{
+  text-decoration: none;
+}
 
 .block .block-head .title {
     font-weight: 700;
@@ -88,6 +123,36 @@
     transform: translate(-50%,-50%) rotate(-90deg);
 }
 
+.user-badge {
+  color: #1dbf73;
+  background-color: #f1f1f1;
+  height: 40px;
+  width: 45px;
+  box-shadow: 0 4px 7px #e6e6e6;
+  border-radius: 4px;
+  margin: 5px;
+  font-size: 25px;
+  padding: 8px;
+}
+
+.theme-btn {
+  color: #fff;
+  background-color: #1dbf73;
+
+}
+.theme-btn {
+  font-size: 15px!important;
+  padding: 8px;
+}
+
+.theme-btn {
+  padding: 3px 17px;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  white-space: nowrap;
+}
 
 .user-info-column .name {
     font-size: 18px;
