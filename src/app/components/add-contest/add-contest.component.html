@@ -7,14 +7,6 @@
            اضف مسابقة
           </p>
         </div>
-        <button
-          class="btn btn-outline-warning float-start m-3"
-          (click)="restoreDraft()"
-          *ngIf="contestDraft != null"
-        >
-          استرجاع المسودة<i class="fa-solid fa-arrow-rotate-left px-2"></i>
-      </button>
-        <div class="clearfix"></div>
         <div class="p-3">
           <form action="" [formGroup]="contestform">
 
@@ -27,11 +19,7 @@
                 id="title"
                 name="title"
                 placeholder="العنوان"
-                [class.is-valid]="contestform.get('title')?.valid"
-                [class.is-invalid]="
-                  contestform.get('title')?.invalid &&
-                  contestform.get('title')?.dirty
-                "
+                required
               />
             </div>
 
@@ -44,11 +32,7 @@
                 formControlName="description"
                 rows="7"
                 placeholder="الوصف"
-                [class.is-valid]="contestform.get('description')?.valid"
-                [class.is-invalid]="
-                  contestform.get('description')?.invalid &&
-                  contestform.get('description')?.dirty
-                "
+                required
               ></textarea>
             </div>
 
@@ -61,6 +45,7 @@
                   formControlName="conditions"
                   rows="7"
                   placeholder="الشروط"
+                  required
                 ></textarea>
               </div>
 
@@ -71,11 +56,6 @@
                       id="winnersNum"
                       class="form-select"
                       formControlName="winnersNum"
-                      [class.is-valid]="contestform.get('winnersNum')?.valid"
-                      [class.is-invalid]="
-                        contestform.get('winnersNum')?.invalid &&
-                        contestform.get('winnersNum')?.dirty
-                      "
                     >
                       <option selected disabled>اختر عدد الفائزين</option>
                       <option value="فائز واحد">فائز واحد </option>
@@ -92,11 +72,7 @@
                     id="firstWinner"
                     name="firstWinner"
                     placeholder="قيمة الجائزة"
-                    [class.is-valid]="contestform.get('firstWinner')?.valid"
-                    [class.is-invalid]="
-                      contestform.get('firstWinner')?.invalid &&
-                      contestform.get('firstWinner')?.dirty
-                    "
+                    required
                 />
               </div>
             </div>
@@ -108,11 +84,6 @@
                       id="contestDuration"
                       class="form-select"
                       formControlName="contestDuration"
-                      [class.is-valid]="contestform.get('contestDuration')?.valid"
-                      [class.is-invalid]="
-                        contestform.get('contestDuration')?.invalid &&
-                        contestform.get('contestDuration')?.dirty
-                      "
                     >
                       <option selected disabled>اختر مدة المسابقة</option>
                       <option value="شهر">شهر</option>
@@ -126,11 +97,6 @@
                   id="deliveryDuration"
                   class="form-select"
                   formControlName="deliveryDuration"
-                  [class.is-valid]="contestform.get('deliveryDuration')?.valid"
-                  [class.is-invalid]="
-                    contestform.get('deliveryDuration')?.invalid &&
-                    contestform.get('deliveryDuration')?.dirty
-                  "
                 >
                     <option selected disabled>اختر مدة التسليم</option>
                     <option value="شهر">شهر</option>
@@ -143,15 +109,9 @@
             <div class="row">
                 <div class="col">
                     <label for="sectionId" class="form-label">القسم</label>
-                      <select name="sectionId" id="sectionId" formControlName="sectionId" class="form-control"
-                      [class.is-valid]="contestform.get('sectionId')?.valid"
-                      [class.is-invalid]="
-                        contestform.get('sectionId')?.invalid &&
-                        contestform.get('sectionId')?.dirty
-                      "
-                      >
+                      <select name="sectionId" id="sectionId" formControlName="selectedSectionID" class="form-control">
                           <option value="0" selected disabled >اختر القسم</option>
-                          <option *ngFor="let sect of contestSections" [value]="sect.id" selectedSectionID="sect.id">{{sect.name}}</option>
+                          <option *ngFor="let sect of contestSections" [value]="sect.id">{{sect.name}}</option>
                       </select>
                   </div>
 
@@ -163,7 +123,8 @@
                         formControlName="skills"
                         id="skills"
                         name="skills"
-                        placeholder="المهارات"  
+                        placeholder="المهارات"
+                        required
                     />
                   </div>
 
@@ -176,11 +137,6 @@
               (click)="addContest()"
             >
               اضف مسابقة
-            </button>
-
-            <button class="btn btn-outline-dark" (click)="saveDraft()">
-              احفظ كمسودة
-              <i class="fa-regular fa-floppy-disk px-2"></i>
             </button>
           </form>
         </div>
