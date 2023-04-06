@@ -59,13 +59,11 @@ export class AddserviceComponent {
     this.addons.removeAt(index);
     return false;
   }
-
   saveDraft() {
     let data = JSON.stringify(this.serviceform.value);
     sessionStorage.setItem('serviceDraft', data);
     this.serviceDraft = sessionStorage.getItem('serviceDraft');
   }
-
   restoreDraft() {
     const draftAddons = this.serviceDraft['addons'];
     for (let item of draftAddons) {
@@ -93,5 +91,4 @@ export class AddserviceComponent {
     });
     console.log(draftAddons);
   }
-  
 }
