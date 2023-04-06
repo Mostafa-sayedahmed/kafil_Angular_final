@@ -267,7 +267,9 @@ export class ServicesComponent {
       });
     await this.service.getservices().then((results) => {
       this.serviceslist = results;
+      this.serviceslist = [...new Set(this.serviceslist)];
     });
+
     for (let service of this.serviceslist) {
       for (let slider of this.sliders) {
         if (service.data.category === slider.category) {

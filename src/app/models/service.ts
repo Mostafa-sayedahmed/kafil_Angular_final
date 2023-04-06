@@ -11,8 +11,8 @@ export interface Service {
   addons?: Addon[];
   isfeatured?: boolean;
   isaproved?: boolean;
-  rating?: 0;
-  orderscount?: 0;
+  rating?: number;
+  orderscount?: number;
 }
 
 export interface Addon {

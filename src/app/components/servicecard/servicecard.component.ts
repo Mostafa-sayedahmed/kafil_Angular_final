@@ -1,11 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-servicecard',
   templateUrl: './servicecard.component.html',
   styleUrls: ['./servicecard.component.scss'],
 })
-export class ServicecardComponent {
+export class ServicecardComponent implements OnChanges {
+  constructor(private users: UserService) {}
   @Input() carddata = {
     uid: '',
     data: {
@@ -31,5 +33,30 @@ export class ServicecardComponent {
       orderscount: 0,
     },
   };
-  ngOnInit() {}
+  userinfo = {
+    uid: '',
+    fullname: '',
+    email: '',
+    imgUrl: '',
+  };
+  data: any;
+  ngOnChanges(changes: SimpleChanges) {}
+  ngOnInit() {
+    this.users.getUserbyID(this.carddata.data.userid).then((user) => {
+      this.userinfo = user as {
+        uid: '';
+        fullname: '';
+        email: '';
+        imgUrl: '';
+      };
+      console.log(this.userinfo);
+    });
+
+    // console.log();
+    // this.users.getuserbyid(this.carddata.data.userid).subscribe((user) => {
+    //   this.data = user.data();
+    //   console.log(this.data);
+    //   console.log(user.data());
+    // });
+  }
 }
