@@ -77,6 +77,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+        },
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
