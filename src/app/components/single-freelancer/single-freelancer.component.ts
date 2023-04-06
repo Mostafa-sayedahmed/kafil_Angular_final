@@ -10,45 +10,37 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./single-freelancer.component.scss']
 })
 export class SingleFreelancerComponent implements OnInit, OnChanges {
+  spinner: boolean = true;
   // Freelancer:Freelancer |undefined|void =undefined;
   Freelancer: any = {}
-  constructor(private service: CrudService, private activatedRoute: ActivatedRoute, private fs: AngularFirestore ,private router:Router) {
+  constructor(private service: CrudService, private activatedRoute: ActivatedRoute, private fs: AngularFirestore, private router: Router) {
 
   }
   ngOnChanges(changes: SimpleChanges): void {
 
   }
   ngOnInit(): void {
-    //  let freelancerID=this.activatedRoute.snapshot.paramMap.get('fid');
-    //   console.log(freelancerID);
-
-
-
-
     let freelancerID: string = (this.activatedRoute.snapshot.paramMap.get('fid')) ? String(this.activatedRoute.snapshot.paramMap.get('fid')) : "";
+
     this.fs.collection("Freelancers").doc(freelancerID).ref.get().then((doc) => {
       if (doc.exists) {
-        console.log(doc.data());
+        this.spinner = false;
         this.Freelancer = doc.data();
-        
-
-
       } else {
         console.log("There is no document!");
       }
     })
 
-
-
-
-
   }
 
-  backToFreelancers(){
+  backToFreelancers() {
     this.router.navigate(["/freelancers"])
   }
-  backToHomepage(){
+  backToHomepage() {
     this.router.navigate(["/home"])
+  }
+  goToAddFreelancer() {
+    this.router.navigate(['addFreelancer']);
   }
 
 }

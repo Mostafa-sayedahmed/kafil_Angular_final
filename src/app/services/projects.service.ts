@@ -10,13 +10,35 @@ import { Observable } from 'rxjs';
 })
 export class ProjectsService {
 
-  projects : Iproject[] = []
+
+
   constructor(private firestore: Firestore) { }
-  
-  getProjects() {
+  // getdataofprojects
+
+  getallprojects(){
     let project = collection(this.firestore, "projects")
-    return collectionData(project, { idField: "id" }) as Observable<Iproject[]>
-  }
+    return collectionData(project, { idField: "id" }) as Observable<Projects[]>
+  }
+
+
+   getprojecetById(){
+    
+   }
+
+  // // addprojec
+  // AddProjects(Projects:Projectss){
+  //   let projects = collection(this.firestore, 'projects');
+  //   addDoc(projects, proj)
+  //   .then( (res) =>{
+  //       return res;
+  //   }).catch(err =>{console.log(err.message)});
+  // }
+
+
+
+
+
+
 
 }
 

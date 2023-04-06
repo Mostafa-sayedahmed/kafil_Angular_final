@@ -91,7 +91,7 @@
                   المشاريع
                 </a>
               </li>
-              <li  class="headerlistitem">
+              <li class="headerlistitem">
                 <a href="/portfolois" class="link active">
                   <i class="far fa-image"></i>
                   الأعمال
@@ -127,12 +127,82 @@
               />
             </form>
             <div class="userlogin d-flex justify-content-between gap-3">
-              <a href="/sign-in">
-                <button class="btn btn-light px-4 border">دخول</button>
-              </a>
-              <a href="/register">
-                <button class="btn btn-register border">حساب جديد</button>
-              </a>
+              <ng-container *ngIf="user !== null">
+                <div
+                  class="d-flex allign-items-center justify-content-between flex-grow-1"
+                >
+                  <i
+                    class="fa-regular fa-envelope align-self-center mx-2 p-2 bg-dark-subtle rounded-5"
+                  ></i>
+                  <i
+                    class="fa-regular fa-bell align-self-center mx-2 p-2 bg-dark-subtle rounded-5"
+                  ></i>
+
+                  <div class="dropdown">
+                    <a
+                      class="text-decoration-none text-black-50"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <img
+                        [src]="user.photoURL"
+                        class="user-avatar mx-2"
+                        alt=""
+                      />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu">
+                      <li>
+                        <a
+                          class="dropdown-item active bg-success rounded py-2"
+                          href="#"
+                          >{{ user.displayName }}</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          routerLink="/createservice"
+                          >اضافة خدمة</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          routerLink="/addContest"
+                          >اضافة مسابقة</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          routerLink="/newportfoloi"
+                          >اضافة اعمال</a
+                        >
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider justify-content-between" />
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          (click)="logout()"
+                        >
+                          <span> تسجيل الخروج </span>
+                          <i class="fa-solid fa-power-off"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="user == null">
+                <a href="/sign-in">
+                  <button class="btn btn-light px-4 border">دخول</button>
+                </a>
+                <a href="/register">
+                  <button class="btn btn-register border">حساب جديد</button>
+                </a>
+              </ng-container>
             </div>
             <div class="language mx-2">
               <button
@@ -146,7 +216,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li>
-                  <button class="dropdown-item" type="button">
+                  <button (click)="changeLang('ar')" class="dropdown-item" type="button">
                     العرية<img
                       class="lang-img"
                       src="https://cdn-icons-png.flaticon.com/512/6211/6211614.png"
@@ -155,7 +225,7 @@
                   </button>
                 </li>
                 <li>
-                  <button class="dropdown-item" type="button">
+                  <button (click)="changeLang('en')" class="dropdown-item" type="button">
                     English
                     <img
                       class="lang-img"

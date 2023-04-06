@@ -6,30 +6,30 @@ import { PortfoloisService } from 'src/app/services/portfolois.service';
 
 @Component({
   selector: 'app-addportfoloi',
-  templateUrl: './addportfoloi.component.html',
+  templateUrl:'./addportfoloi.component.html',
   styleUrls: ['./addportfoloi.component.scss']
 })
 export class AddportfoloiComponent {
 
-  newportfolois:Iportfolois = {} as Iportfolois 
+  newportfolois:Iportfolois = {} as Iportfolois
   constructor(private PS:PortfoloisService,private firestore:Firestore){}
   ngOnInit(){
-   
-    
+
+
  }
 
 
  
  addData(){
   console.log("ha");
-  
+
   const collectionInstance=collection(this.firestore,'protfolios');
   addDoc(collectionInstance,this.newportfolois).then(()=>{
     console.log('data seved');
-    
+
   }).catch((err)=>{
     console.log("no");
-    
+
   })
     // this.PS.addData()  .subscribe((data)=>{
     //   // console.log("Contests",data);
