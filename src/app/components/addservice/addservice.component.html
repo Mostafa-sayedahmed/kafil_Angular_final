@@ -25,10 +25,10 @@
             استرجاع المسودة<i class="fa-solid fa-arrow-rotate-left px-2"></i>
           </button>
         </div>
-        {{ serviceform.value | json }}
+        <!-- {{ serviceform.value | json }}  -->
         <div class="add-service-body p-3">
           <form action="" [formGroup]="serviceform" (ngSubmit)="addservice()">
-            title:{{ serviceform.get("title")?.errors | json }}
+            <!-- title:{{ serviceform.get("title")?.errors | json }}
             description:
             {{ serviceform.get("description")?.errors | json }}
             category:
@@ -40,7 +40,7 @@
             deliveryDuration:
             {{ serviceform.get("deliveryDuration")?.errors | json }}
             buyerinstructions :
-            {{ serviceform.get("buyerinstructions")?.errors | json }}
+            {{ serviceform.get("buyerinstructions")?.errors | json }} -->
 
             <div class="mb-3">
               <label for="title" class="form-label">العنوان</label>

@@ -54,7 +54,7 @@ export class AddserviceComponent {
   @ViewChild('myModal', { static: true }) myModal!: ElementRef;
 
   ngOnInit() {
-    console.log(this.myModal);
+    // console.log(this.myModal);
     // this.myModal.nativeElement.appendTo(document.body).modal('show');
     // ('#myModal').appendTo("body").modal('show')
 
