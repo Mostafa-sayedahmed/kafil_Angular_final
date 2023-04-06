@@ -6,6 +6,19 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
+import { AddprojectComponent } from './components/addproject/addproject.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { HomeComponent } from './home/home.component';
+import { AddserviceComponent } from './components/addservice/addservice.component';
+import { ContestsComponent } from './components/contests/contests.component';
+import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
+import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
+import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
+import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
+import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
+import { AddContestComponent } from './components/add-contest/add-contest.component';
+import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 
 const routes: Routes = [
@@ -26,7 +39,7 @@ const routes: Routes = [
   { path: 'newportfoloi', component: AddportfoloiComponent},
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
-  { path: 'home', component: HomeComponent },
+
   { path: 'contests/:contestID', component: ContestDetailsComponent  },
   { path: 'addContest', component: AddContestComponent },
   { path: 'addFreelancer', component: AddFreelancerComponent },

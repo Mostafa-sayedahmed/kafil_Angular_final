@@ -16,17 +16,16 @@ export class ProjectsService {
 
   constructor(private firestore: Firestore) { }
   // getdataofprojects
-  //  async GetProjects(){
-  //     const querySnapshot = await getDocs(collection(this.firestore, 'projects'));
-  //     querySnapshot.forEach((res)=>{
-  //       console.log(res);
-  //       return  res.data();
-  //     })
-  //   }
+
   getallprojects(){
     let project = collection(this.firestore, "projects")
     return collectionData(project, { idField: "id" }) as Observable<Projects[]>
   }
+
+
+   getprojecetById(){
+    
+   }
 
   // // addprojec
   // AddProjects(Projects:Projectss){
@@ -37,9 +36,9 @@ export class ProjectsService {
   //   }).catch(err =>{console.log(err.message)});
   // }
 
-  projects : Iproject[] = []
 
-  
+
+
 
 
 }
