@@ -49,23 +49,40 @@
             <img
               src="assets/images/uploading.gif"
               alt="uploading "
-              style="width: 400px"
+              style="width: 400px; height: 200px; object-fit: cover"
             />
+            <p>جاري رفع الملفات</p>
             برجاء الانتظار ...!
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Understood</button>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full screen modal -->
+    <div
+      class="modal fade"
+      id="prelodader"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="prelodaderLabel"
+      aria-hidden="true"
+      #loadingmodal
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div
+            class="modal-body d-flex flex-column align-items-center justify-content-center"
+          >
+            <img src="assets/images/preloader.gif" alt="uploading " />
+            <!-- <p>جاري تحميل الصفحة</p>
+            برجاء الانتظار ...! -->
           </div>
         </div>
       </div>
     </div>
+
     <app-root></app-root>
   </body>
 </html>
