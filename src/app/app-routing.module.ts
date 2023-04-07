@@ -19,6 +19,7 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
 import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,6 +45,8 @@ const routes: Routes = [
   { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
   { path: 'home', component: HomeComponent },
+
+  { path: 'projects', component: ProjectsComponent },
   { path: 'contests/:contestID', component: ContestDetailsComponent },
   {
     path: 'addContest',
@@ -56,6 +59,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: '**', component: NotfoundComponent },
+
 ];
 
 @NgModule({
