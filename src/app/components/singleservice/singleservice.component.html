@@ -54,12 +54,12 @@
         <div class="col-12 col-xl-8">
           <div class="service-sec" id="service-sec">
             <div class="service-head d-flex justify-content-between">
-              <div class="service-title">
+              <div class="service-title fw-bold fs-5">
                 {{ myservice.title }}
                 <p class="title-font fw-bold mb-10"></p>
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb page-inner-breadcrumb small-breadcrumb">
-                    <li class="breadcrumb-item">
+                    <li class="breadcrumb-item fs-6 fw-normal">
                       <a style="color: #505050" href="#">
                         {{ myservice.category }}
                       </a>
@@ -72,12 +72,24 @@
               </div>
               <div class="service-rating">
                 <div class="rate-view">
+                  <i
+                    class="fas fa-star star-active"
+                    *ngFor="
+                      let item of [].constructor(myservice.rating);
+                      let i = index
+                    "
+                  ></i>
+                  <i
+                    class="fas fa-star text-light-emphasis"
+                    *ngFor="
+                      let item of [].constructor(5 - myservice.rating!);
+                      let i = index
+                    "
+                  ></i>
+                  <!--<i class="fas fa-star star-active"></i>
                   <i class="fas fa-star star-active"></i>
-                  <i class="fas fa-star star-active"></i>
-                  <i class="fas fa-star star-active"></i>
-                  <i class="fas fa-star star-active"></i>
-                  <i class="fas fa-star star-active"></i>
-                  <span class="rate-range"> 5.0 </span>
+                  <i class="fas fa-star star-active"></i> -->
+                  <span class="rate-range"> {{ myservice.rating }}.0 </span>
                   <span class="text-small">(15)</span>
                 </div>
               </div>
