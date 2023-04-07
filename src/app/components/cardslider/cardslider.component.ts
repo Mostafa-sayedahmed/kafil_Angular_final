@@ -5,6 +5,9 @@ import {
   QueryList,
   ViewChildren,
   Input,
+  OnChanges,
+  SimpleChanges,
+  DoCheck,
 } from '@angular/core';
 import { ServicecardComponent } from '../servicecard/servicecard.component';
 
@@ -13,7 +16,7 @@ import { ServicecardComponent } from '../servicecard/servicecard.component';
   templateUrl: './cardslider.component.html',
   styleUrls: ['./cardslider.component.scss'],
 })
-export class CardsliderComponent {
+export class CardsliderComponent implements DoCheck {
   @ViewChild('sliderstage', { static: true }) sliderstage?: ElementRef;
 
   @ViewChildren('cardRef') servicecard!: QueryList<ServicecardComponent>;
@@ -25,24 +28,52 @@ export class CardsliderComponent {
   @Input() sliderdata = {
     name: '',
     link: '',
-    items: [],
+    items: [
+      {
+        uid: '',
+        data: {
+          userid: '',
+          title: '',
+          description: '',
+          category: '',
+          price: '',
+          mainImg: '',
+          imgs: [],
+          deliveryDuration: '',
+          buyerinstructions: '',
+          addons: [
+            {
+              addonTitle: '',
+              addonPrice: 0,
+              addonDeliveryDuration: '',
+            },
+          ],
+          isfeatured: '',
+          isaproved: '',
+          rating: 0,
+          orderscount: 0,
+        },
+      },
+    ],
   };
-  ngAfterViewInit() {
-    this.totalcards = this.servicecard.toArray().length;
-    console.log(window.innerWidth);
-    console.log(this.sliderdata.name);
+  ngOnInit() {
+    this.sliderdata.items.shift();
+  }
 
-    console.log(this.totalcards);
+  ngDoCheck(): void {
+    // console.log('change detection');
+    // this.totalcards = this.servicecard.toArray().length;
+    // // console.log(this.totalcards);
+    this.sliderdata.items.length;
+
     if (window.innerWidth < 500) {
-      this.totalsteps = this.totalcards;
-      console.log('Total steps: ' + this.totalsteps);
+      this.totalsteps = this.sliderdata.items.length;
+      // console.log('Total steps: ' + this.totalsteps);
     } else {
       if (this.totalcards < 8) {
         this.totalsteps = Math.round(this.totalcards / 2);
-        console.log('Total steps: ' + this.totalsteps);
       } else {
         this.totalsteps = Math.round(this.totalcards / 2) + 1;
-        console.log('Total steps: ' + this.totalsteps);
       }
     }
   }

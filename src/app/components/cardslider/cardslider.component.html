@@ -27,15 +27,11 @@
         #sliderstage
         class="items d-flex gap-4 justify-content-between flex-nowrap flex-row"
       >
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
-        <app-servicecard #cardRef></app-servicecard>
+        <app-servicecard
+          #cardRef
+          *ngFor="let item of sliderdata.items"
+          [carddata]="item"
+        ></app-servicecard>
       </div>
     </div>
   </div>
