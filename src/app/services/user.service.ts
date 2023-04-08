@@ -129,7 +129,7 @@ export class UserService {
       fullname : user.displayName,
       imgUrl: user.photoURL,
       email: user.email,
-      isAdmin: user.isAdmin
+      isAdmin: false
       // password : user.password,
       // rePassword : user.repassword
     };
