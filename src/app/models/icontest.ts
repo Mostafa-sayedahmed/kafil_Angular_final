@@ -13,6 +13,7 @@ export interface Icontest {
     firstWinner:string,
     skills:string,
     completed:boolean,
+    accepted:boolean,
     Posts?:string,
     Views?:string,
     comment?:string,
