@@ -3,5 +3,6 @@ export interface User {
     fullname:string,
     imgUrl:string,
     email:string,
+    isAdmin: boolean
     // rePassword:string
 }
