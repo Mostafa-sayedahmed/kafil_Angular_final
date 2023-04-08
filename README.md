@@ -14,10 +14,21 @@ single service page ----------> mostafa || http://bit.ly/3HJGHXG
 freelancers ----------> Omar || https://kafiil.com/freelancers
 portfolios ----------> bassam || https://kafiil.com/portfolios
 projects ----------> ahmed || https://kafiil.com/projects
-contests ----------> esraa || https://kafiil.com/contests
+contests / single contest / add contest ----------> esraa || https://kafiil.com/contests
 single project ----------> esraa || http://bit.ly/3XN3iZ3
 
 ////////////////////status////////////////
+
+
+///////////// Esraa Mokhtar ////////////
+in Desgin:
+contests / single contest / add contest / single project / forget Password
+in function:
+Login / register / forget password / contest / single contest / add contest
+
+///////////////////////////////////////
+
+
 
 -building components ----------------
 
