@@ -139,6 +139,7 @@ export class UserService {
       uid: user.uid,
       fullname: user.displayName,
       email: user.email,
+      isAdmin: false
       // password : user.password,
       // rePassword : user.repassword
     };
