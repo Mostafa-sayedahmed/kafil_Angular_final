@@ -31,11 +31,7 @@ export class AddportfoloiComponent {
     console.log("no");
 
   })
-    // this.PS.addData()  .subscribe((data)=>{
-    //   // console.log("Contests",data);
-    //   this.contest = data;
-    // })
-
+   
 }
 
 }
