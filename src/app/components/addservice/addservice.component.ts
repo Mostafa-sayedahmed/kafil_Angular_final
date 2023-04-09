@@ -154,24 +154,20 @@ export class AddserviceComponent implements OnInit, AfterViewInit {
   }
 
   async addservice() {
-    // let modalbtn = this.modalbtn.nativeElement;
-    // modalbtn.click();
-    // this.preloader.click();
-    // setTimeout(() => {
-    //   clsoemodal.click();
-    //   console.log('closed');
-    // }, 2000);
-    // console.log(this.file);
-    // await this.fillmyservice();
-    // if (this.serviceform.valid) {
-    //   this.service.addservice(this.myservice);
-    //   console.log('data added successfully');
-    //   modalbtn.click();
-    // } else {
-    //   console.log('form is invalid');
-    //   // console.log();
-    //   modalbtn.click();
-    // }
+    let modalbtn = this.modalbtn.nativeElement;
+    modalbtn.click();
+
+    await this.fillmyservice();
+    if (this.serviceform.valid) {
+      this.service.addservice(this.myservice);
+      console.log('data added successfully');
+      modalbtn.click();
+      this.serviceform.reset();
+    } else {
+      console.log('form is invalid');
+      // console.log();
+      modalbtn.click();
+    }
   }
 
   get addons() {

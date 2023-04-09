@@ -1,10 +1,14 @@
-export interface Iproject {
-    img?:string ,
-    text:string, 
-    hintText:string,
-    work:string,
-    name:string,
-    time:string,
-    parag:string
+export interface project {
+  Averageoffers:string ,
+  budget:string,
+  discription:string,
+  durationproject:string,
+  img:string,
+  numberoffers:string,
+  offers:string,
+  personName:string,
+  publishData:string,
+  time:string,
+  title:string,
 
 }

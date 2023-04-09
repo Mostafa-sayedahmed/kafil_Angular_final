@@ -64,12 +64,15 @@ export class CardsliderComponent implements DoCheck {
     // console.log('change detection');
     // this.totalcards = this.servicecard.toArray().length;
     // // console.log(this.totalcards);
-    this.sliderdata.items.length;
 
     if (window.innerWidth < 500) {
       this.totalsteps = this.sliderdata.items.length;
       // console.log('Total steps: ' + this.totalsteps);
     } else {
+      this.totalcards =
+        this.sliderdata.items.length > 4
+          ? (this.totalcards = this.sliderdata.items.length)
+          : 0;
       if (this.totalcards < 8) {
         this.totalsteps = Math.round(this.totalcards / 2);
       } else {
