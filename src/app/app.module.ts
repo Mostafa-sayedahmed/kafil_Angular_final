@@ -17,14 +17,10 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
-
-
- import { ProjectsComponent } from './components/projects/projects.component';
- import { AddprojectComponent } from './components/addproject/addproject.component';
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ContestsComponent } from './components/contests/contests.component';
-import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
+// import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
 import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -41,8 +37,6 @@ import { AddFreelancerComponent } from './components/add-freelancer/add-freelanc
 import { HomeComponent } from './home/home.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,10 +51,10 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     RegisterComponent,
     AddserviceComponent,
     ContestsComponent,
-    ProjectsDetailsComponent,
+    // ProjectsDetailsComponent,
     SingleFreelancerComponent,
     NotfoundComponent,
-    FooterComponent,
+
     SidebarComponent,
     PortfoloisComponent,
     AddportfoloiComponent,
@@ -91,10 +85,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
         useFactory: (http: HttpClient) => {
           return new TranslateHttpLoader(http, './assets/i18n/', '.json');
         },
-        deps: [HttpClient]
-      }
-    })
-
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
