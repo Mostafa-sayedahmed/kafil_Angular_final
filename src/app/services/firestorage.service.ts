@@ -16,10 +16,13 @@ export class FirestorageService {
       .upload(this.imagesRef, file)
       .then(async (response) => {
         url = await response.ref.getDownloadURL();
+        let progress = (await response.task).bytesTransferred;
+        console.log(progress);
       })
       .catch((error) => {
         console.log(error);
       });
+
     return url;
   }
 }

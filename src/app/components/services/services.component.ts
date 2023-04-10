@@ -1,4 +1,12 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { GetservicesService } from 'src/app/services/getservices.service';
 import { Service } from '../../models/service';
@@ -8,7 +16,7 @@ import { Service } from '../../models/service';
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
 })
-export class ServicesComponent {
+export class ServicesComponent implements OnInit, DoCheck {
   hidden = true;
   showcount = 3;
   searchtext = '';
@@ -19,6 +27,11 @@ export class ServicesComponent {
     public service: GetservicesService,
     public category: CategoriesService
   ) {}
+  ngDoCheck(): void {}
+  @ViewChild('preloadermodalbtn', { static: true })
+  preloadermodalbtn!: ElementRef<HTMLElement>;
+  @ViewChild('preloaderdismissmodalbtn', { static: true })
+  preloaderdismissmodalbtn!: ElementRef<HTMLElement>;
 
   // @ViewChildren('categorybtn') categorybtn: QueryList<ElementRef> | undefined;
   categriesList = [
@@ -251,6 +264,11 @@ export class ServicesComponent {
     },
   ];
   async ngOnInit() {
+    let preloader = this.preloadermodalbtn.nativeElement;
+    let dismiss = this.preloaderdismissmodalbtn.nativeElement;
+
+    preloader.click();
+
     if (window.innerWidth < 770) {
       this.showcount = this.showcountSM;
     } else {
@@ -268,6 +286,7 @@ export class ServicesComponent {
     await this.service.getservices().then((results) => {
       this.serviceslist = results;
       this.serviceslist = [...new Set(this.serviceslist)];
+      preloader.click();
     });
 
     for (let service of this.serviceslist) {
@@ -277,6 +296,7 @@ export class ServicesComponent {
         }
       }
     }
+
     // console.log(this.sliders);
 
     // for (let slider of this.sliders) {

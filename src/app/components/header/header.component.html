@@ -74,7 +74,7 @@
             <div class="borderseprator"></div>
             <ul class="nav-list d-flex justify-content-between">
               <li class="headerlistitem">
-                <a routerLink="/services" class="link active">
+                <a href="/services" class="link active">
                   <i class="fas fa-shopping-cart"></i>
                   الخدمات
                 </a>
@@ -161,7 +161,7 @@
                       <li>
                         <a
                           class="dropdown-item d-flex justify-content-between"
-                          routerLink="/createservice"
+                          href="/createservice"
                           >اضافة خدمة</a
                         >
                       </li>
@@ -216,7 +216,11 @@
               </button>
               <ul class="dropdown-menu">
                 <li>
-                  <button (click)="changeLang('ar')" class="dropdown-item" type="button">
+                  <button
+                    (click)="changeLang('ar')"
+                    class="dropdown-item"
+                    type="button"
+                  >
                     العرية<img
                       class="lang-img"
                       src="https://cdn-icons-png.flaticon.com/512/6211/6211614.png"
@@ -225,7 +229,11 @@
                   </button>
                 </li>
                 <li>
-                  <button (click)="changeLang('en')" class="dropdown-item" type="button">
+                  <button
+                    (click)="changeLang('en')"
+                    class="dropdown-item"
+                    type="button"
+                  >
                     English
                     <img
                       class="lang-img"

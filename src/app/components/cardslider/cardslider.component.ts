@@ -7,6 +7,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  DoCheck,
 } from '@angular/core';
 import { ServicecardComponent } from '../servicecard/servicecard.component';
 
@@ -15,7 +16,7 @@ import { ServicecardComponent } from '../servicecard/servicecard.component';
   templateUrl: './cardslider.component.html',
   styleUrls: ['./cardslider.component.scss'],
 })
-export class CardsliderComponent implements OnChanges {
+export class CardsliderComponent implements DoCheck {
   @ViewChild('sliderstage', { static: true }) sliderstage?: ElementRef;
 
   @ViewChildren('cardRef') servicecard!: QueryList<ServicecardComponent>;
@@ -56,33 +57,22 @@ export class CardsliderComponent implements OnChanges {
     ],
   };
   ngOnInit() {
-    // console.log(this.sliderdata);
     this.sliderdata.items.shift();
-    // console.log(this.sliderdata.items);
+  }
 
-    this.sliderdata.items;
-    console.log();
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    // console.log(this.sliderdata.items.length);
-    // console.log(this.totalcards);
-    // console.log(this.sliderdata.items.length);
-    // console.log(changes['sliderdata'].currentValue.items);
-    // console.log(this.sliderdata.items);
-  }
-  test() {
-    console.log(this.totalcards);
-    console.log(this.sliderdata.items.length);
-  }
-  ngAfterViewInit() {
-    this.totalcards = this.servicecard.toArray().length;
-    // console.log(this.totalcards);
-    this.sliderdata.items.length;
+  ngDoCheck(): void {
+    // console.log('change detection');
+    // this.totalcards = this.servicecard.toArray().length;
+    // // console.log(this.totalcards);
 
     if (window.innerWidth < 500) {
-      this.totalsteps = this.totalcards;
-      console.log('Total steps: ' + this.totalsteps);
+      this.totalsteps = this.sliderdata.items.length;
+      // console.log('Total steps: ' + this.totalsteps);
     } else {
+      this.totalcards =
+        this.sliderdata.items.length > 4
+          ? (this.totalcards = this.sliderdata.items.length)
+          : 0;
       if (this.totalcards < 8) {
         this.totalsteps = Math.round(this.totalcards / 2);
       } else {
