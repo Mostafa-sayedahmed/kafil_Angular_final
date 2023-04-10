@@ -17,10 +17,6 @@ import { FreelancersComponent } from './components/freelancers/freelancers.compo
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
-
-
- import { ProjectsComponent } from './components/projects/projects.component';
- import { AddprojectComponent } from './components/addproject/addproject.component';
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ContestsComponent } from './components/contests/contests.component';
@@ -42,8 +38,6 @@ import { HomeComponent } from './home/home.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddprojcetComponent } from './components/addprojcet/addprojcet.component';
-
-
 
 @NgModule({
   declarations: [
@@ -95,10 +89,9 @@ import { AddprojcetComponent } from './components/addprojcet/addprojcet.componen
         useFactory: (http: HttpClient) => {
           return new TranslateHttpLoader(http, './assets/i18n/', '.json');
         },
-        deps: [HttpClient]
-      }
-    })
-
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
