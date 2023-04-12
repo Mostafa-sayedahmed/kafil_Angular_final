@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder , Validators } from '@angular/forms';
 import { ContestsService } from 'src/app/services/contests.service';
 import { IcontestSection } from 'src/app/models/icontestsection';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-contest',
@@ -15,17 +16,19 @@ export class AddContestComponent {
 
   userId : string = '';
 
-  constructor(private formbuilder: FormBuilder,private CS: ContestsService ,private router:Router) {}
+  constructor(private formbuilder: FormBuilder,private CS: ContestsService ,private router:Router , private location: Location) {}
   contestform = this.formbuilder.group({
     userId: JSON.parse(localStorage.getItem('user')!).uid,
-    title: [''],
-    description: [''],
+    userName: JSON.parse(localStorage.getItem('user')!).displayName,
+    userImg: JSON.parse(localStorage.getItem('user')!).photoURL,
+    title: ['', [Validators.required, Validators.minLength(5)]],
+    description: ['', [Validators.required, Validators.minLength(50)]],
     conditions: [''],
-    sectionId: [''],
-    deliveryDuration: [''],
-    contestDuration: [''],
-    winnersNum:[''],
-    firstWinner:[''],
+    sectionId: ['', [Validators.required]],
+    deliveryDuration: ['', [Validators.required]],
+    contestDuration: ['', [Validators.required]],
+    winnersNum:['', [Validators.required]],
+    firstWinner:['', [Validators.required]],
     skills:[''],
     completed:[false],
     accepted:[true],
@@ -34,14 +37,18 @@ export class AddContestComponent {
     Views:Math.floor(Math.random() * (3000 - 1 + 1)) + 1,
     contestants:Math.floor(Math.random() * (200 - 1 + 1)) + 1,
   });
+  
+  contestDraft = JSON.parse(localStorage.getItem('contestDraft')!);
+
   ngOnInit() {
+    this.contestDraft = this.contestDraft;
+
     this.CS.getContestSections().subscribe((data)=>{
       this.contestSections = data;
     })
   }
 
   addContest() {
-    console.log(this.contestform.value);
     this.CS.addcontest(this.contestform.value);
     // this.router.navigateByUrl('/contests');
 
@@ -94,7 +101,8 @@ export class AddContestComponent {
       Views:this.contestDraft['views'] | Math.floor(Math.random() * (3000 - 1 + 1)) + 1,
       contestants: this.contestDraft["contestants"] | Math.floor(Math.random() * (200 - 1 + 1)) + 1,
     });
-
   }
 
 }
+
+

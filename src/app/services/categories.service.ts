@@ -27,8 +27,7 @@ export class CategoriesService {
       // console.log(doc.id, ' => ', doc.data());
       // console.log({ uid: doc.id, data: doc.data() });
       // this.categriesList.push(doc.id);
-      // this.categriesList.push({ uid: doc.id, data: doc.data() });
-      this.categriesList.push(doc.data());
+      this.categriesList.push({ uid: doc.id, data: doc.data() });
     });
     // console.log(this.categriesList);
     return this.categriesList;

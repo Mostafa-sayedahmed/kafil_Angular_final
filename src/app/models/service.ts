@@ -1,22 +1,17 @@
 export interface Service {
-  userid?: string;
-  title?: string;
-  description?: string;
-  category?: string;
-  price?: number;
-  mainImg?: string;
-  imgs?: string[];
-  deliveryDuration?: string;
-  buyerinstructions?: string;
-  addons?: Addon[];
-  isfeatured?: boolean;
-  isaproved?: boolean;
-  rating?: number;
-  orderscount?: number;
-}
-
-export interface Addon {
-  addonTitle?: string;
-  addonPrice?: number;
-  addonDeliveryDuration?: string;
+  // uid: string;
+  // userid: string;
+  title: string;
+  description: string;
+  // imgs?: [];
+  // ratings?: string;
+  // category?: string;
+  // isFeatured?: boolean;
+  // servedCustomers?: string;
+  // price?: string;
+  // sales?: string;
+  // inProgressOrders?: string;
+  // deliveryDuration?: string;
+  // completedOreders?: string;
+  // addons?: [];
 }
