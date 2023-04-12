@@ -1,172 +1,39 @@
-import {
-  Component,
-  ViewChild,
-  ViewChildren,
-  ElementRef,
-  OnInit,
-  AfterViewInit,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { GetservicesService } from 'src/app/services/getservices.service';
-import { Service } from '../../models/service';
-import { Addon } from '../../models/service';
-import { AddserviceformService } from 'src/app/services/addserviceform.service';
-import { Injectable } from '@angular/core';
-import { FirestorageService } from 'src/app/services/firestorage.service';
-import { CategoriesService } from 'src/app/services/categories.service';
-import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-addservice',
   templateUrl: './addservice.component.html',
   styleUrls: ['./addservice.component.scss'],
 })
-export class AddserviceComponent implements OnInit, AfterViewInit {
+export class AddserviceComponent {
   constructor(
-    public formbuilder: FormBuilder,
-    public service: GetservicesService,
-    public addserviceform: AddserviceformService,
-    private firestorage: FirestorageService,
-    private Category: CategoriesService,
-    private elRef: ElementRef
+    private formbuilder: FormBuilder,
+    private service: GetservicesService
   ) {}
-  categorylist = [
-    {
-      CategoryPic: 'assets/images/audio.svg',
-      categoryLink: '#',
-      categoryName: 'صوتيات',
-    },
-  ];
   serviceform = this.formbuilder.group({
     title: ['', [Validators.required, Validators.minLength(5)]],
     description: ['', [Validators.required, Validators.minLength(100)]],
     category: ['', Validators.required],
     price: ['', [Validators.required, Validators.min(5), Validators.max(999)]],
-    mainImg: [''],
-    imgs: this.formbuilder.array(['']),
+    mainImg: ['', Validators.required],
+    imgs: [''],
     deliveryDuration: ['', Validators.required],
     buyerinstructions: ['', [Validators.required, Validators.minLength(20)]],
     addons: this.formbuilder.array([]),
   });
-
   serviceDraft = JSON.parse(sessionStorage.getItem('serviceDraft')!);
-  myservice!: Service;
-  serviceaddons!: Addon;
-  newserviceaddons!: Addon[];
-  newaddons = this.serviceform.controls['addons'].value!;
-  mainImg!: string;
-  otherImgs: string[] = [];
-  file!: File;
-  imgslist: File[] = [];
-  @ViewChild('myModal', { static: true }) myModal!: ElementRef;
-
-  @ViewChild('loadingmodalbtn', { static: true })
-  modalbtn!: ElementRef<HTMLElement>;
-  @ViewChild('preloadermodalbtn', { static: true })
-  preloadermodalbtn!: ElementRef<HTMLElement>;
-  @ViewChild('preloaderdismissmodalbtn', { static: true })
-  preloaderdismissmodalbtn!: ElementRef<HTMLElement>;
   ngOnInit() {
-    let preloader = this.preloadermodalbtn.nativeElement;
-    let dismiss = this.preloaderdismissmodalbtn.nativeElement;
-    preloader.click();
-
-    this.Category.getcategories()
-      .then((res) => {
-        this.categorylist = Array.from(res);
-        dismiss.click();
-      })
-      .catch((err) => {
-        console.log(err);
-        preloader.click();
-      });
-
-    console.log('dismiss');
-  }
-  ngAfterViewInit() {
-    let dismiss = this.preloaderdismissmodalbtn.nativeElement;
-    dismiss.click();
-  }
-  onfilechange(input: any) {
-    const file = input.target.files[0];
-    if (file) {
-      // console.log(file);
-      // this.firestorage.uploadfile(file);
-    }
-  }
-  clearpreview() {
-    this.mainImg = '';
-    return false;
-  }
-  clearpreviewitem(index: number) {
-    this.otherImgs.splice(index, 1);
-    return false;
+    this.serviceDraft = this.serviceDraft;
   }
 
-  chosemainimg() {
-    let input = document.createElement('input');
-    input.type = 'file';
-    input.onchange = async (_) => {
-      // you can use this method to get file and perform respective operations
-      this.file = input.files![0];
-
-      let path = URL.createObjectURL(this.file);
-      this.mainImg = path;
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.mainImg = reader.result as string;
-      };
-      reader.readAsDataURL(this.file);
-
-      //  = await this.firestorage.uploadfile(this.file);
-    };
-    input.click();
-    return false;
-  }
-  choseimgs() {
-    let input = document.createElement('input');
-    input.type = 'file';
-    input.multiple = true;
-    input.onchange = async (_) => {
-      // you can use this method to get file and perform respective operations
-      let files = Array.from(input.files!);
-      console.log(files);
-      if (files.length > 4) {
-        alert('اقصي عدد للصور هو 4 فقط');
-      } else if (this.otherImgs.length + files.length > 4) {
-        alert(`يمكن تحديد عدد ${4 - this.otherImgs.length}صورة فقط!`);
-      } else {
-        for (let item of files) {
-          let path = URL.createObjectURL(item);
-          const reader = new FileReader();
-          reader.onload = () => {
-            this.otherImgs.push(reader.result as string);
-          };
-          reader.readAsDataURL(item);
-          this.imgslist.push(item);
-        }
-        console.log(this.imgslist);
-      }
-      //  = await this.firestorage.uploadfile(this.file);
-    };
-    input.click();
-    return false;
-  }
-
-  async addservice() {
-    let modalbtn = this.modalbtn.nativeElement;
-    modalbtn.click();
-
-    await this.fillmyservice();
+  addservice() {
     if (this.serviceform.valid) {
-      this.service.addservice(this.myservice);
+      this.service.addservice(this.serviceform.value);
       console.log('data added successfully');
-      modalbtn.click();
-      this.serviceform.reset();
     } else {
       console.log('form is invalid');
-      // console.log();
-      modalbtn.click();
     }
   }
 
@@ -175,7 +42,7 @@ export class AddserviceComponent implements OnInit, AfterViewInit {
   }
 
   newaddon() {
-    ('new addon');
+    console.log('new addon');
     const addongroup = this.formbuilder.group({
       addonTitle: ['', [Validators.required, Validators.minLength(5)]],
       addonPrice: [
@@ -187,21 +54,18 @@ export class AddserviceComponent implements OnInit, AfterViewInit {
     this.addons.push(addongroup);
     return false;
   }
-
   deleteaddon(index: number) {
-    ('deleted');
+    console.log('deleted');
     this.addons.removeAt(index);
     return false;
   }
 
-  ////////////////////////// save draft
   saveDraft() {
     let data = JSON.stringify(this.serviceform.value);
     sessionStorage.setItem('serviceDraft', data);
     this.serviceDraft = sessionStorage.getItem('serviceDraft');
   }
 
-  ////////////////////////// restore draft
   restoreDraft() {
     const draftAddons = this.serviceDraft['addons'];
     for (let item of draftAddons) {
@@ -213,7 +77,7 @@ export class AddserviceComponent implements OnInit, AfterViewInit {
         ],
         addonDeliveryDuration: ['', Validators.required],
       });
-      item;
+      console.log(item);
       this.addons.push(addongroup);
     }
     this.serviceform.setValue({
@@ -227,51 +91,7 @@ export class AddserviceComponent implements OnInit, AfterViewInit {
       buyerinstructions: this.serviceDraft['buyerinstructions'],
       addons: Array.from(draftAddons),
     });
+    console.log(draftAddons);
   }
-
-  ////////////////////////// fill data in the model object
-  async fillmyservice() {
-    let imgurl = await this.firestorage.uploadfile(this.file);
-    console.log(`main image uploaded!`);
-    let imgs = [];
-    let i = this.imgslist.length;
-    for (let img of this.imgslist) {
-      let url = await this.firestorage.uploadfile(img);
-      console.log(`uploaded image  ${this.imgslist.indexOf(img) + 1}`);
-      imgs.push(url);
-    }
-
-    let user;
-    user = JSON.parse(localStorage.getItem('user')!);
-
-    this.myservice = {
-      userid: user.uid,
-      title: this.serviceform.controls['title'].value!,
-      description: this.serviceform.controls['description'].value!,
-      category: this.serviceform.controls['category'].value!,
-      price: parseInt(this.serviceform.controls['price'].value!),
-      mainImg: imgurl,
-      imgs: Array.from(imgs),
-      deliveryDuration: this.serviceform.controls['deliveryDuration'].value!,
-      buyerinstructions: this.serviceform.controls['buyerinstructions'].value!,
-      addons: [],
-      isaproved: false,
-      isfeatured: false,
-    };
-    this.newaddons = this.serviceform.controls['addons'].value!;
-    for (let [i, item] of this.newaddons.entries()) {
-      this.serviceaddons = {
-        addonTitle: this.serviceform.get(`addons.${i}.addonTitle`)?.value!,
-        addonDeliveryDuration: this.serviceform.get(
-          `addons.${i}.addonDeliveryDuration`
-        )?.value!,
-        addonPrice: this.serviceform.get(`addons.${i}.addonPrice`)?.value!,
-      };
-      // console.log(this.serviceaddons);
-
-      // this.newserviceaddons = [...this.newserviceaddons, this.serviceaddons];
-      this.myservice.addons?.push(this.serviceaddons);
-    }
-    console.log(this.myservice);
-  }
+  
 }

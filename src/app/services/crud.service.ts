@@ -24,25 +24,14 @@ return  this.fs.collection("Freelancers").snapshotChanges()
 
 
 
-  getFreelancerByID(id:string):any{
-    let free;
+  getFreelancerByID(id:string){
 this.fs.collection("Freelancers").doc(id).ref.get().then(function(doc){
   if (doc.exists) {
-    return doc.data();  
+        console.log( doc.data());
+        
       } else {
         console.log("There is no document!");
       }
 })
   }
-
-
-  addFreelancer(freelancer:Freelancer){
-   
-    this.fs.collection("Freelancers").doc(this.fs.createId()).set(
-     freelancer
-    )
-  }
-
-
-
 }

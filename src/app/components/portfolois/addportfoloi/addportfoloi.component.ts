@@ -18,8 +18,6 @@ export class AddportfoloiComponent {
     
  }
 
-
- 
  addData(){
   console.log("ha");
   

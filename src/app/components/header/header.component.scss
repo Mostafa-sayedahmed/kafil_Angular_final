@@ -6,17 +6,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-.user-avatar:hover {
-  scale: 1.1;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-.user-avatar {
-  border-radius: 50%;
-  width: 37px;
-  outline: 3px solid #1dbf73;
-  border: 1px solid #ffffff;
-  transition: 0.4s;
-}
 .header-logo {
   width: 95px;
 }
@@ -71,12 +60,6 @@
 .headerlistitem i {
   font-size: 1.3rem;
   color: #505050;
-}
-.headerlistitem a {
-  transition: 0.4s;
-}
-.headerlistitem a:hover {
-  background-color: #74deac;
 }
 .headerlistitem a {
   display: flex;
