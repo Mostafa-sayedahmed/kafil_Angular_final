@@ -35,15 +35,12 @@
           <h2>خدمات تساعدك على نمو مشاريعك</h2>
         </div>
         <div
-          class="d-flex justify-content-center align-content-center title-desc flex-column align-items-center"
+          class="d-flex justify-content-center align-content-center title-desc"
         >
           <p>
             يقدم المستقلون على كفيل مجموعة متنوعة من الخدمات الإحترافية التى
             تساعدك على تطوير أعمالك و نمو مشاريعك
           </p>
-          <button class="btn addservicebtn" routerLink="/createservice">
-            <i class="fa-solid fa-square-plus"></i> اضف خدمة
-          </button>
         </div>
       </div>
       <!-- Search -->
@@ -98,33 +95,12 @@
               <i id="arrowicon" class="fas fa-chevron-down"></i>
             </a>
           </div>
+          <button (click)="test()">get data</button>
         </div>
       </div>
       <ng-container *ngFor="let slider of sliders">
         <app-cardslider [sliderdata]="slider"></app-cardslider>
       </ng-container>
     </div>
-
-    <!-- Button trigger modal -->
-    <button
-      id="modalbtn"
-      type="button"
-      class="btn btn-primary d-none"
-      data-bs-toggle="modal"
-      data-bs-target="#prelodader"
-      #preloadermodalbtn
-    >
-      Launch preloader modal
-    </button>
-    <button
-      id="modalbtn"
-      type="button"
-      class="btn btn-primary d-none"
-      data-bs-dismiss="modal"
-      data-bs-target="#prelodader"
-      #preloaderdismissmodalbtn
-    >
-      preloader dismiss modal
-    </button>
   </body>
 </html>

@@ -43,9 +43,9 @@
               <i class="fas fa-ellipsis-v fs-4 text-muted"></i>
             </button>
             <ul class="dropdown-menu">
-              <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </div>
         </div>
@@ -54,100 +54,55 @@
         <div class="col-12 col-xl-8">
           <div class="service-sec" id="service-sec">
             <div class="service-head d-flex justify-content-between">
-              <div class="service-title fw-bold fs-5">
-                {{ myservice.title }}
-                <p class="title-font fw-bold mb-10"></p>
+              <div class="service-title">
+                <p class="title-font fw-bold mb-10">زيادة مشاهدات تيك توك</p>
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb page-inner-breadcrumb small-breadcrumb">
-                    <li class="breadcrumb-item fs-6 fw-normal">
-                      <a style="color: #505050" href="#">
-                        {{ myservice.category }}
-                      </a>
+                    <li class="breadcrumb-item">
+                      <a style="color: #505050" href="#">تسويق</a>
                     </li>
-                    <!-- <li class="breadcrumb-item" aria-current="page">
+                    <li class="breadcrumb-item" aria-current="page">
                       <a style="color: #1dbf73" href="#">تسويق تيكتوك</a>
-                    </li> -->
+                    </li>
                   </ol>
                 </nav>
               </div>
               <div class="service-rating">
                 <div class="rate-view">
-                  <i
-                    class="fas fa-star star-active"
-                    *ngFor="
-                      let item of [].constructor(myservice.rating);
-                      let i = index
-                    "
-                  ></i>
-                  <i
-                    class="fas fa-star text-light-emphasis"
-                    *ngFor="
-                      let item of [].constructor(5 - myservice.rating!);
-                      let i = index
-                    "
-                  ></i>
-                  <!--<i class="fas fa-star star-active"></i>
                   <i class="fas fa-star star-active"></i>
-                  <i class="fas fa-star star-active"></i> -->
-                  <span class="rate-range"> {{ myservice.rating }}.0 </span>
+                  <i class="fas fa-star star-active"></i>
+                  <i class="fas fa-star star-active"></i>
+                  <i class="fas fa-star star-active"></i>
+                  <i class="fas fa-star star-active"></i>
+                  <span class="rate-range"> 5.0 </span>
                   <span class="text-small">(15)</span>
                 </div>
               </div>
             </div>
             <div class="service-slider rounded">
-              <div
-                id="carouselExampleAutoplaying"
-                class="carousel slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="rounded" [src]="myservice.mainImg" alt="img " />
-                  </div>
-                  <div
-                    class="carousel-item active"
-                    *ngFor="let img of myservice.imgs"
-                  >
-                    <img class="rounded" src="{{ img }}" alt="img " />
-                  </div>
-                </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselExampleAutoplaying"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                    style="color: #00acee"
-                  ></span>
-                  <span class="visually-hidden" style="color: #00acee"
-                    >Previous</span
-                  >
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselExampleAutoplaying"
-                  data-bs-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
+              <img
+                class="rounded"
+                src="https://kafiil.com/storage/images/products/027f9304-fc6a-44b8-a22e-ce7b6e866eed.jpg"
+                alt="img "
+              />
             </div>
             <div class="service-desc">
               <p class="title">
                 <b>الوصف</b>
-                <br />
               </p>
-              <h5>
-                {{ myservice.description }}
-              </h5>
+              <p class="info-content">
+                السلام عليكم ورحمة الله وبركاته<br />
+                <br />
+                سأقدم لكم في هذه الخدمة 50 الف مشاهدة لأي فيديو لك على تيك
+                توك<br />
+                <br />
+                • مميزات بالخدمة :<br />
+                - مدة التنفيذ خلال يوم واحد فقط<br />
+                - خدمة آمنة 100% ولا تشكل اي خطورة <br />
+                على حسابك<br />
+                - ضمان عدم النقص <br />
+                - احتاج رابط الفيديو فقد
+              </p>
             </div>
           </div>
           <!-- service addons -->
@@ -171,10 +126,7 @@
                 aria-labelledby="headingOne"
                 data-bs-parent="#service-additions"
               >
-                <div
-                  class="accordion-body d-flex justify-content-between"
-                  *ngFor="let item of myservice.addons"
-                >
+                <div class="accordion-body d-flex justify-content-between">
                   <div class="option d-flex align-items-center gap-2">
                     <input
                       class="option-check"
@@ -182,18 +134,11 @@
                       name="option1"
                       id="option1"
                     />
-
-                    <label for="option">
-                      50 الف مشاهدة اضافية {{ item.addonTitle }}</label
-                    >
+                    <label for="option"> 50 الف مشاهدة اضافية</label>
                   </div>
-                  <div class="option-info d-flex gap-3">
-                    <span class="option-price">{{ item.addonPrice }}$</span>
-                    <span class="option-text">
-                      يستغرق
-                      {{ item.addonDeliveryDuration }}
-                      يوم اضافي</span
-                    >
+                  <div class="option-info">
+                    <span class="option-price">5$</span>
+                    <span class="option-text">لا يحتاج ايام اضافية</span>
                   </div>
                 </div>
               </div>
@@ -211,26 +156,23 @@
               <div
                 class="number col-12 d-flex justify-content-between col-md-3"
               >
-                <button id="service-plus" (click)="buyplus()">+</button>
+                <button id="service-plus">+</button>
                 <input
                   id="number-box"
                   type="number"
                   min="1"
                   max="10"
-                  [value]="this.amount"
+                  value="1"
                   disabled
                 />
-                <button id="service-minus" (click)="buyminus()">-</button>
+                <button id="service-minus">-</button>
               </div>
 
               <div
                 class="total-price col-12 col-md-3 d-flex justify-content-center align-items-center"
               >
                 <span>المبلغ الكلي</span>
-                <span id="total-price">
-                  {{ totalprice }}
-                  $</span
-                >
+                <span id="total-price">5 $</span>
               </div>
               <div class="col-12 col-md-2 d-flex justify-content-center">
                 <button
@@ -1091,11 +1033,10 @@
                             <i class="fas fa-star star-active"></i>
                           </div>
                         </div>
-
                         <div class="comment-rate">
                           <p class="title">التقييم العام</p>
                           <div class="stars">
-                            <!-- <i class="fas fa-star star-active" *ngFor="let item of list"></i> -->
+                            <i class="fas fa-star star-active"></i>
                             <i class="fas fa-star star-active"></i>
                             <i class="fas fa-star star-active"></i>
                             <i class="fas fa-star star-active"></i>
@@ -1139,7 +1080,11 @@
             >
               <div class="avatar">
                 <a href="">
-                  <img class="user-img" [src]="userinfo.imgUrl" alt="" />
+                  <img
+                    class="user-img"
+                    src="https://kafiil.com/storage/images/users/9fd3a703-e13c-4a68-825d-7e1d2ac368fb.jpg"
+                    alt=""
+                  />
                 </a>
                 <img
                   src="https://kafiil.com/modules/base/img/icons/verified.svg"
@@ -1158,10 +1103,8 @@
                   ></circle>
                 </svg>
               </div>
-              <span class="seller-name">
-                {{ userinfo.fullname }}
-              </span>
-              <span class="service-category"> {{ myservice.category }} </span>
+              <span class="seller-name">محمد السيد</span>
+              <span class="service-category"> التسوق والمبيعات </span>
               <span
                 class="seller-level d-flex align-items-center justify-content-center gap-2"
               >
@@ -1249,10 +1192,7 @@
                           <i class="fas fa-dollar-sign"></i>
                           السعر
                         </div>
-                        <div>
-                          {{ myservice.price }}
-                          $
-                        </div>
+                        <div>5$</div>
                       </div>
 
                       <div class="dark d-flex justify-content-between py-3">
@@ -1260,7 +1200,7 @@
                           <i class="fas fa-clock"></i>
                           مدة التسليم
                         </div>
-                        <div>{{ myservice.deliveryDuration }}يوم</div>
+                        <div>يوم</div>
                       </div>
 
                       <div class="d-flex justify-content-between py-3">
@@ -1276,9 +1216,7 @@
                           <i class="fas fa-check"></i>
                           الطلبات المكتملة
                         </div>
-                        <div>
-                          {{ myservice.orderscount }}
-                        </div>
+                        <div>76</div>
                       </div>
 
                       <div class="d-flex justify-content-between py-3">
@@ -1293,18 +1231,21 @@
                           <i class="fas fa-chart-line"></i>
                           المبيعات
                         </div>
-                        <div>
-                          {{ myservice.orderscount! * myservice.price! }} $
-                        </div>
+                        <div>390$</div>
                       </div>
                       <div class="d-flex justify-content-between py-3">
                         <div>
                           <i class="fas fa-bars"></i>
                           القسم
                         </div>
+                        <div>تسويق</div>
+                      </div>
+                      <div class="d-flex justify-content-between py-3">
                         <div>
-                          {{ myservice.category }}
+                          <i class="fas fa-bars"></i>
+                          قسم فرعي
                         </div>
+                        <div>تسويق تيكتوك</div>
                       </div>
                     </div>
                   </div>
@@ -1406,16 +1347,5 @@
         </div>
       </div>
     </section>
-    <!-- Button trigger modal -->
-    <button
-      id="modalbtn"
-      type="button"
-      class="btn btn-primary d-none"
-      data-bs-toggle="modal"
-      data-bs-target="#prelodader"
-      #preloadermodalbtn
-    >
-      Launch preloader modal
-    </button>
   </body>
 </html>
