@@ -37,6 +37,7 @@ export class ContestsService {
   async getContestsByCompletedStatus() {
     const q = query(collection(this.firestore, "contests"), where('completed', '==', false));
     const querySnapshot = await getDocs(q);
+    console.log(querySnapshot);
       var newArr : Array<Icontest> = [];
       querySnapshot.forEach((doc) => {
       newArr.push(doc.data() as Icontest);

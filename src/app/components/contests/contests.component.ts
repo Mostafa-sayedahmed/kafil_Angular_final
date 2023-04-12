@@ -83,6 +83,8 @@ export class ContestsComponent {
     ChangeContestCompletedStatus(){ 
       this.contestWithComment = [];
       this.CS.getContestsByCompletedStatus().then(async (data)=>{
+
+        console.log(data);
        
         for(var i=0; i<data.length; i++){
 
