@@ -14,6 +14,8 @@ export class ContestsComponent {
 
 
   contest:Icontest[]=[];
+  contestArr:Icontest[]=[];
+
   contestWithComment:any[]=[];
   contestSections:IcontestSection[]=[];
   contestComments:any[]=[];
@@ -46,6 +48,7 @@ export class ContestsComponent {
           this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
 
           this.contest = this.contestWithComment;
+          this.contestArr = this.contestWithComment;  
           
         }
 
@@ -74,7 +77,9 @@ export class ContestsComponent {
 
           this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
 
-          this.contest = this.contestWithComment;    
+          // this.contest = this.contestWithComment;
+
+           this.contestArr = this.contestWithComment;    
         }
 
       })
@@ -95,7 +100,8 @@ export class ContestsComponent {
 
           this.contestWithComment.push({ ...data[i] ,"sectionName" : sectionName });
 
-          this.contest = this.contestWithComment;    
+          // this.contest = this.contestWithComment;
+          this.contestArr = this.contestWithComment;      
         }
       })
     }
@@ -124,7 +130,9 @@ export class ContestsComponent {
 
           this.contestWithComment.push({ ...data[i] , "sectionName" : sectionName });
 
-          this.contest = this.contestWithComment;
+          // this.contest = this.contestWithComment;
+
+          this.contestArr = this.contestWithComment;  
           
         }
       })
