@@ -28,11 +28,15 @@ export class ContestsService {
       const querySnapshot = await getDocs(q);
         var newArr : Array<Icontest> = [];
         querySnapshot.forEach((doc) => {
-        newArr.push(doc.data() as Icontest);
+          const id = doc.id;
+          const data = doc.data() as Icontest;
+          const contest: Icontest = {...data, id };
+          newArr.push(contest);
       });
 
       return newArr;
   }
+
 
   async getContestsByCompletedStatus() {
     const q = query(collection(this.firestore, "contests"), where('completed', '==', false));
@@ -40,7 +44,10 @@ export class ContestsService {
     console.log(querySnapshot);
       var newArr : Array<Icontest> = [];
       querySnapshot.forEach((doc) => {
-      newArr.push(doc.data() as Icontest);
+      const id = doc.id;
+      const data = doc.data() as Icontest;
+      const contest: Icontest = {...data, id };
+      newArr.push(contest);
     });
 
     return newArr;
@@ -103,9 +110,11 @@ export class ContestsService {
     const querySnapshot = await getDocs(q);
     var newArr : Array<Icontest> = [];
     querySnapshot.forEach((doc) => {
-    newArr.push(doc.data() as Icontest);
+    const id = doc.id;
+    const data = doc.data() as Icontest;
+    const contest: Icontest = {...data, id };
+    newArr.push(contest);
   });
-  console.log(newArr);
   return newArr;
   }
   
