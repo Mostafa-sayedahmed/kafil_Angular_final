@@ -37,11 +37,18 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
   ngDoCheck(): void {
     this.user = JSON.parse(localStorage.getItem('user')!);
-    // console.log(this.user.displayName);
   }
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user')!);
     // console.log(this.user.displayName);
+    this.userservice
+      .getUserbyID(this.user.uid)
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   logout() {
     this.userservice.SignOut();
