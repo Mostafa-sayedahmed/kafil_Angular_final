@@ -1,15 +1,12 @@
 *{
     font-family: 'Cairo', sans-serif;
   }
-  body{
-    background-color: #f1f2f2 !important;
-  }
-  // .container {
-  //   --main: #1dbf73;
-  //   background-color: #f1f2f2;
-  // color: #202020;
-  // }
+  body {
+    --main: #1dbf73;
+    background-color: #f1f2f2;
+  color: #202020;
   
+  }
   .pluse{
     background-color:#1dbf73 ;
   }
@@ -22,10 +19,10 @@
   border-bottom: none ;
   }
   
-  // .accordion-button::after {
-  // margin-left: unset !important;
-  // margin-right: auto !important;
-  // }
+  .accordion-button::after {
+  margin-left: unset !important;
+  margin-right: auto !important;
+  }
   
   .filter{
     padding: 12px 15px;
@@ -52,11 +49,11 @@
     border: 1px solid #dee0e1;
   }
   
-  // .cols-controls button.active {
-  //   background-color: var(--main);
-  //   color: #fff;
-  //   border-color: var(--main);
-  // }
+  .cols-controls button.active {
+    background-color: var(--main);
+    color: #fff;
+    border-color: var(--main);
+  }
   
   .type-radio {
     padding: 0 15px;
@@ -80,9 +77,9 @@
     flex-shrink: 0;
   }
   
-  // .custom-radio input:checked~i::before {
-  //   background-color: var(--main);
-  // }
+  .custom-radio input:checked~i::before {
+    background-color: var(--main);
+  }
   
   .custom-radio i {
     width: 15px;
@@ -161,9 +158,9 @@
     border-top: 1px solid rgba(112,112,112,.08);
   }
   
-  // .competitions-view .price{
-  // color: var(--main);
-  // }
+  .competitions-view .price{
+  color: var(--main);
+  }
   
   .canvasBtn{
     display: flex;
@@ -232,7 +229,7 @@
   }
   a{
     color: #007bff;
-    text-decoration: none !important;
+    text-decoration: none;
     background-color: transparent;
   }
   .owner .img img{

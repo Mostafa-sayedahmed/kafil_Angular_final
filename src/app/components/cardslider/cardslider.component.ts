@@ -5,9 +5,6 @@ import {
   QueryList,
   ViewChildren,
   Input,
-  OnChanges,
-  SimpleChanges,
-  DoCheck,
 } from '@angular/core';
 import { ServicecardComponent } from '../servicecard/servicecard.component';
 
@@ -16,7 +13,7 @@ import { ServicecardComponent } from '../servicecard/servicecard.component';
   templateUrl: './cardslider.component.html',
   styleUrls: ['./cardslider.component.scss'],
 })
-export class CardsliderComponent implements DoCheck {
+export class CardsliderComponent {
   @ViewChild('sliderstage', { static: true }) sliderstage?: ElementRef;
 
   @ViewChildren('cardRef') servicecard!: QueryList<ServicecardComponent>;
@@ -28,55 +25,24 @@ export class CardsliderComponent implements DoCheck {
   @Input() sliderdata = {
     name: '',
     link: '',
-    items: [
-      {
-        uid: '',
-        data: {
-          userid: '',
-          title: '',
-          description: '',
-          category: '',
-          price: '',
-          mainImg: '',
-          imgs: [],
-          deliveryDuration: '',
-          buyerinstructions: '',
-          addons: [
-            {
-              addonTitle: '',
-              addonPrice: 0,
-              addonDeliveryDuration: '',
-            },
-          ],
-          isfeatured: '',
-          isaproved: '',
-          rating: 0,
-          orderscount: 0,
-        },
-      },
-    ],
+    items: [],
   };
-  ngOnInit() {
-    this.sliderdata.items.shift();
-  }
+  ngAfterViewInit() {
+    this.totalcards = this.servicecard.toArray().length;
+    console.log(window.innerWidth);
+    console.log(this.sliderdata.name);
 
-  ngDoCheck(): void {
-    // console.log('change detection');
-    // this.totalcards = this.servicecard.toArray().length;
-    // // console.log(this.totalcards);
-
+    console.log(this.totalcards);
     if (window.innerWidth < 500) {
-      this.totalsteps = this.sliderdata.items.length;
-      // console.log('Total steps: ' + this.totalsteps);
+      this.totalsteps = this.totalcards;
+      console.log('Total steps: ' + this.totalsteps);
     } else {
-      this.totalcards =
-        this.sliderdata.items.length > 4
-          ? (this.totalcards = this.sliderdata.items.length)
-          : 0;
       if (this.totalcards < 8) {
         this.totalsteps = Math.round(this.totalcards / 2);
+        console.log('Total steps: ' + this.totalsteps);
       } else {
         this.totalsteps = Math.round(this.totalcards / 2) + 1;
+        console.log('Total steps: ' + this.totalsteps);
       }
     }
   }

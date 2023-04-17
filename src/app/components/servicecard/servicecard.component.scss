@@ -3,11 +3,6 @@
   padding: 0px;
   box-sizing: border-box;
 }
-.card-img-top {
-  // width: 335px;
-  height: 245px;
-  object-fit: cover;
-}
 .card-footer img {
   width: 25px;
   height: 25px;
@@ -21,7 +16,6 @@
 .card-footer {
   background-color: white;
 }
-
 .cart {
   border-right: 1px solid rgba(86, 86, 86, 0.395);
 }
@@ -36,9 +30,6 @@
 }
 .card {
   width: 18rem;
-}
-.card-text {
-  font-weight: bold;
 }
 @media only screen and (max-width: 500px) {
   .card {
