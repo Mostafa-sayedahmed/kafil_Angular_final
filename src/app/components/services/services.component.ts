@@ -1,13 +1,22 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { GetservicesService } from 'src/app/services/getservices.service';
+import { Service } from '../../models/service';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
 })
-export class ServicesComponent {
+export class ServicesComponent implements OnInit, DoCheck {
   hidden = true;
   showcount = 3;
   searchtext = '';
@@ -20,6 +29,11 @@ export class ServicesComponent {
     public service: GetservicesService,
     public category: CategoriesService
   ) {}
+  ngDoCheck(): void {}
+  @ViewChild('preloadermodalbtn', { static: true })
+  preloadermodalbtn!: ElementRef<HTMLElement>;
+  @ViewChild('preloaderdismissmodalbtn', { static: true })
+  preloaderdismissmodalbtn!: ElementRef<HTMLElement>;
 
   // @ViewChildren('categorybtn') categorybtn: QueryList<ElementRef> | undefined;
   searchlist = [
@@ -39,56 +53,283 @@ export class ServicesComponent {
       CategoryPic: 'assets/images/marketing.svg',
       categoryLink: '#',
     },
-    {
-      categoryName: 'خدمات مالية',
-      CategoryPic: 'assets/images/money.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'تصاميم فنيه',
-      CategoryPic: 'assets/images/design.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'برمجيات',
-      CategoryPic: 'assets/images/software.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'كتابة وترجمة',
-      CategoryPic: 'assets/images/writing.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'فيديو',
-      CategoryPic: 'assets/images/video.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'صوتيات',
-      CategoryPic: 'assets/images/audio.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'تدريب واستشارة',
-      CategoryPic: 'assets/images/education.svg',
-      categoryLink: '#',
-    },
-    {
-      categoryName: 'المزيد',
-      CategoryPic: 'assets/images/more.svg',
-      categoryLink: '#',
-    },
   ];
 
-  sliders = [
-    { name: 'خدمات التسويق', link: '#', items: [] },
-    { name: 'خدمات التصميم', link: '#', items: [] },
-    { name: 'خدمات مالية', link: '#', items: [] },
-    { name: 'خدمات برمجية', link: '#', items: [] },
-    { name: 'خدمات صوتية', link: '#', items: [] },
-    { name: 'خدمات الكتابة و الترجمة', link: '#', items: [] },
+  serviceslist = [
+    {
+      uid: '',
+      data: {
+        userid: '',
+        title: '',
+        description: '',
+        category: '',
+        price: '',
+        mainImg: '',
+        imgs: [],
+        deliveryDuration: '',
+        buyerinstructions: '',
+        addons: [
+          {
+            addonTitle: '',
+            addonPrice: 0,
+            addonDeliveryDuration: '',
+          },
+        ],
+        isfeatured: '',
+        isaproved: '',
+        rating: 0,
+        orderscount: 0,
+      },
+    },
   ];
+  sliders = [
+    {
+      name: 'خدمات التسويق',
+      link: '#',
+      items: [
+        {
+          uid: '',
+          data: {
+            userid: '',
+            title: '',
+            description: '',
+            category: '',
+            price: '',
+            mainImg: '',
+            imgs: [],
+            deliveryDuration: '',
+            buyerinstructions: '',
+            addons: [
+              {
+                addonTitle: '',
+                addonPrice: 0,
+                addonDeliveryDuration: '',
+              },
+            ],
+            isfeatured: '',
+            isaproved: '',
+            rating: 0,
+            orderscount: 0,
+          },
+        },
+      ],
+      category: 'تسويق',
+    },
+    {
+      name: 'خدمات التصميم',
+      link: '#',
+      items: [
+        {
+          uid: '',
+          data: {
+            userid: '',
+            title: '',
+            description: '',
+            category: '',
+            price: '',
+            mainImg: '',
+            imgs: [],
+            deliveryDuration: '',
+            buyerinstructions: '',
+            addons: [
+              {
+                addonTitle: '',
+                addonPrice: 0,
+                addonDeliveryDuration: '',
+              },
+            ],
+            isfeatured: '',
+            isaproved: '',
+            rating: 0,
+            orderscount: 0,
+          },
+        },
+      ],
+      category: 'تصاميم فنيه',
+    },
+    {
+      name: 'خدمات مالية',
+      link: '#',
+      items: [
+        {
+          uid: '',
+          data: {
+            userid: '',
+            title: '',
+            description: '',
+            category: '',
+            price: '',
+            mainImg: '',
+            imgs: [],
+            deliveryDuration: '',
+            buyerinstructions: '',
+            addons: [
+              {
+                addonTitle: '',
+                addonPrice: 0,
+                addonDeliveryDuration: '',
+              },
+            ],
+            isfeatured: '',
+            isaproved: '',
+            rating: 0,
+            orderscount: 0,
+          },
+        },
+      ],
+      category: 'خدمات مالية',
+    },
+    {
+      name: 'خدمات برمجية',
+      link: '#',
+      items: [
+        {
+          uid: '',
+          data: {
+            userid: '',
+            title: '',
+            description: '',
+            category: '',
+            price: '',
+            mainImg: '',
+            imgs: [],
+            deliveryDuration: '',
+            buyerinstructions: '',
+            addons: [
+              {
+                addonTitle: '',
+                addonPrice: 0,
+                addonDeliveryDuration: '',
+              },
+            ],
+            isfeatured: '',
+            isaproved: '',
+            rating: 0,
+            orderscount: 0,
+          },
+        },
+      ],
+      category: 'برمجيات',
+    },
+    {
+      name: 'خدمات صوتية',
+      link: '#',
+      items: [
+        {
+          uid: '',
+          data: {
+            userid: '',
+            title: '',
+            description: '',
+            category: '',
+            price: '',
+            mainImg: '',
+            imgs: [],
+            deliveryDuration: '',
+            buyerinstructions: '',
+            addons: [
+              {
+                addonTitle: '',
+                addonPrice: 0,
+                addonDeliveryDuration: '',
+              },
+            ],
+            isfeatured: '',
+            isaproved: '',
+            rating: 0,
+            orderscount: 0,
+          },
+        },
+      ],
+      category: 'صوتيات',
+    },
+    {
+      name: 'خدمات الكتابة و الترجمة',
+      link: '#',
+      items: [
+        {
+          uid: '',
+          data: {
+            userid: '',
+            title: '',
+            description: '',
+            category: '',
+            price: '',
+            mainImg: '',
+            imgs: [],
+            deliveryDuration: '',
+            buyerinstructions: '',
+            addons: [
+              {
+                addonTitle: '',
+                addonPrice: 0,
+                addonDeliveryDuration: '',
+              },
+            ],
+            isfeatured: '',
+            isaproved: '',
+            rating: 0,
+            orderscount: 0,
+          },
+        },
+      ],
+      category: 'كتابة وترجمة',
+    },
+  ];
+  async ngOnInit() {
+    let preloader = this.preloadermodalbtn.nativeElement;
+    let dismiss = this.preloaderdismissmodalbtn.nativeElement;
+
+    preloader.click();
+
+    if (window.innerWidth < 770) {
+      this.showcount = this.showcountSM;
+    } else {
+      this.showcount = this.showcountLG;
+    }
+
+    await this.category
+      .getcategories()
+      .then((result) => {
+        this.categriesList = Array.from(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    await this.service.getservices().then((results) => {
+      this.serviceslist = results;
+      this.serviceslist = [...new Set(this.serviceslist)];
+      preloader.click();
+    });
+
+    for (let service of this.serviceslist) {
+      for (let slider of this.sliders) {
+        if (service.data.category === slider.category) {
+          slider.items.push(service);
+        }
+      }
+    }
+
+    // console.log(this.sliders);
+
+    // for (let slider of this.sliders) {
+    //   let itemslist = [];
+    //   for (let service of this.serviceslist) {
+    //     // console.log(service);
+    //     if (slider.category === service.data.category) {
+    //       itemslist.push(service);
+    //     }
+    //   }
+    // }
+  }
+
+  ngOnChanges() {
+    if (window.innerWidth < 770) {
+      this.showcount = this.showcountSM;
+    } else {
+      this.showcount = this.showcountLG;
+    }
+  }
   showallcat() {
     if (window.innerWidth < 770) {
       this.showcount = this.showcountSM;
@@ -117,44 +358,19 @@ export class ServicesComponent {
 
     return false;
   }
-  ngOnInit() {
-    if (window.innerWidth < 770) {
-      this.showcount = this.showcountSM;
-    } else {
-      this.showcount = this.showcountLG;
-    }
-  }
 
   search(text: string) {
-    // this.searchlist = this.serviceslist.filter((item) =>
-    //   item.data.title.includes(text)
-    // );
-  }
-
-  ngOnChanges() {
-    if (window.innerWidth < 770) {
-      this.showcount = this.showcountSM;
-    } else {
-      this.showcount = this.showcountLG;
-    }
-  }
-  test() {
-    // console.log('clicked');
-    // let data = this.servces.getservices();
-    // console.log(data);
-    // console.log(this.ser vces.getservices());
-
-    console.log(
-      this.category
-        .getcategories()
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((err) => {})
+    this.searchlist = this.serviceslist.filter((item) =>
+      item.data.title.includes(text)
     );
-
-    // console.log(mycategories);
   }
+
+  // test() {
+  //   this.service.getservices().then((results) => {
+  //     // console.log(results);
+  //     this.serviceslist = results;
+  //   });
+  // }
   // );
 }
 // }
