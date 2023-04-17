@@ -47,9 +47,9 @@
         </div>
       </div>
       <!-- Search -->
-      <form
+      <div
         action="#"
-        class="help-search mb-3 flex-wrap d-flex align-items-center justify-content-center"
+        class="help-search flex-wrap d-flex align-items-center justify-content-center"
       >
         <div
           class="search-box border border-1 rounded d-flex ms-3 pe-3 flex-grow-1 align-items-center"
@@ -61,14 +61,24 @@
             type="text"
             placeholder="ابحث عن ..."
             aria-label=".form-control-lg example"
+            name="searchtxt"
+            #searchvalue
+            (keydown)="search(searchvalue.value)"
+            (keyup)="search(searchvalue.value)"
+            list="browsers"
           />
         </div>
         <button class="btn p-2 ps-5 m-2 pe-5" id="search" type="submit">
           بحث
         </button>
-      </form>
+      </div>
       <!-- realtime search -->
-      <div id="real-time-search-results"></div>
+      <div class="real-time-search-results" *ngIf="searchvalue.value != ''">
+        <a href="/services/{{ item.uid }}" *ngFor="let item of searchlist">
+          <img [src]="item.data.mainImg" alt="" />
+          <span>{{ item.data.title }}</span>
+        </a>
+      </div>
       <!-- category container -->
       <div class="pb-40 search-category-container">
         <div class="d-flex row g-4 search-category-row pb-5">

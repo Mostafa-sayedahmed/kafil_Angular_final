@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, query, where } from '@angular/fire/firestore';
 import {
   addDoc,
   collection,
@@ -7,6 +7,7 @@ import {
   getDocs,
   getFirestore,
   doc,
+  DocumentData,
 } from 'firebase/firestore';
 import { Service } from './../models/service';
 
@@ -45,17 +46,30 @@ export class GetservicesService {
     const docSnap = await getDoc(docRef);
     return docSnap.data();
   }
+  // async searchbyname(name: string) {
+  //   const Q = query(
+  //     collection(this.db, 'services'),
+  //     where('title', '==', name)
+  //   );
+  //   const querySnapshot = await getDocs(Q);
+  //   let searchlist: { uid: string; data: DocumentData }[] = [];
+  //   querySnapshot.forEach((docSnap) => {
+  //     searchlist = [{ uid: docSnap.id, data: docSnap.data() }];
+  //   });
+  //   return searchlist;
+  // }
 }
-//   getuserbyid(uid: string) {
-//     let userdata: any;
-//     this.afs
-//       .collection('users')
-//       .doc(uid)
-//       .get()
-//       .subscribe((user) => {
-//         userdata = user.data();
-//         // console.log(userdata);
 
-//         return userdata;
-//       }
+// async searchContestsByName(name: string) {
+//   const queryRef = collection(this.firestore, 'contests');
+//   const q = query(queryRef, where('title', '>=', name));
+//   const querySnapshot = await getDocs(q);
+//   var newArr : Array<Icontest> = [];
+//   querySnapshot.forEach((doc) => {
+//   const id = doc.id;
+//   const data = doc.data() as Icontest;
+//   const contest: Icontest = {...data, id };
+//   newArr.push(contest);
+// });
+// return newArr;
 // }

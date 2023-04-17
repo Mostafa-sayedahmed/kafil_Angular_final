@@ -39,7 +39,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddprojcetComponent } from './components/addprojcet/addprojcet.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,10 +89,9 @@ import { AddprojcetComponent } from './components/addprojcet/addprojcet.componen
         useFactory: (http: HttpClient) => {
           return new TranslateHttpLoader(http, './assets/i18n/', '.json');
         },
-        deps: [HttpClient]
-      }
-    })
-
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

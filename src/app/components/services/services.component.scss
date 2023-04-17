@@ -16,6 +16,31 @@ $input-border-color: #158350;
   border-radius: 10px 0 0 10px;
   margin-right: 3px;
 }
+.real-time-search-results a span {
+  margin-inline: 0.5rem;
+}
+.real-time-search-results a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #3e3e3e;
+  margin-inline: 1rem;
+  margin-block: 0.5rem;
+}
+.real-time-search-results img {
+  width: 100px;
+  border-radius: 0.2rem;
+}
+.real-time-search-results {
+  // width: 80%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #dedede;
+  border-radius: 0.3rem;
+}
 .addservicebtn:hover {
   background-color: $input-border-color;
   color: #fff;

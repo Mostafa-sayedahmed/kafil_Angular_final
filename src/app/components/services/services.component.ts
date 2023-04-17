@@ -23,6 +23,8 @@ export class ServicesComponent implements OnInit, DoCheck {
   itemscount = 5;
   showcountLG = 6;
   showcountSM = 4;
+  searchtxt = '';
+
   constructor(
     public service: GetservicesService,
     public category: CategoriesService
@@ -34,6 +36,17 @@ export class ServicesComponent implements OnInit, DoCheck {
   preloaderdismissmodalbtn!: ElementRef<HTMLElement>;
 
   // @ViewChildren('categorybtn') categorybtn: QueryList<ElementRef> | undefined;
+  searchlist = [
+    {
+      uid: '',
+      data: {
+        userid: '',
+        title: '',
+
+        mainImg: '',
+      },
+    },
+  ];
   categriesList = [
     {
       categoryName: 'تسويق',
@@ -344,6 +357,12 @@ export class ServicesComponent implements OnInit, DoCheck {
     }
 
     return false;
+  }
+
+  search(text: string) {
+    this.searchlist = this.serviceslist.filter((item) =>
+      item.data.title.includes(text)
+    );
   }
 
   test() {
