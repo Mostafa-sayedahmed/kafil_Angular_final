@@ -8,7 +8,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { SingleserviceComponent } from './components/singleservice/singleservice.component';
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { ContestsComponent } from './components/contests/contests.component';
-import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
+// import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { PortfoloisComponent } from './components/portfolois/portfolois/portfolois.component';
@@ -20,7 +20,6 @@ import { AddFreelancerComponent } from './components/add-freelancer/add-freelanc
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProjectsComponent } from './components/projects/projects.component';
-
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,7 +42,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'detailsPortfolois/:id', component: DetailsPortfoloisComponent },
-  { path: 'projects/:projectID', component: ProjectsDetailsComponent },
+  // { path: 'projects/:projectID', component: ProjectsDetailsComponent },
   { path: 'freelancers/:fid', component: SingleFreelancerComponent },
   { path: 'home', component: HomeComponent },
 
@@ -60,7 +59,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: '**', component: NotfoundComponent },
-
 ];
 
 @NgModule({
