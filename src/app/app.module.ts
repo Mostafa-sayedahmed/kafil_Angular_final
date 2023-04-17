@@ -20,7 +20,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ContestsComponent } from './components/contests/contests.component';
-import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
+// import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
 import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -53,7 +53,7 @@ import { AddprojcetComponent } from './components/addprojcet/addprojcet.componen
     RegisterComponent,
     AddserviceComponent,
     ContestsComponent,
-    ProjectsDetailsComponent,
+    // ProjectsDetailsComponent,
     SingleFreelancerComponent,
     NotfoundComponent,
     FooterComponent,
