@@ -25,9 +25,23 @@
             استرجاع المسودة<i class="fa-solid fa-arrow-rotate-left px-2"></i>
           </button>
         </div>
-        {{ serviceform.value | json }}
+        <!-- {{ serviceform.value | json }}  -->
         <div class="add-service-body p-3">
           <form action="" [formGroup]="serviceform" (ngSubmit)="addservice()">
+            <!-- title:{{ serviceform.get("title")?.errors | json }}
+            description:
+            {{ serviceform.get("description")?.errors | json }}
+            category:
+            {{ serviceform.get("category")?.errors | json }}
+            price:
+            {{ serviceform.get("price")?.errors | json }}
+            mainImg:
+            {{ serviceform.get("mainImg")?.errors | json }}
+            deliveryDuration:
+            {{ serviceform.get("deliveryDuration")?.errors | json }}
+            buyerinstructions :
+            {{ serviceform.get("buyerinstructions")?.errors | json }} -->
+
             <div class="mb-3">
               <label for="title" class="form-label">العنوان</label>
               <input
@@ -76,10 +90,14 @@
                 <option selected disabled value="" class="text-light-emphasis">
                   القسم
                 </option>
-                <option value="تسويق">تسويق</option>
-                <option value="برمجة">برمجة</option>
-                <option value="تصميم">تصميم</option>
+                <option
+                  *ngFor="let item of categorylist"
+                  [value]="item.categoryName"
+                >
+                  {{ item.categoryName }}
+                </option>
               </select>
+              {{ this.serviceform.get("category")?.value }}
               <!-- validation errors -->
               <div
                 class="invalid-feedback p-1 my-2"
@@ -138,6 +156,7 @@
               <div class="col-12 col-md-5 d-flex flex-grow-1 flex-column">
                 <span class="mb-2 text-black-50">
                   الصورة الرئيسية
+
                   <i
                     class="fas fa-lightbulb"
                     data-toggle="tooltip"
@@ -145,11 +164,28 @@
                     title=" الصورة الرئيسية للخدمة"
                   ></i>
                 </span>
+
                 <div
                   class="rounded d-flex justify-content-center p-4"
                   style="background-color: #f1f0ef"
                 >
-                  some text
+                  <a
+                    class="text-muted"
+                    *ngIf="mainImg == '' || mainImg == null"
+                    href="#"
+                    (click)="chosemainimg()"
+                  >
+                    اختر صورة</a
+                  >
+                  <div
+                    class="imgpreview d-flex flex-column"
+                    *ngIf="mainImg && mainImg !== null"
+                  >
+                    <a href="#" class="text-muted" (click)="clearpreview()">
+                      <i class="fa-solid fa-circle-xmark fs-3"></i>
+                    </a>
+                    <img [src]="mainImg" alt="main image" />
+                  </div>
                 </div>
                 <!-- validation errors -->
                 <div
@@ -178,13 +214,40 @@
                 ></span>
 
                 <div
-                  class="rounded d-flex justify-content-center p-4"
+                  class="rounded d-flex flex-column align-items-center justify-content-center p-4"
                   style="background-color: #f1f0ef"
                 >
-                  some text
+                  <a
+                    class="text-muted"
+                    *ngIf="otherImgs.length < 4 || otherImgs == null"
+                    href="#"
+                    (click)="choseimgs()"
+                  >
+                    اختر صور اضافية</a
+                  >
+                  <div
+                    class="imgpreview d-flex flex-wrap gap-3"
+                    *ngIf="otherImgs && otherImgs !== null"
+                  >
+                    <ng-container *ngFor="let img of otherImgs; let i = index">
+                      <div>
+                        <a
+                          href="#"
+                          class="text-muted"
+                          (click)="clearpreviewitem(i)"
+                        >
+                          <i
+                            class="fa-solid fa-circle-xmark fs-3 position-absolute bg-light-subtle rounded-4"
+                          ></i>
+                        </a>
+                        <img [src]="img" alt="other images" />
+                      </div>
+                    </ng-container>
+                  </div>
                 </div>
               </div>
             </div>
+
             <!-- buyer instructions -->
             <div class="mb-3">
               <label for="buyerinstructions" class="form-label"
@@ -508,5 +571,37 @@
         </div>
       </div>
     </div>
+    <!-- Button trigger modal -->
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      #loadingmodalbtn
+    >
+      Launch static backdrop modal
+    </button>
+    <!-- Button trigger modal -->
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#prelodader"
+      #preloadermodalbtn
+    >
+      Launch preloader modal
+    </button>
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-dismiss="modal"
+      data-bs-target="#prelodader"
+      #preloaderdismissmodalbtn
+    >
+      preloader dismiss modal
+    </button>
   </body>
 </html>

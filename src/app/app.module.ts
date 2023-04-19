@@ -19,9 +19,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AddserviceComponent } from './components/addservice/addservice.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
 import { ContestsComponent } from './components/contests/contests.component';
-import {ProjectsDetailsComponent} from './components/projectsDetails/projectsDetails.component';
+import { ProjectsDetailsComponent } from './components/projectsDetails/projectsDetails.component';
 import { SingleFreelancerComponent } from './components/single-freelancer/single-freelancer.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -30,8 +29,6 @@ import { PortfoloisComponent } from './components/portfolois/portfolois/portfolo
 import { AddportfoloiComponent } from './components/portfolois/addportfoloi/addportfoloi.component';
 import { ContestDetailsComponent } from './components/contest-details/contest-details.component';
 import { AddContestComponent } from './components/add-contest/add-contest.component';
-
-
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -79,9 +76,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         useFactory: (http: HttpClient) => {
           return new TranslateHttpLoader(http, './assets/i18n/', '.json');
         },
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
