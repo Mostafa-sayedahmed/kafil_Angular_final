@@ -78,7 +78,8 @@ export class UserService {
           await user
             ?.updateProfile({
               displayName: `${fname} ${sname}`,
-              photoURL: 'https://kafiil.com/modules/user/images/user.svg',
+              photoURL:
+                'https://firebasestorage.googleapis.com/v0/b/kafiil-12b6c.appspot.com/o/images%2Fuserimage.png?alt=media&token=e88880bd-c2f9-4562-9a72-5628441ad27a',
             })
             .then(() => {
               this.SetUserData(result.user);

@@ -32,6 +32,11 @@ import { AddContestComponent } from './components/add-contest/add-contest.compon
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+// import { AddFreelancerComponent } from './components/add-freelancer/add-freelancer.component';
+// import { HomeComponent } from './home/home.component';
+// import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+// import { ProjectsComponent } from './components/projects/projects.component';
+// import { AddprojcetComponent } from './components/addprojcet/addprojcet.component';
 
 @NgModule({
   declarations: [
