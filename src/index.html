@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <!-- fontawesome -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -25,7 +26,63 @@
       crossorigin="anonymous"
     />
   </head>
-  <body >
+  <body>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+      #loadingmodal
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              اضافة خدمة
+            </h1>
+          </div>
+          <div class="modal-body d-flex flex-column align-items-center">
+            <img
+              src="assets/images/uploading.gif"
+              alt="uploading "
+              style="width: 400px; height: 200px; object-fit: cover"
+            />
+            <p>جاري رفع الملفات</p>
+            برجاء الانتظار ...!
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full screen modal -->
+    <div
+      class="modal fade"
+      id="prelodader"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="prelodaderLabel"
+      aria-hidden="true"
+      #loadingmodal
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div
+            class="modal-body d-flex flex-column align-items-center justify-content-center"
+          >
+            <img src="assets/images/preloader2.gif" alt="uploading " />
+            <!-- <p>جاري تحميل الصفحة</p>
+            برجاء الانتظار ...! -->
+          </div>
+        </div>
+      </div>
+    </div>
+
     <app-root></app-root>
   </body>
 </html>
